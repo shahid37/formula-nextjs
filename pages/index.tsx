@@ -3,7 +3,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <div className="bg-off-white">
       <Main />
     </div>
   );

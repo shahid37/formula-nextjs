@@ -21,14 +21,15 @@ module.exports = {
     },
     extend: {
       colors: {
-        // Colors and names are pulled directly from invision files
-        "primary-blue": "#0C0EB7",
+        // Colors and names are pulled directly from Figma
+        teal: "#A0D1CA",
         white: "#FFFFFF",
-        "light-gray": "#FAFAFA",
-        black: "#000000",
-        "gray-01": "#848484",
-        "gray-02": "#878787",
-        "gray-03": "#858585",
+        "off-white": "#FDF9F4",
+        black: "#111111",
+        "light-gray": "#EEEEEE",
+        gray: "#4E4B48",
+        lime: "#A1CD5D",
+        "input-border": "#635F66",
       },
     },
   },
