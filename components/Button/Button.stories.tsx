@@ -7,10 +7,20 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>ADD TO CART</Button>
+  <Button {...args}>CREATE MY FORMULA</Button>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
   type: "default",
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  type: "secondary",
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  type: "link",
 };

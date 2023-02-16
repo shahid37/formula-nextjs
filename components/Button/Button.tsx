@@ -8,7 +8,7 @@ interface ButtonProps {
   color?: string;
   fontSize?: number;
   textColor?: string;
-  type?: "link" | "default";
+  type?: "link" | "default" | "secondary";
   htmlType?: "button" | "submit" | "reset" | undefined;
   children?: ReactNode;
 }
@@ -43,13 +43,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }, [props.onClick, props.disable]);
 
     const commonClassNames =
-      "flex cursor-pointer items-center text-center font-normal ";
+      "flex cursor-pointer items-center text-center font-medium leading-4 uppercase";
     const disabledClassNames = props.disable && "cursor-not-allowed opacity-50";
-    const linkButtonClassNames = `text-sm font-medium	 leading-6 '
-    }`;
-    const buttonClassNames =
-      "w-full h-[53px] bg-primary-blue flex-grow justify-center py-3 whitespace-nowrap text-white leading-5";
-
+    const linkButtonClassNames = "text-sm";
+    const commonButtonClassNames =
+      "w-full rounded-lg h-12 flex-grow justify-center py-4 whitespace-nowrap text-black";
     return (
       <button
         ref={ref}
@@ -57,7 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={clickCB}
         style={{
           fontSize: props.fontSize ? props.fontSize : 14,
-          color: props.textColor ? props.textColor : "white",
+          color: props.textColor ? props.textColor : "#111111",
         }}
         className={
           props.type === "link"
@@ -66,11 +64,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 disabledClassNames,
                 linkButtonClassNames
               )
+            : props.type === "secondary"
+            ? classNames(
+                commonClassNames,
+                disabledClassNames,
+                commonButtonClassNames,
+                "border border-teal"
+              )
             : classNames(
                 commonClassNames,
                 disabledClassNames,
-                buttonClassNames,
-                "bg-dark-blue"
+                commonButtonClassNames,
+                "bg-teal"
               )
         }
       >
@@ -80,8 +85,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-// Esoteric ESLint requirement that doesn't automatically get satisfied with forwardRef, see docs:
-//https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/display-name.md
 Button.displayName = "Button";
 
 Button.defaultProps = {
