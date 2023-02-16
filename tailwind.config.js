@@ -29,6 +29,7 @@ module.exports = {
         "light-gray": "#EEEEEE",
         gray: "#4E4B48",
         lime: "#A1CD5D",
+        red: "#FC5555",
         "input-border": "#635F66",
       },
     },
