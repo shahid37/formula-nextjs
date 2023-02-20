@@ -8,7 +8,7 @@ interface CheckBoxProps {
 
 const Checkbox = ({ isChecked, label, handleChange }: CheckBoxProps) => {
   return (
-    <div className="flex w-56 items-center">
+    <div className="flex w-96 items-center">
       <input
         type="checkbox"
         id={label}

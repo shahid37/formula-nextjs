@@ -13,5 +13,6 @@ const Template: ComponentStory<typeof FormulaProcessBar> = (args) => (
 export const Bar = Template.bind({});
 
 Bar.args = {
-  level: "2",
+  totalQuestions: 10,
+  currentQuestionNumber: 1,
 };

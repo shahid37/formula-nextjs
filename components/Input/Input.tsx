@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
+import { InputTypes } from ".";
 
 interface InputProps {
   placeholder?: string;
@@ -8,7 +9,7 @@ interface InputProps {
   value?: string;
   name?: string;
   onChange: any;
-  type?: "search" | "number" | "password" | "text" | "email";
+  type?: InputTypes;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {

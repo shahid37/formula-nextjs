@@ -1,8 +1,14 @@
-import Main from "@/components/Main";
 import React from "react";
 
+import Main from "@/components/Main";
+import AppLayout from "@/components/AppLayout/AppLayout";
+
 const Home = () => {
-  return <Main />;
+  return (
+    <AppLayout>
+      <Main />;
+    </AppLayout>
+  );
 };
 
 export default Home;

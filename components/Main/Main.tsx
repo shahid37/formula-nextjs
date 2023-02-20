@@ -16,7 +16,9 @@ const Main = () => {
   const commonClassNames = "flex flex-col";
   return (
     <div className={classNames(commonClassNames, "w-full")}>
-      <Image src={Hero} alt="Hero image" height={248} width={1512} />
+      <div className="relative w-full h-64">
+        <Image src={Hero} alt="Hero image" fill />
+      </div>
       <div className={classNames(commonClassNames, "xs:px-2 md:px-28 pt-10")}>
         <div className="grid xs:grid-cols-1 md:grid-cols-3 gap-4">
           {[
