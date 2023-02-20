@@ -82,7 +82,7 @@ body {
     
 }
 /* Creating the dots */
-span{
+.dot{
   height: 9px;
   width: 9px;
   margin-right: 10px;

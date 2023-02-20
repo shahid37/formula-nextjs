@@ -11,13 +11,15 @@ const FormulaProcessBar: FC<FormulaProcessBarProps> = ({
   totalQuestions,
   currentQuestionNumber,
 }: FormulaProcessBarProps) => {
-  let barSize = Math.floor(100 / totalQuestions);
+  let barSize = 100 / totalQuestions;
 
   let hash = new Map();
 
   for (let i = 1; i <= totalQuestions; i++) {
     hash.set(i, barSize * i);
   }
+  console.log("barSize", barSize);
+  console.log("hash", hash);
 
   const barLevel = hash.get(currentQuestionNumber);
 

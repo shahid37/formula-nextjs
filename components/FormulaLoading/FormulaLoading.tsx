@@ -17,12 +17,12 @@ const FormulaLoading: FC<FormulaLoadingProps> = ({
         <div className="flex flex-col items-center text-center w-96">
           <div className="relative">
             <div className="loader">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
             </div>
           </div>
           <h6 className="text-gray mt-7">{status}</h6>
