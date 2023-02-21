@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import classNames from "classnames";
-import FormulaProcessBar from "../../../components/FormulaProcessBar/FormulaProcessBar";
+import FormulaProcessBar from "../../ProcessBar/ProcessBar";
 import Navbar from "../../../components/Navbar/Navbar";
 import Button from "../../../components/Button/Button";
 

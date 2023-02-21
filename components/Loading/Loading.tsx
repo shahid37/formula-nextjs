@@ -1,29 +1,20 @@
 import React, { FC } from "react";
 
 import AppLayout from "../AppLayout/AppLayout";
+import Loader from "../Loader";
 
-interface FormulaLoadingProps {
+interface LoadingProps {
   status?: string;
   text?: string;
 }
 
-const FormulaLoading: FC<FormulaLoadingProps> = ({
-  text,
-  status,
-}: FormulaLoadingProps) => {
+const Loading: FC<LoadingProps> = ({ text, status }: LoadingProps) => {
   return (
     <AppLayout showNaveLink={false}>
       <div className="flex items-center justify-center w-screen h-screen bg-off-white">
         <div className="flex flex-col items-center text-center w-96">
           <div className="relative">
-            <div className="loader">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
+            <Loader />
           </div>
           <h6 className="text-gray mt-7">{status}</h6>
           <h4 className="text-black mt-6">{text}</h4>
@@ -33,5 +24,5 @@ const FormulaLoading: FC<FormulaLoadingProps> = ({
   );
 };
 
-FormulaLoading.defaultProps = {};
-export default FormulaLoading;
+Loading.defaultProps = {};
+export default Loading;

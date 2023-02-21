@@ -2,7 +2,7 @@ import QuestionsLayout from "./QuestionsLayout";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 export default {
-  title: "Questionnaire/Questions Layout",
+  title: "Questionnaire/Layout",
   component: QuestionsLayout,
 } as ComponentMeta<typeof QuestionsLayout>;
 
