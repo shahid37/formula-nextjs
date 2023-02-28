@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import classNames from "classnames";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import Button from "../Button";
 import Input from "../Input";
@@ -64,12 +66,9 @@ const LoginForm = () => {
           {errors.password.message}
         </p>
       )}
-      <Link
-        href={"/update-password"}
-        className="text-gray text-sm font-medium mt-4 uppercase"
-      >
-        Forgot Password
-      </Link>
+      <div className="text-gray text-sm font-medium mt-2 uppercase">
+        <Link href={"/update-password"}>Forgot Password</Link>
+      </div>
       <div className="mt-10">
         <CheckBox
           handleChange={handleChange}

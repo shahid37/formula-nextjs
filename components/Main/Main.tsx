@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import classNames from "classnames";
 
 import Hero from "../../public/assets/hero.png";
 
@@ -10,17 +11,27 @@ import MedicineIcon from "./images/MedicineIcon";
 import Button from "../Button";
 import Footer from "../Footer";
 import PainCategory, { PainTypes } from "../PainCategory";
-import classNames from "classnames";
 
 const Main = () => {
   const commonClassNames = "flex flex-col";
+
   return (
     <div className={classNames(commonClassNames, "w-full")}>
-      <div className="relative w-full h-64">
-        <Image src={Hero} alt="Hero image" fill />
+      <div className="relative w-full xs:h-48 md:h-64">
+        <Image
+          src={Hero}
+          className="xs:object-contain md:object-cover"
+          alt="Hero image"
+          fill
+        />
       </div>
-      <div className={classNames(commonClassNames, "xs:px-2 md:px-28 pt-10")}>
-        <div className="grid xs:grid-cols-1 md:grid-cols-3 gap-4">
+      <div
+        className={classNames(
+          commonClassNames,
+          "xs:px-2 md:px-28 xs:pt-0 md:pt-11"
+        )}
+      >
+        <div className="grid xs:grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               text: "Complete 5 minute pain assessment questionnaire",
@@ -37,11 +48,11 @@ const Main = () => {
           ].map((item) => (
             <div key={item.text} className="flex items-center">
               {item.icon}
-              <h6 className="text-black ml-4">{item.text}</h6>
+              <h6 className="text-gray text-base ml-4">{item.text}</h6>
             </div>
           ))}
         </div>
-        <div className="pt-10 ">
+        <div className="pt-10">
           <h5 className="text-black">Find your perfect PAIN formula</h5>
           <p className="text-sm font font-normal text-gray">
             Pick a category to begin creating your formula
@@ -82,7 +93,7 @@ const Main = () => {
         <div className="mt-10">
           <Footer />
         </div>
-        <div className="mx-auto my-10 w-96">
+        <div className="mx-auto my-10 xs:w-80 md:w-96">
           <Button type="default">Create my Formula</Button>
         </div>
       </div>

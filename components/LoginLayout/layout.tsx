@@ -12,7 +12,7 @@ const Layout: FC<LayoutProps> = ({ children, heading }: LayoutProps) => {
   return (
     <div className="flex h-screen w-full bg-white">
       <div className="grid xs:grid-cols-1 md:grid-cols-2 gap-1">
-        <div className="xs:p-[60px] md:p-[120px]">
+        <div className="xs:pt-32 xs:px-4 md:py-44 md:px-[120px]  ">
           <h4>{heading}</h4>
           {children}
         </div>

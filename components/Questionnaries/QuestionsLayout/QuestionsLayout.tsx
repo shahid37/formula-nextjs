@@ -38,7 +38,7 @@ const QuestionsLayout: FC<QuestionsLayoutProps> = ({
         totalQuestions={totalQuestions}
         currentQuestionNumber={questionNumber}
       />
-      <div className={classNames(commonClassNames, "flex-col px-28 pt-28")}>
+      <div className={classNames(commonClassNames, "flex-col px-28 pt-32")}>
         <div className={classNames(commonClassNames)}>
           <Shield />
           <h6 className="ml-3 text-gray">Question no. {questionNumber}</h6>
