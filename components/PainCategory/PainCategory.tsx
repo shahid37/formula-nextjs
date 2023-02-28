@@ -30,7 +30,7 @@ const PainCategory: FC<PainCategoryProps> = ({
   return (
     <div className="flex flex-col items-center">
       <Image
-        className="rounded-md"
+        className="rounded-md border border-light-gray cursor-pointer"
         src={img}
         alt={name}
         height={300}
