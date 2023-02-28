@@ -4,7 +4,6 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./stories/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -30,6 +29,7 @@ module.exports = {
         gray: "#4E4B48",
         lime: "#A1CD5D",
         red: "#FC5555",
+        green: "#29CC6A",
         "input-border": "#635F66",
       },
     },
