@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
     >
       <UserContext.Provider value={{ auth, setAuth }}>
         <main className={inter.className}>
-          <Component {...pageProps} />
+          <Component {...pageProps} auth={auth} setAuth={setAuth} />
         </main>
       </UserContext.Provider>
     </SWRConfig>
