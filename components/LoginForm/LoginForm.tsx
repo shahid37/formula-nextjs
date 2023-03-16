@@ -1,53 +1,52 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import Link from "next/link";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
-
+import { toast } from "react-toastify";
 import Button from "../Button";
 import Input from "../Input";
 import CheckBox from "../CheckBox";
-import Loader from "../Loader";
 import { BASE_URL } from "../../utils/constants";
 
 import { LOGIN_API } from "./constant";
+import UserContext from "@/context/UserContext";
 
 interface FormValueProps {
   email: string;
   password: string;
 }
 
-const LoginForm = ({ auth, setAuth }: any) => {
+const LoginForm = ({ setLoading }: any) => {
+  const { setAuth } = useContext(UserContext);
   const { replace } = useRouter();
-  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValueProps>();
 
-  // Header to avoid CORS error in frontEnd
-  const header = new Headers({
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "application/json",
-  });
-
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
-    fetch(BASE_URL + LOGIN_API, { headers: header })
-      .then((response) => response.json())
-      .then((data) => {
+    let url = BASE_URL + LOGIN_API;
+    await axios
+      .post(url, data)
+      .then((res) => {
+        setAuth(res?.data);
         setLoading(false);
-        console.log("data is", data);
+        replace("/home");
+        setTimeout(() => {
+          toast.success("User signed in successfully.");
+        }, 600);
       })
       .catch((error) => {
         setLoading(false);
         console.log("error", error);
+        toast.error(`${error?.response?.data}`);
       });
-    // replace("/home");
-    console.log("formData", data);
   });
 
   const [isChecked, setIsChecked] = useState(false);
@@ -58,9 +57,6 @@ const LoginForm = ({ auth, setAuth }: any) => {
   const commonErrorClassNames = "border-red focus:border-red";
   const commonErrorTextClassNames = "text-red text-sm mt-1 font-medium";
 
-  if (loading) {
-    return <Loader />;
-  }
   return (
     <form className="mt-6" onSubmit={onSubmit}>
       <Input
