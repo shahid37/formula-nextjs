@@ -89,32 +89,32 @@ const FormulaDetail = () => {
                   width={32}
                   height={32}
                 />
-                <p className="text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
+                <p className="w-[114px] text-center text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
                   Hypoallergenic
                 </p>
               </div>
               <div className="w-[1px] h-[100%] bg-[#4E4B48] opacity-[0.05]" />
               <div className="flex flex-col gap-y-4 justify-center items-center h-[82px]">
                 <Image
-                  src={DogIcon}
+                  src={LeafsIcon}
                   alt="Hypoallergenic"
                   width={32}
                   height={32}
                 />
-                <p className="text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
-                  Hypoallergenic
+                <p className="w-[114px] text-center text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
+                  Paraben
                 </p>
               </div>
               <div className="w-[1px] h-[100%] bg-[#4E4B48] opacity-[0.05]" />
               <div className="flex flex-col gap-y-4 justify-center items-center h-[82px]">
                 <Image
-                  src={DogIcon}
+                  src={ChemicalIcon}
                   alt="Hypoallergenic"
                   width={32}
                   height={32}
                 />
-                <p className="text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
-                  Hypoallergenic
+                <p className="w-[114px] text-center text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
+                  Custom Compounded
                 </p>
               </div>
             </div>
