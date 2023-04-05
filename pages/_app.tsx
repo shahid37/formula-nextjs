@@ -1,14 +1,16 @@
 import { SWRConfig } from "swr";
-import React from "react";
+import React, { useEffect } from "react";
 import { Inter } from "@next/font/google";
 
 import "@/styles/globals.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import type { AppProps } from "next/app";
 
 import UserContext from "@/context/UserContext";
 import usePersistentState from "@/hooks/usePersistentState";
 import { fetcher } from "@/utils/fetcher";
+import initAxiosGlobalConfigs from "@/config/axiosConfig";
 
 const inter = Inter({
   weight: ["400", "500"],
@@ -20,6 +22,15 @@ export default function App({ Component, pageProps }: AppProps) {
   const [auth, setAuth] = usePersistentState("auth", {
     initialValue: {},
   });
+
+  initAxiosGlobalConfigs(auth?.access_token);
+
+  useEffect(() => {
+    if (auth?.user && auth?.access_token) {
+      // set token from local storage
+      initAxiosGlobalConfigs(auth?.access_token);
+    }
+  }, [auth]);
 
   return (
     <SWRConfig
@@ -35,6 +46,18 @@ export default function App({ Component, pageProps }: AppProps) {
       <UserContext.Provider value={{ auth, setAuth }}>
         <main className={inter.className}>
           <Component {...pageProps} />
+          <ToastContainer
+            position="top-center"
+            autoClose={1500}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </main>
       </UserContext.Provider>
     </SWRConfig>

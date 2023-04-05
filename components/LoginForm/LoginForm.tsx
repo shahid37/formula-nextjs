@@ -1,21 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import Link from "next/link";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
-
+import { toast } from "react-toastify";
 import Button from "../Button";
 import Input from "../Input";
 import CheckBox from "../CheckBox";
+import { BASE_URL } from "../../utils/constants";
+
+import { LOGIN_API } from "./constant";
+import UserContext from "@/context/UserContext";
 
 interface FormValueProps {
   email: string;
   password: string;
 }
 
-const LoginForm = () => {
+const LoginForm = ({ setLoading }: any) => {
+  const { setAuth } = useContext(UserContext);
   const { replace } = useRouter();
   const {
     register,
@@ -23,9 +29,24 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<FormValueProps>();
 
-  const onSubmit = handleSubmit((data) => {
-    replace("/home");
-    console.log(data);
+  const onSubmit = handleSubmit(async (data) => {
+    setLoading(true);
+    let url = BASE_URL + LOGIN_API;
+    await axios
+      .post(url, data)
+      .then((res) => {
+        setAuth(res?.data);
+        setLoading(false);
+        replace("/home");
+        setTimeout(() => {
+          toast.success("User signed in successfully.");
+        }, 600);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log("error", error);
+        toast.error(`${error?.response?.data}`);
+      });
   });
 
   const [isChecked, setIsChecked] = useState(false);
