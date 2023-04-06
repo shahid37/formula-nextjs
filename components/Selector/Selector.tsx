@@ -1,26 +1,35 @@
-import classNames from "classnames";
 import Slider from "rc-slider";
+import React, { FC, useEffect, useState } from "react";
+
+import Button from "@/components/Button";
+
+import {capitalizeFirstLetter} from '../../utils/utills';
+import { Question } from "@/utils/constants";
+import classNames from "classnames";
 import "rc-slider/assets/index.css";
 import { styles } from "./selectionStyle";
-
-import React, { FC, useEffect, useState } from "react";
 import Input from "../Input";
 
 interface SelectorProps {
   type: "single" | "multi" | "input" | "range";
   options?: string[];
   getValues?: (values: string | string[] | null | undefined) => void;
+  value?: number;
+  data?: Array<Question>[];
 }
 
 const Selector: FC<SelectorProps> = ({
   type,
   options,
   getValues,
+  value,
+  data,
 }: SelectorProps) => {
   // This holds the selected values
   const [multiValue, setMultiValue] = useState<string[]>([]);
+  const [inputValuesCount, setInputValuesCount] = useState<number[]>([0]);
   const [singleValue, setSingleValue] = useState<string | null>("");
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState<string | null>('');
   const [sliderValue, setSliderValue] = useState("0");
 
   // Handle the single Selection case
@@ -51,36 +60,85 @@ const Selector: FC<SelectorProps> = ({
     }
   }, [getValues, sliderValue, inputValue, multiValue, singleValue, type]);
 
+  const handleMore = () => {
+    setInputValuesCount([
+      ...inputValuesCount,
+      inputValuesCount[inputValuesCount.length - 1] + 1,
+    ]);
+  };
+
+  useEffect(() => {
+    if(data && data?.length > 0){
+  console.log(data, "answersanswersanswersanswers");
+
+    }
+
+    // if (answers && answers?.length > 0) {
+      // setMultiValue([...answers]);
+    // }
+    if(value){
+      setInputValue('');
+      setSliderValue("0");
+    }
+  }, [data, value]);
+
+
   return (
     <div>
       {type === "range" && (
-        <div className="flex flex-col w-full">
-          <Slider
-            trackStyle={styles.track}
-            railStyle={styles.rail}
-            handleStyle={styles.handle}
-            dotStyle={styles.dot}
-            activeDotStyle={styles.activeDot}
-            step={25}
-            dots
-            defaultValue={0}
-            onChange={(e) => setSliderValue(e.toString())}
-          />
-          <div className="flex mt-4 w-full items-center justify-between">
-            <p className="text-sm font-normal text-black -ml-4">Mild</p>
-            <p className="text-sm font-normal text-black -mr-4">Extreme</p>
+        <div className="justify-center flex">
+          <div className="flex flex-col w-[500px]">
+            <Slider
+              trackStyle={styles.track}
+              railStyle={styles.rail}
+              handleStyle={styles.handle}
+              dotStyle={styles.dot}
+              activeDotStyle={styles.activeDot}
+              step={25}
+              dots
+              value={parseInt(sliderValue)}
+              defaultValue={0}
+              onChange={(e) => setSliderValue(e.toString())}
+            />
+            <div className="flex mt-4 w-full items-center justify-between">
+              <p className="text-sm font-normal text-black -ml-4">Mild</p>
+              <p className="text-sm font-normal text-black -mr-4">Extreme</p>
+            </div>
           </div>
         </div>
       )}
       {type === "input" ? (
-        <Input
-          type="text"
-          placeholder="Write your answer here"
-          name="answer"
-          onChange={(e: any) => setInputValue(e.target.value)}
-        />
+        <>
+          {inputValuesCount.map((item, index) => {
+            return (
+              <div key={index} className="justify-center flex">
+                <Input
+                  className="w-[500px]"
+                  type="text"
+                  placeholder="Write your answer here"
+                  name="answer"
+                  value={inputValue || ""}
+                  onChange={(e: any) => {
+                    setInputValue(e.target.value);
+                  }}
+                />
+                {/* {multiValue.length === inputValuesCount.length && (
+                  <div className="w-[200px] text-center mr-[24px]">
+                    <Button
+                      onClick={handleMore}
+                      backgroundColor="white"
+                      type="secondary"
+                    >
+                      Add More Answer
+                    </Button>
+                  </div>
+                )} */}
+              </div>
+            );
+          })}
+        </>
       ) : (
-        <div className="grid grid-cols-6 gap-4">
+        <div className="flex-wrap gap-4 justify-center flex items-center">
           {options?.map((item) => (
             <button
               onClick={() => {
@@ -92,11 +150,11 @@ const Selector: FC<SelectorProps> = ({
               className={classNames(
                 singleValue === item || multiValue.includes(item)
                   ? "bg-teal"
-                  : "bg-off-white",
-                "cursor-pointer rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
+                  : "bg-white",
+                "w-48	 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
               )}
             >
-              {item}
+              {capitalizeFirstLetter(item)}
             </button>
           ))}
         </div>

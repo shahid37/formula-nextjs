@@ -12,7 +12,7 @@ const Loading: FC<LoadingProps> = ({ text, status }: LoadingProps) => {
   return (
     <AppLayout showNaveLink={false}>
       <div className="flex items-center justify-center w-screen h-screen bg-off-white">
-        <div className="flex flex-col items-center text-center w-96">
+        <div className="flex flex-col items-center text-center w-[572px]">
           <div className="relative">
             <Loader />
           </div>

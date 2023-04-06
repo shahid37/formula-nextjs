@@ -8,6 +8,7 @@ interface ButtonProps {
   color?: string;
   fontSize?: number;
   textColor?: string;
+  backgroundColor?: string;
   type?: "link" | "default" | "secondary";
   htmlType?: "button" | "submit" | "reset" | undefined;
   children?: ReactNode;
@@ -56,6 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         style={{
           fontSize: props.fontSize ? props.fontSize : 14,
           color: props.textColor ? props.textColor : "#111111",
+          backgroundColor: props.backgroundColor ? props.backgroundColor : "",
         }}
         className={
           props.type === "link"
