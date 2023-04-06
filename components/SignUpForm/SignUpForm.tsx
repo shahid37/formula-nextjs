@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import classNames from "classnames";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 import Button from "../Button";
 import Input, { InputTypes } from "../Input";
 import CheckBox from "../CheckBox";
+import { convertDateToUtc } from "@/utils/helpers";
+import { BASE_URL } from "@/utils/constants";
+import { SIGN_UP_API } from "./constant";
+import UserContext from "@/context/UserContext";
 
 interface FormValueProps {
-  name: string;
-  dateOfBirth: string;
+  first_name: string;
+  last_name: string;
+  birth_date: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 const SignUpForm = () => {
-  const { push } = useRouter();
+  const { setAuth } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
+
+  const { replace } = useRouter();
   const {
     register,
     handleSubmit,
@@ -25,9 +35,31 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm<FormValueProps>();
 
-  const onSubmit = handleSubmit((data) => {
-    push("/home");
-    console.log(data);
+  const onSubmit = handleSubmit((values) => {
+    delete values.confirmPassword;
+    const formData = {
+      ...values,
+      birth_date: convertDateToUtc(values.birth_date),
+    };
+    setLoading(true);
+    let url = BASE_URL + SIGN_UP_API;
+    axios
+      .post(url, formData)
+      .then((res) => {
+        if (res?.data?.access_token) {
+          setAuth(res?.data);
+          setLoading(false);
+          replace("/home");
+          setTimeout(() => {
+            toast.success("User registered successfully.");
+          }, 600);
+        }
+      })
+      .catch((error) => {
+        console.log("error in registration", error);
+        toast.error(`${error?.response?.data}`);
+      })
+      .finally(() => setLoading(false));
   });
 
   const [isChecked, setIsChecked] = useState(false);
@@ -47,16 +79,22 @@ const SignUpForm = () => {
       <>
         {[
           {
-            name: "name",
-            placeholder: "Name",
+            name: "first_name",
+            placeholder: "First Name",
             type: "text",
-            error: errors?.name,
+            error: errors?.first_name,
           },
           {
-            name: "dateOfBirth",
-            placeholder: "Date of Birth",
+            name: "last_name",
+            placeholder: "Last Name",
             type: "text",
-            error: errors?.dateOfBirth,
+            error: errors?.last_name,
+          },
+          {
+            name: "birth_date",
+            placeholder: "Date of Birth",
+            type: "date",
+            error: errors?.birth_date,
           },
           {
             name: "email",
@@ -77,7 +115,7 @@ const SignUpForm = () => {
             error: errors?.confirmPassword,
             validate: (val: string) => {
               if (watch("password") != val) {
-                return "Your passwords do no match";
+                return "Password validation failed.";
               }
             },
           },
@@ -87,6 +125,7 @@ const SignUpForm = () => {
               <Input
                 key={item.name}
                 className={classNames(
+                  item.type === "date" && "cursor-pointer",
                   item.error && commonErrorClassNames,
                   i !== 0 && "mt-4"
                 )}
@@ -122,7 +161,9 @@ const SignUpForm = () => {
         />
       </div>
       <div className="mt-28">
-        <Button htmlType="submit">Create Account</Button>
+        <Button loading={loading} htmlType="submit">
+          Create Account
+        </Button>
         <Link
           href={"/"}
           className="flex justify-center text-gray text-sm font-medium mt-3 uppercase"
