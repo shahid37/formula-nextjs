@@ -11,8 +11,10 @@ import MedicineIcon from "./images/MedicineIcon";
 import Button from "../Button";
 import Footer from "../Footer";
 import PainCategory, { PainTypes } from "../PainCategory";
+import { useRouter } from 'next/router';
 
 const Main = () => {
+  const router =  useRouter();
   const commonClassNames = "flex flex-col";
 
   return (
@@ -94,7 +96,12 @@ const Main = () => {
           <Footer />
         </div>
         <div className="mx-auto my-10 xs:w-80 md:w-96">
-          <Button type="default">Create my Formula</Button>
+          <Button
+            onClick={() => router.push("/questionnaries/home")}
+            type="default"
+          >
+            Create my Formula
+          </Button>
         </div>
       </div>
     </div>

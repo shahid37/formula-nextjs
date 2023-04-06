@@ -1,15 +1,18 @@
 import AppLayout from "@/components/AppLayout/AppLayout";
 import LandingPage from "@/components/Questionnaries/LandingPage";
+import { useRouter } from "next/router";
 import React from "react";
-import QuestionnairePage from "./questionnaire";
 
-const home = () => {
+const HomePage = () => {
+ const router = useRouter();
+ const onClick = () => {
+   router.push("/questionnaries");
+ };  
   return (
-    <AppLayout>
-      {/* <LandingPage /> */}
-      <QuestionnairePage />
+    <AppLayout navLinkAction={onClick}>
+      <LandingPage />
     </AppLayout>
   );
 };
 
-export default home;
+export default HomePage;

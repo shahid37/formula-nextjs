@@ -1,11 +1,15 @@
+import AppLayout from "@/components/AppLayout/AppLayout";
 import Main from "@/components/Main";
-import Head from "next/head";
-import LoginPage from "./login";
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
+  const onClick = ()=>{
+    router.push("/questionnaries/home");
+  }
   return (
-    <div className="bg-off-white">
-      <LoginPage />
-    </div>
+    <AppLayout navLinkAction={onClick}>
+      <Main />
+    </AppLayout>
   );
 }

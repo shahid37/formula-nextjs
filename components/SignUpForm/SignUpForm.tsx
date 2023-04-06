@@ -37,19 +37,19 @@ const SignUpForm = () => {
 
   const onSubmit = handleSubmit((values) => {
     delete values.confirmPassword;
-    const formData = {
+    const data = {
       ...values,
       birth_date: convertDateToUtc(values.birth_date),
     };
     setLoading(true);
     let url = BASE_URL + SIGN_UP_API;
     axios
-      .post(url, formData)
+      .post(url, data)
       .then((res) => {
         if (res?.data?.access_token) {
           setAuth(res?.data);
           setLoading(false);
-          replace("/home");
+        replace("/questionnaries");
           setTimeout(() => {
             toast.success("User registered successfully.");
           }, 600);

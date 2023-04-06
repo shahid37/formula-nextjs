@@ -16,6 +16,16 @@ export  interface Question {
   loadingTextTitle:any,
   loadingText:any,
 }
+export  interface CreateQuestionLoadingDataInterFace {
+  loadingTextTitle:any,
+  loadingText:any,
+}
+export const createQuestionLoadingData:  Array<CreateQuestionLoadingDataInterFace> = [
+  {loadingTextTitle:"Analyzing your input",loadingText:"Pain creams have less absorption into the blood stream. This significantly reduces the chances for development of side effects such as stomach upset and ulcers that commonly occur with long-term use of oral pain medications."},
+  {loadingTextTitle:"Scanning database",loadingText:"Our pain formulas contain multiple agents that synergistically work together to target against a variety of different pain receptors."},
+  {loadingTextTitle:"Your formula is ready",loadingText:"If chronic pain is inadequately treated, people often suffer from symptoms such as anxiety, fear, depression, sleeplessness and impairment of social interaction."}
+];
+
 
 export const MAPPING = {
 "All the time": 1,

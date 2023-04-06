@@ -3,12 +3,17 @@ import Image from "next/image";
 import React, { FC } from "react";
 
 import backgroundImg from "../../../public/assets/questionnaire.png";
+import { useRouter } from "next/router";
 
 interface LandingPageProps {
   text?: string;
 }
 
 const LandingPage: FC<LandingPageProps> = ({ text }: LandingPageProps) => {
+  const router = useRouter();
+  const onClick = () => {
+    router.push("/questionnaries");
+  };  
   return (
     <div className="flex relative">
       <Image
@@ -22,7 +27,7 @@ const LandingPage: FC<LandingPageProps> = ({ text }: LandingPageProps) => {
           Answer the following questions as best as you can.
         </h5>
         <div className="mt-20 xs:w-60 md:w-80">
-          <Button>CREATE MY FORMULA</Button>
+          <Button onClick={onClick}>CREATE MY FORMULA</Button>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import SignUpForm from "@/components/SignUpForm";
 
 const SignUpPage = () => {
   return (
-    <AppLayout>
+    <AppLayout showNaveLink={false}>
       {/* This Layout is for only Login section screens */}
       <Layout heading="Create Account">
         <SignUpForm />

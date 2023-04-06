@@ -12,12 +12,14 @@ import {
   BASE_URL,
   MAPPING,
   Question,
+  createQuestionLoadingData,
 } from "@/utils/constants";
 import Selector from "@/components/Selector";
 
-import { FORMULA_CREATA_API } from "../constant";
+import { FORMULA_CREATA_API } from "../formula/constant";
 import usePersistentState from "@/hooks/usePersistentState";
 import QuestionnaireContext from "@/context/QuestionnaireContext";
+import { useRouter } from "next/router";
 
 
 interface QuestionnairePageProps {
@@ -27,11 +29,19 @@ interface QuestionnairePageProps {
 const QuestionnairePage: FC<QuestionnairePageProps> = ({
   text,
 }: QuestionnairePageProps) => {
+  const router = useRouter();
+    const [showChild, setShowChild] = useState(false);
    const [questionnaireData, setQuestionnaireData] = usePersistentState("questionnaireData",[]);
    const [currentQuestion, setCurrentQuestion] = usePersistentState(
      "currentQuestion",-1);
+      const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+        "isCreateQuestion",
+        -1
+      );
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Array<Question>>(questions);
+  const [createQuestionLoadingIndex, setCreateQuestionLoadingIndex] =
+    useState(0);
   const [state, setState] = useState(0);
 
   useEffect(() => {
@@ -59,40 +69,8 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     setData( [..._data] );
     setTimeout(handleSetInterval, 1000);
     }else{
-        setLoading(true);
-        let url = BASE_URL + FORMULA_CREATA_API;
-        const _data = {
-          user_id: -1,
-          answers: {
-            pain_types: data[0]?.answers,
-            pain_locations: data[1].answers,
-            pain_radiation: false,
-            pain_factors: [data[3].answers],
-            pain_relievers: [data[4].answers],
-            pain_current_severity: MAPPING[data[5].answers],
-            pain_worst_severity: MAPPING[data[6].answers],
-            pain_least_severity: MAPPING[data[7].answers],
-            pain_consistency: MAPPING[data[8].answers],
-            pain_duration: MAPPING[data[9].answers],
-            pain_medications: [data[10].answers],
-            allergies: [data[11].answers],
-            surgeries: [data[12].answers],
-            general_medications: [data[13].answers],
-          },
-          type: "pain",
-          formula_id: -1,
-        };
-        setQuestionnaireData(_data);
-        await axios
-          .post(url, _data)
-          .then((res) => {
-            setLoading(false);
-          })
-          .catch((error) => {
-            setLoading(false);
-            console.log("error", error);
-            toast.error(`${error?.response?.data}`);
-          });
+      setIsCreateQuestion(true);
+      router.push('/formula');
     }
   };
 
@@ -128,7 +106,55 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
 
   console.log(data, "CHECKINGGGGG111",state);
    console.log(questionnaireData, "questionnaireData");
+ useEffect(() => {
+   setShowChild(true);
+ }, []);
 
+ const handleCreateQuestionSetInterval = ()=>{
+    setCreateQuestionLoadingIndex(createQuestionLoadingIndex+1);
+ };
+
+ const handleCreateQuestionLoading = ()=>{
+    setTimeout(handleCreateQuestionSetInterval, 2000);
+ }
+
+ useEffect(() => {
+   if (isCreateQuestion) {
+     if (createQuestionLoadingIndex < createQuestionLoadingData.length) {
+       handleCreateQuestionLoading();
+     }
+     if (createQuestionLoadingIndex === createQuestionLoadingData.length - 1) {
+       router.push("/formula");
+     }
+   }
+ }, [isCreateQuestion, createQuestionLoadingIndex]);
+
+
+ if (!showChild) {
+   return null;
+ }
+
+
+ if(isCreateQuestion){
+    return (
+      <div className="flex flex-col text-whit">
+        {isCreateQuestion &&
+          createQuestionLoadingData[createQuestionLoadingIndex]
+            .loadingTextTitle && (
+            <Loading
+              status={
+                createQuestionLoadingData[createQuestionLoadingIndex]
+                  .loadingTextTitle
+              }
+              text={
+                createQuestionLoadingData[createQuestionLoadingIndex]
+                  .loadingText
+              }
+            />
+          )}
+      </div>
+    );
+ }
   
 
 

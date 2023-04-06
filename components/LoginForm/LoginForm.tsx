@@ -37,7 +37,7 @@ const LoginForm = ({ setLoading }: any) => {
       .then((res) => {
         setAuth(res?.data);
         setLoading(false);
-        replace("/home");
+        replace("/questionnaries");
         setTimeout(() => {
           toast.success("User signed in successfully.");
         }, 600);
