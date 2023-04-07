@@ -15,7 +15,7 @@ interface SelectorProps {
   options?: string[];
   getValues?: (values: string | string[] | null | undefined) => void;
   value?: number;
-  data?: Array<Question>[];
+  data?: Array<Question>;
   id?:number;
 }
 
@@ -70,11 +70,11 @@ const Selector: FC<SelectorProps> = ({
   };
 
   useEffect(() => {
-    if(data && data?.length > 0 && id){
-      const _data = data?.find((item)=>item?.id === id);
+    // if(data && data?.length > 0 && id){
+      // const _data = data?.find((item)=>item?.id === id);
       // console.log(data,id,"answersanswersanswersanswers",_data);
 
-    }
+    // }
 
     // if (answers && answers?.length > 0) {
       // setMultiValue([...answers]);

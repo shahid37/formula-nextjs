@@ -222,7 +222,6 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                 <Selector
                   type="single"
                   options={data[state]?.options}
-                  answers={data[state]?.answers}
                   getValues={getValues}
                   value={state}
                 />
