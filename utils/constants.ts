@@ -8,48 +8,58 @@ export const QUESTION_TYPES = {
 
 export const FORMULA_CREATA_API = "public/formulas";
 
-
-export  interface Question {
-  id:number;
+export interface Question {
+  id: number;
   question: string;
-  type:string;
-  options:string[],
-  answers:any,
-  loading:boolean,
-  loadingTextTitle:any,
-  loadingText:any,
+  type: string;
+  options: string[];
+  answers: any;
+  loading: boolean;
+  loadingTextTitle: any;
+  loadingText: any;
 }
-export  interface CreateQuestionLoadingDataInterFace {
-  loadingTextTitle:any,
-  loadingText:any,
+export interface CreateQuestionLoadingDataInterFace {
+  loadingTextTitle: any;
+  loadingText: any;
 }
-export const createQuestionLoadingData:  Array<CreateQuestionLoadingDataInterFace> = [
-  {loadingTextTitle:"Analyzing your input",loadingText:"Pain creams have less absorption into the blood stream. This significantly reduces the chances for development of side effects such as stomach upset and ulcers that commonly occur with long-term use of oral pain medications."},
-  {loadingTextTitle:"Scanning database",loadingText:"Our pain formulas contain multiple agents that synergistically work together to target against a variety of different pain receptors."},
-  {loadingTextTitle:"Your formula is ready",loadingText:"If chronic pain is inadequately treated, people often suffer from symptoms such as anxiety, fear, depression, sleeplessness and impairment of social interaction."}
-];
-
+export const createQuestionLoadingData: Array<CreateQuestionLoadingDataInterFace> =
+  [
+    {
+      loadingTextTitle: "Analyzing your input",
+      loadingText:
+        "Pain creams have less absorption into the blood stream. This significantly reduces the chances for development of side effects such as stomach upset and ulcers that commonly occur with long-term use of oral pain medications.",
+    },
+    {
+      loadingTextTitle: "Scanning database",
+      loadingText:
+        "Our pain formulas contain multiple agents that synergistically work together to target against a variety of different pain receptors.",
+    },
+    {
+      loadingTextTitle: "Your formula is ready",
+      loadingText:
+        "If chronic pain is inadequately treated, people often suffer from symptoms such as anxiety, fear, depression, sleeplessness and impairment of social interaction.",
+    },
+  ];
 
 export const MAPPING = {
-"All the time": 1,
-"Once in a while":2,
-"Comes and goes":3,
-"Days":1,
-"Months":2,
-"Years":3,
-"Yes":true,
-"No" :false,
-"0":1,
-"25":2,
-"50":3,
-"75":4,
-"100":5
- };
+  "All the time": 1,
+  "Once in a while": 2,
+  "Comes and goes": 3,
+  Days: 1,
+  Months: 2,
+  Years: 3,
+  Yes: true,
+  No: false,
+  "0": 1,
+  "25": 2,
+  "50": 3,
+  "75": 4,
+  "100": 5,
+};
 
-
-export const questions:  Array<Question> = [
+export const questions: Array<Question> = [
   {
-    id:1,
+    id: 1,
     question: "Describe your pain ",
     type: QUESTION_TYPES.MULTIPLE_CHOICE,
     options: [
@@ -75,12 +85,13 @@ export const questions:  Array<Question> = [
       "throbbing",
     ],
     answers: null,
-    loading:false,
-    loadingTextTitle:'Getting Started',
-    loadingText:"Over 50 million people (20%) in the United States suffer from chronic pain - that is 1 in 5 Americans",
+    loading: false,
+    loadingTextTitle: "Getting Started",
+    loadingText:
+      "Over 50 million people (20%) in the United States suffer from chronic pain - that is 1 in 5 Americans",
   },
   {
-    id:2,
+    id: 2,
     question: "Where is your pain located?",
     type: QUESTION_TYPES.MULTIPLE_CHOICE,
     options: [
@@ -96,134 +107,135 @@ export const questions:  Array<Question> = [
       "other",
     ],
     answers: null,
-    loading:false,
-    loadingTextTitle:"You are doing good",
-    loadingText:"Chronic pain causes $80 billion in lost wages every year"
+    loading: false,
+    loadingTextTitle: "You are doing good",
+    loadingText: "Chronic pain causes $80 billion in lost wages every year",
   },
   {
-    id:3,
+    id: 3,
     question: "Does your pain radiate or feel like it moves around?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: ["Yes", "No"],
     answers: null,
-    loading:false,
-    loadingTextTitle:"Almost there",
-    loadingText:"Chronic pain is the No. 1 reason why patients see a doctor"
+    loading: false,
+    loadingTextTitle: "Almost there",
+    loadingText: "Chronic pain is the No. 1 reason why patients see a doctor",
   },
   {
-    id:4,
+    id: 4,
     question: "What kind of things increase your pain?",
     type: QUESTION_TYPES.INPUT,
     options: [],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:5,
+    id: 5,
     question: "What kind of things relieve your pain?",
     type: QUESTION_TYPES.INPUT,
     options: [],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:6,
+    id: 6,
     question: "How severe is the pain, Right now?",
     type: QUESTION_TYPES.RANGE,
     options: ["Mid", "Extreme"],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:7,
+    id: 7,
     question: "How severe is the pain when it is at its worst?",
     type: QUESTION_TYPES.RANGE,
     options: [],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:8,
+    id: 8,
     question: "How severe is the pain when it is at its least?",
     type: QUESTION_TYPES.RANGE,
     options: ["Mid", "Extreme"],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:9,
+    id: 9,
     question: "How often do you feel the pain?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: ["All the time", "Once in a while", "Comes and goes"],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:10,
+    id: 10,
     question: "How long have you been experiencing this pain?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: ["Days", "Months", "Years"],
     answers: null,
-     loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:11,
+    id: 11,
     question:
-      "Have you taken any prescription or over the counter medications to manage your pain?",
+      "Have you taken any prescription or over the counter medications to manage your pain? If so please list all over the counter medications.",
     type: QUESTION_TYPES.INPUT,
     options: [],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:12,
+    id: 12,
     question:
-      "Do you have any known allergies or sensitivities to medications?",
+      "Do you have any known allergies or sensitivities to medications? If so please list all allergies or sensitivities.",
     type: QUESTION_TYPES.INPUT,
     options: [],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:13,
+    id: 13,
     question: "Have you had any surgeries or hospitalizations?",
+    type: QUESTION_TYPES.SINGLE_CHOICE,
+    options: ["Yes", "No"],
+    answers: null,
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
+  },
+  {
+    id: 14,
+    question:
+      "Are you currently on any medications, herbals or supplements? If so please list all medications, herbals or supplements.",
     type: QUESTION_TYPES.INPUT,
     options: [],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
   {
-    id:14,
-    question: "Are you currently on any medications, herbals or supplements?",
-    type: QUESTION_TYPES.INPUT,
-    options: [],
-    answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
-  },
-  {
-    id:15,
+    id: 15,
     question: "Are you diagnosed with any of the following?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: [
@@ -239,8 +251,8 @@ export const questions:  Array<Question> = [
       "HIV",
     ],
     answers: null,
-    loading:false,
-    loadingTextTitle:null,
-    loadingText:null
+    loading: false,
+    loadingTextTitle: null,
+    loadingText: null,
   },
 ];

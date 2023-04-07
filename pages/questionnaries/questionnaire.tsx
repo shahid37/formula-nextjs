@@ -20,7 +20,6 @@ import usePersistentState from "@/hooks/usePersistentState";
 import QuestionnaireContext from "@/context/QuestionnaireContext";
 import { useRouter } from "next/router";
 
-
 interface QuestionnairePageProps {
   text?: string;
 }
@@ -29,14 +28,19 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   text,
 }: QuestionnairePageProps) => {
   const router = useRouter();
-    const [showChild, setShowChild] = useState(false);
-   const [questionnaireData, setQuestionnaireData] = usePersistentState("questionnaireData",[]);
-   const [currentQuestion, setCurrentQuestion] = usePersistentState(
-     "currentQuestion",-1);
-      const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
-        "isCreateQuestion",
-        -1
-      );
+  const [showChild, setShowChild] = useState(false);
+  const [questionnaireData, setQuestionnaireData] = usePersistentState(
+    "questionnaireData",
+    []
+  );
+  const [currentQuestion, setCurrentQuestion] = usePersistentState(
+    "currentQuestion",
+    -1
+  );
+  const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+    "isCreateQuestion",
+    -1
+  );
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Array<Question>>(questions);
   const [createQuestionLoadingIndex, setCreateQuestionLoadingIndex] =
@@ -47,12 +51,12 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     if (questionnaireData?.length > 0) {
       setData(questionnaireData);
     }
-    if(currentQuestion > -1){
-    setState(currentQuestion);
+    if (currentQuestion > -1) {
+      setState(currentQuestion);
     }
   }, [questionnaireData, setCurrentQuestion]);
 
-   const handleSetInterval = () => {
+  const handleSetInterval = () => {
     const _data = data;
     _data[state].loading = false;
     setData([..._data]);
@@ -62,17 +66,15 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   };
 
   const handleContinue = async () => {
-    if(state < 14){
-    const _data = data;
-    _data[state].loading = true;
-    setData( [..._data] );
-    setTimeout(handleSetInterval, 1000);
-    }else{
+    if (state < 14) {
+      const _data = data;
+      _data[state].loading = true;
+      setData([..._data]);
+      setTimeout(handleSetInterval, 1000);
+    } else {
       setIsCreateQuestion(true);
     }
   };
-
- 
 
   const handleBack = () => {
     setState(state - 1);
@@ -81,10 +83,10 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
 
   const getValues = useCallback(
     (values: any) => {
-      console.log("CALINGGGGGGGGGGGGGGGGGGG*****")
-        const _data = data;
-        _data[state].answers = values;
-        setData([..._data]);
+      console.log("CALINGGGGGGGGGGGGGGGGGGG*****");
+      const _data = data;
+      _data[state].answers = values;
+      setData([..._data]);
     },
     [state]
   );
@@ -96,50 +98,47 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
       } else {
         return false;
       }
-    } if(data[state]?.answers === ''){
+    }
+    if (data[state]?.answers === "") {
       return true;
-    }else{
+    } else {
       return false;
     }
   };
 
   // console.log(data, "CHECKINGGGGG111");
 
-  useEffect(()=>{
-  },[questionnaireData])
+  useEffect(() => {}, [questionnaireData]);
   console.log(questionnaireData, "questionnaireData");
 
+  useEffect(() => {
+    setShowChild(true);
+  }, []);
 
- useEffect(() => {
-   setShowChild(true);
- }, []);
+  const handleCreateQuestionSetInterval = () => {
+    setCreateQuestionLoadingIndex(createQuestionLoadingIndex + 1);
+  };
 
- const handleCreateQuestionSetInterval = ()=>{
-    setCreateQuestionLoadingIndex(createQuestionLoadingIndex+1);
- };
-
- const handleCreateQuestionLoading = ()=>{
+  const handleCreateQuestionLoading = () => {
     setTimeout(handleCreateQuestionSetInterval, 2000);
- }
+  };
 
- useEffect(() => {
-   if (isCreateQuestion) {
-     if (createQuestionLoadingIndex < createQuestionLoadingData.length) {
-       handleCreateQuestionLoading();
-     }
-     if (createQuestionLoadingIndex === createQuestionLoadingData.length - 1) {
-       router.push("/formula");
-     }
-   }
- }, [isCreateQuestion, createQuestionLoadingIndex]);
+  useEffect(() => {
+    if (isCreateQuestion) {
+      if (createQuestionLoadingIndex < createQuestionLoadingData.length) {
+        handleCreateQuestionLoading();
+      }
+      if (createQuestionLoadingIndex === createQuestionLoadingData.length - 1) {
+        router.push("/formula");
+      }
+    }
+  }, [isCreateQuestion, createQuestionLoadingIndex]);
 
+  if (!showChild) {
+    return null;
+  }
 
- if (!showChild) {
-   return null;
- }
-
-
- if(isCreateQuestion){
+  if (isCreateQuestion) {
     return (
       <div className="flex flex-col text-whit">
         {isCreateQuestion &&
@@ -158,9 +157,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
           )}
       </div>
     );
- }
-  
-
+  }
 
   return (
     <div>
@@ -225,7 +222,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                 />
               )}
             </div>
-            <div className="flex items-center justify-center mt-[104px]">
+            <div className="flex items-center justify-center mt-[104px] mb-10">
               <div className="w-[200px] text-center mr-[24px]">
                 <Button
                   onClick={handleBack}

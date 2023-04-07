@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from "react";
 
 import Button from "@/components/Button";
 
-import {capitalizeFirstLetter} from '../../utils/utills';
+import { capitalizeFirstLetter } from "../../utils/utills";
 import { Question } from "@/utils/constants";
 import classNames from "classnames";
 import "rc-slider/assets/index.css";
@@ -16,7 +16,7 @@ interface SelectorProps {
   getValues?: (values: string | string[] | null | undefined) => void;
   value?: number;
   data?: Array<Question>;
-  id?:number;
+  id?: number;
 }
 
 const Selector: FC<SelectorProps> = ({
@@ -31,7 +31,7 @@ const Selector: FC<SelectorProps> = ({
   const [multiValue, setMultiValue] = useState<string[]>([]);
   const [inputValuesCount, setInputValuesCount] = useState<number[]>([0]);
   const [singleValue, setSingleValue] = useState<string | null>("");
-  const [inputValue, setInputValue] = useState<string | null>('');
+  const [inputValue, setInputValue] = useState<string | null>("");
   const [sliderValue, setSliderValue] = useState("0");
 
   // Handle the single Selection case
@@ -71,22 +71,19 @@ const Selector: FC<SelectorProps> = ({
 
   useEffect(() => {
     // if(data && data?.length > 0 && id){
-      // const _data = data?.find((item)=>item?.id === id);
-      // console.log(data,id,"answersanswersanswersanswers",_data);
+    // const _data = data?.find((item)=>item?.id === id);
+    // console.log(data,id,"answersanswersanswersanswers",_data);
 
     // }
 
     // if (answers && answers?.length > 0) {
-      // setMultiValue([...answers]);
+    // setMultiValue([...answers]);
     // }
-    if(value){
-      setInputValue('');
+    if (value) {
+      setInputValue("");
       setSliderValue("0");
     }
   }, [data, value, id]);
-
- 
-
 
   return (
     <div>
@@ -118,7 +115,7 @@ const Selector: FC<SelectorProps> = ({
             return (
               <div key={index} className="justify-center flex">
                 <Input
-                  className="w-[500px]"
+                  className="xs:w-[350px] md:w-[500px]"
                   type="text"
                   placeholder="Write your answer here"
                   name="answer"
