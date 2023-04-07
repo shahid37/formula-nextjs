@@ -28,14 +28,19 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   text,
 }: QuestionnairePageProps) => {
   const router = useRouter();
-    const [showChild, setShowChild] = useState(false);
-   const [questionnaireData, setQuestionnaireData] = usePersistentState("questionnaireData",[]);
-   const [currentQuestion, setCurrentQuestion] = usePersistentState(
-     "currentQuestion",0);
-      const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
-        "isCreateQuestion",
-        false
-      );
+  const [showChild, setShowChild] = useState(false);
+  const [questionnaireData, setQuestionnaireData] = usePersistentState(
+    "questionnaireData",
+    []
+  );
+  const [currentQuestion, setCurrentQuestion] = usePersistentState(
+    "currentQuestion",
+    0
+  );
+  const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+    "isCreateQuestion",
+    false
+  );
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Array<Question>>(questions);
   const [createQuestionLoadingIndex, setCreateQuestionLoadingIndex] =
@@ -102,7 +107,6 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   };
 
   // console.log(data, "CHECKINGGGGG111");
-
 
   useEffect(() => {
     setShowChild(true);
@@ -215,8 +219,8 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                 />
               )}
             </div>
-            <div className="flex items-center justify-center mt-[104px] mb-10">
-              <div className="xs:w-[150px] md:w-[200px]  text-center mr-[24px]">
+            <div className="xs:px-6 md:px-28 gap-y-3 flex items-center xs:flex-col md:flex-row justify-center mt-[104px] mb-10">
+              <div className="xs:w-[100%] md:w-[200px] text-center md:mr-[24px]">
                 <Button
                   onClick={handleBack}
                   backgroundColor="white"
@@ -225,7 +229,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                   Back
                 </Button>
               </div>
-              <div className="xs:w-[150px] md:w-[200px] text-center">
+              <div className="xs:w-[100%] md:w-[200px] text-center">
                 <Button disable={checkDisableButton()} onClick={handleContinue}>
                   {state === 14 ? "Show my formula" : "Continue"}
                 </Button>
