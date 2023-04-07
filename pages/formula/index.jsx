@@ -1,9 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import Image from "next/image";
 
 import AppLayout from "../../components/AppLayout/AppLayout";
 import DetailCardProps from "../../components/DetailCard";
 import Button from "../../components/Button";
+import Loader from "../../components/Loader";
 
 import DogIcon from "../../public/assets/icons/dog.svg";
 import usePersistentState from "@/hooks/usePersistentState";
@@ -19,12 +20,15 @@ const FormulaDetail = () => {
      "questionnaireData",
      []
    );
+   const[data, setData] = useState(null);
+   const[loading, setLoading] = useState(false);
 
   console.log(questionnaireData, "questionnaireData");
 
   const commonClassNames = "py-4 xs:px-2 md:px-[120px]";
 
   const createFormula = async ()=>{
+    setLoading(true);
     let url = BASE_URL + FORMULA_CREATA_API;
     const _data = {
       user_id: -1,
@@ -50,10 +54,13 @@ const FormulaDetail = () => {
     await axios
       .post(url, _data)
       .then((res) => {
-        // setLoading(false);
+        setLoading(false);
+        if(res.status === 200){
+          setData(res.data);
+        }
       })
       .catch((error) => {
-        // setLoading(false);
+        setLoading(false);
         console.log("error", error);
         toast.error(`${error?.response?.data}`);
       });
@@ -65,7 +72,9 @@ const FormulaDetail = () => {
     }
   },[questionnaireData])
 
-  const data = [
+        console.log(data,"RESSSSSSSSSSs")
+
+  const _data = [
     {
       title: "Baclofen",
       description:
@@ -84,7 +93,13 @@ const FormulaDetail = () => {
   ];
 
   return (
+     <div className="relative">
     <AppLayout>
+       {loading ? (
+        <div className="absolute w-full h-screen z-10 bg-off-white bg-opacity-50">
+          <Loader />
+        </div>
+      ): ( <>
       <section className={`${commonClassNames}`}>
         <div className="mt-16">
           <h2 className="text-black text-[24px] leading-[29px] font-normal">
@@ -106,30 +121,28 @@ const FormulaDetail = () => {
               Read the proper instructions
             </p>
             <p className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
-              Edward Mike - Your custom formula contains Baclofen, Diclofenac
-              and Lidocaine. A provider will review your responses and
-              information and determine if this formula is best suited for you.
+              {"Edward Mike -" +data?.ingredients.map((item, i) => i === data?.ingredients.length -1 ? `and ${item.ingredient.name} `  : ` ${item.ingredient.name}` )+ "A provider will review your responses and information and determine if this formula is best suited for you."}
             </p>
             <li className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
               Instructions Apply to the affected area 2 to 3 times daily
             </li>
             <div className="mt-10 max-w-[358px]">
-              <Button>Select this formula</Button>
+              <Button>Continue</Button>
             </div>
           </div>
           <div>
-            <div className="max-w-[408px] flex flex-col justify-between h-[269px] bg-off-white rounded-[8px] p-4">
-              {data.map((d, i) => (
+            <div className="max-w-[408px] flex flex-col justify-between h-[469px] bg-off-white rounded-[8px] p-4">
+              {data?.ingredients.map((item, i) => (
                 <>
                   <div className="flex flex-col gap-y-1">
                     <h3 className="text-[16px] leading-[19.36px] tracking-[0.15px] text-black">
-                      {d.title}
+                      {item.ingredient.name}
                     </h3>
                     <p className="text-[14px] leading-[16.94px] tracking-[0.25px] opacity-75 text-black">
-                      {d.description}
+                      {item.ingredient.description}
                     </p>
                   </div>
-                  {i < data.length - 1 && (
+                  {i < _data.length - 1 && (
                     <div className="h-[1px] w-full bg-[#4E4B48] opacity-[0.05]" />
                   )}
                 </>
@@ -175,7 +188,10 @@ const FormulaDetail = () => {
           </div>
         </div>
       </section>
+      </>)}
+     
     </AppLayout>
+    </div>
   );
 };
 

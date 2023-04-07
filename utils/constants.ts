@@ -8,6 +8,7 @@ export const QUESTION_TYPES = {
 
 
 export  interface Question {
+  id:number;
   question: string;
   type:string;
   options:string[],
@@ -46,6 +47,7 @@ export const MAPPING = {
 
 export const questions:  Array<Question> = [
   {
+    id:1,
     question: "Describe your pain ",
     type: QUESTION_TYPES.MULTIPLE_CHOICE,
     options: [
@@ -76,6 +78,7 @@ export const questions:  Array<Question> = [
     loadingText:"Over 50 million people (20%) in the United States suffer from chronic pain - that is 1 in 5 Americans",
   },
   {
+    id:2,
     question: "Where is your pain located?",
     type: QUESTION_TYPES.MULTIPLE_CHOICE,
     options: [
@@ -96,6 +99,7 @@ export const questions:  Array<Question> = [
     loadingText:"Chronic pain causes $80 billion in lost wages every year"
   },
   {
+    id:3,
     question: "Does your pain radiate or feel like it moves around?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: ["Yes", "No"],
@@ -105,6 +109,7 @@ export const questions:  Array<Question> = [
     loadingText:"Chronic pain is the No. 1 reason why patients see a doctor"
   },
   {
+    id:4,
     question: "What kind of things increase your pain?",
     type: QUESTION_TYPES.INPUT,
     options: [],
@@ -114,6 +119,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:5,
     question: "What kind of things relieve your pain?",
     type: QUESTION_TYPES.INPUT,
     options: [],
@@ -123,6 +129,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:6,
     question: "How severe is the pain, Right now?",
     type: QUESTION_TYPES.RANGE,
     options: ["Mid", "Extreme"],
@@ -132,6 +139,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:7,
     question: "How severe is the pain when it is at its worst?",
     type: QUESTION_TYPES.RANGE,
     options: [],
@@ -141,6 +149,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:8,
     question: "How severe is the pain when it is at its least?",
     type: QUESTION_TYPES.RANGE,
     options: ["Mid", "Extreme"],
@@ -150,6 +159,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:9,
     question: "How often do you feel the pain?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: ["All the time", "Once in a while", "Comes and goes"],
@@ -159,6 +169,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:10,
     question: "How long have you been experiencing this pain?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: ["Days", "Months", "Years"],
@@ -168,6 +179,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:11,
     question:
       "Have you taken any prescription or over the counter medications to manage your pain?",
     type: QUESTION_TYPES.INPUT,
@@ -178,6 +190,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:12,
     question:
       "Do you have any known allergies or sensitivities to medications?",
     type: QUESTION_TYPES.INPUT,
@@ -188,6 +201,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:13,
     question: "Have you had any surgeries or hospitalizations?",
     type: QUESTION_TYPES.INPUT,
     options: [],
@@ -197,6 +211,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:14,
     question: "Are you currently on any medications, herbals or supplements?",
     type: QUESTION_TYPES.INPUT,
     options: [],
@@ -206,6 +221,7 @@ export const questions:  Array<Question> = [
     loadingText:null
   },
   {
+    id:15,
     question: "Are you diagnosed with any of the following?",
     type: QUESTION_TYPES.SINGLE_CHOICE,
     options: [

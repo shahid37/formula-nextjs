@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 // QuestionnaireContext context
 const QuestionnaireContext = createContext({
-  questionnaireData: {},
+  questionnaireData: [],
   setQuestionnaireData: (questionnaireData: any) => {
     questionnaireData;
   },

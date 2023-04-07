@@ -78,14 +78,15 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
 
   const handleBack = () => {
     setState(state - 1);
-    setCurrentQuestion(state + 1);
+    setCurrentQuestion(state - 1);
   };
 
   const getValues = useCallback(
     (values: any) => {
-      const _data = data;
+      console.log("CALINGGGGGGGGGGGGGGGGGGG*****")
+        const _data = data;
         _data[state].answers = values;
-      setData([..._data]);
+        setData([..._data]);
     },
     [state]
   );
@@ -104,8 +105,13 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     }
   };
 
-  console.log(data, "CHECKINGGGGG111",state);
-   console.log(questionnaireData, "questionnaireData");
+  // console.log(data, "CHECKINGGGGG111");
+
+  useEffect(()=>{
+  },[questionnaireData])
+  console.log(questionnaireData, "questionnaireData");
+
+
  useEffect(() => {
    setShowChild(true);
  }, []);
@@ -203,6 +209,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                   getValues={getValues}
                   value={state}
                   data={data}
+                  id={data[state].id}
                 />
               )}
               {data[state]?.type === QUESTION_TYPES.RANGE && (

@@ -16,6 +16,7 @@ interface SelectorProps {
   getValues?: (values: string | string[] | null | undefined) => void;
   value?: number;
   data?: Array<Question>[];
+  id?:number;
 }
 
 const Selector: FC<SelectorProps> = ({
@@ -24,6 +25,7 @@ const Selector: FC<SelectorProps> = ({
   getValues,
   value,
   data,
+  id,
 }: SelectorProps) => {
   // This holds the selected values
   const [multiValue, setMultiValue] = useState<string[]>([]);
@@ -68,8 +70,9 @@ const Selector: FC<SelectorProps> = ({
   };
 
   useEffect(() => {
-    if(data && data?.length > 0){
-  console.log(data, "answersanswersanswersanswers");
+    if(data && data?.length > 0 && id){
+      const _data = data?.find((item)=>item?.id === id);
+      // console.log(data,id,"answersanswersanswersanswers",_data);
 
     }
 
@@ -80,7 +83,9 @@ const Selector: FC<SelectorProps> = ({
       setInputValue('');
       setSliderValue("0");
     }
-  }, [data, value]);
+  }, [data, value, id]);
+
+ 
 
 
   return (
