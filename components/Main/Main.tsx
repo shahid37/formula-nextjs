@@ -11,18 +11,21 @@ import MedicineIcon from "./images/MedicineIcon";
 import Button from "../Button";
 import Footer from "../Footer";
 import PainCategory, { PainTypes } from "../PainCategory";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const Main = () => {
-  const router =  useRouter();
+  const router = useRouter();
   const commonClassNames = "flex flex-col";
 
   return (
     <div className={classNames(commonClassNames, "w-full")}>
-      <div className="relative w-full xs:h-48 md:h-64">
+      <div className="mt-[60px] relative w-full xs:h-[350px] md:h-64">
+        <h1 className="xs:px-6 xs:text-[44px] md:px-28 absolute top-[104px] z-[100] left-0 text-white md:text-[40px] max-w-[725px] leading-[48px]">
+          Customized prescription medicine for your pain
+        </h1>
         <Image
           src={Hero}
-          className="xs:object-contain md:object-cover"
+          className="xs:object-cover xs:h-[100%] md:object-cover"
           alt="Hero image"
           fill
         />
@@ -30,7 +33,7 @@ const Main = () => {
       <div
         className={classNames(
           commonClassNames,
-          "xs:px-2 md:px-28 xs:pt-0 md:pt-11"
+          "xs:pt-6 xs:px-6 md:px-28 md:pt-11"
         )}
       >
         <div className="grid xs:grid-cols-1 md:grid-cols-3 gap-6">
