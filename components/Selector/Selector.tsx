@@ -89,7 +89,7 @@ const Selector: FC<SelectorProps> = ({
     <div>
       {type === "range" && (
         <div className="justify-center flex">
-          <div className="flex flex-col w-[500px]">
+          <div className="flex flex-col xs:min-w-[280px] md:min-w-[500px]">
             <Slider
               trackStyle={styles.track}
               railStyle={styles.rail}
@@ -140,7 +140,7 @@ const Selector: FC<SelectorProps> = ({
           })}
         </>
       ) : (
-        <div className="flex-wrap gap-4 justify-center flex items-center">
+        <div className="xs:w-[100%] md:w-auto flex-wrap gap-4 justify-center flex items-center">
           {options?.map((item) => (
             <button
               onClick={() => {
@@ -153,7 +153,7 @@ const Selector: FC<SelectorProps> = ({
                 singleValue === item || multiValue.includes(item)
                   ? "bg-teal"
                   : "bg-white",
-                "w-48	 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
+                "xs:w-[100%] md:w-48	 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
               )}
             >
               {capitalizeFirstLetter(item)}
