@@ -28,19 +28,14 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   text,
 }: QuestionnairePageProps) => {
   const router = useRouter();
-  const [showChild, setShowChild] = useState(false);
-  const [questionnaireData, setQuestionnaireData] = usePersistentState(
-    "questionnaireData",
-    []
-  );
-  const [currentQuestion, setCurrentQuestion] = usePersistentState(
-    "currentQuestion",
-    -1
-  );
-  const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
-    "isCreateQuestion",
-    -1
-  );
+    const [showChild, setShowChild] = useState(false);
+   const [questionnaireData, setQuestionnaireData] = usePersistentState("questionnaireData",[]);
+   const [currentQuestion, setCurrentQuestion] = usePersistentState(
+     "currentQuestion",0);
+      const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+        "isCreateQuestion",
+        false
+      );
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Array<Question>>(questions);
   const [createQuestionLoadingIndex, setCreateQuestionLoadingIndex] =
@@ -108,8 +103,6 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
 
   // console.log(data, "CHECKINGGGGG111");
 
-  useEffect(() => {}, [questionnaireData]);
-  console.log(questionnaireData, "questionnaireData");
 
   useEffect(() => {
     setShowChild(true);

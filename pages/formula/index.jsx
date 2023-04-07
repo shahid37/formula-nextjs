@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 import AppLayout from "../../components/AppLayout/AppLayout";
 import DetailCardProps from "../../components/DetailCard";
@@ -15,14 +17,26 @@ import { BASE_URL, MAPPING, FORMULA_CREATA_API } from "../../utils/constants";
 import axios from "axios";
 
 const FormulaDetail = () => {
-  const [questionnaireData, setQuestionnaireData] = usePersistentState(
-    "questionnaireData",
-    []
-  );
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+   const [questionnaireData, setQuestionnaireData] = usePersistentState(
+     "questionnaireData",
+     []
+   );
+    const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+        "isCreateQuestion",
+        -1
+      );
+      const [currentQuestion, setCurrentQuestion] = usePersistentState(
+     "currentQuestion",0);
+   const[data, setData] = useState(null);
+   const[loading, setLoading] = useState(false);
 
-  console.log(questionnaireData, "questionnaireData");
+ const onClick = () => {
+  setIsCreateQuestion(false);
+  setQuestionnaireData([]);
+  setCurrentQuestion(0);
+   router.push("/questionnaries");
+ };  
 
   const commonClassNames = "py-4 xs:px-2 md:px-[120px]";
 
@@ -33,19 +47,20 @@ const FormulaDetail = () => {
       user_id: -1,
       answers: {
         pain_types: questionnaireData[0]?.answers,
-        pain_locations: questionnaireData[1].answers,
+        pain_locations: questionnaireData[1]?.answers,
         pain_radiation: false,
-        pain_factors: [questionnaireData[3].answers],
-        pain_relievers: [questionnaireData[4].answers],
-        pain_current_severity: MAPPING[questionnaireData[5].answers],
-        pain_worst_severity: MAPPING[questionnaireData[6].answers],
-        pain_least_severity: MAPPING[questionnaireData[7].answers],
-        pain_consistency: MAPPING[questionnaireData[8].answers],
-        pain_duration: MAPPING[questionnaireData[9].answers],
-        pain_medications: [questionnaireData[10].answers],
-        allergies: [questionnaireData[11].answers],
-        surgeries: MAPPING[questionnaireData[12].answers],
-        general_medications: [questionnaireData[13].answers],
+
+        pain_factors: [questionnaireData[3]?.answers],
+        pain_relievers: [questionnaireData[4]?.answers],
+        pain_current_severity: MAPPING[questionnaireData[5]?.answers],
+        pain_worst_severity: MAPPING[questionnaireData[6]?.answers],
+        pain_least_severity: MAPPING[questionnaireData[7]?.answers],
+        pain_consistency: MAPPING[questionnaireData[8]?.answers],
+        pain_duration: MAPPING[questionnaireData[9]?.answers],
+        pain_medications: [questionnaireData[10]?.answers],
+        allergies: [questionnaireData[11]?.answers],
+        surgeries: MAPPING[questionnaireData[12]?.answers],
+        general_medications: [questionnaireData[13]?.answers],
       },
       type: "pain",
       formula_id: -1,
@@ -93,7 +108,7 @@ const FormulaDetail = () => {
 
   return (
     <div className="relative">
-      <AppLayout>
+      <AppLayout navLinkAction={onClick}>
         {loading ? (
           <div className="absolute w-full h-screen z-10 bg-off-white bg-opacity-50">
             <Loader />
