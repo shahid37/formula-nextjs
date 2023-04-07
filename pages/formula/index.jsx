@@ -130,9 +130,9 @@ const FormulaDetail = () => {
             </div>
           </div>
           <div>
-            <div className="max-w-[408px] flex flex-col justify-between h-[469px] bg-off-white rounded-[8px] p-4">
+            <div className="max-w-[408px] flex flex-col justify-between bg-off-white rounded-[8px] p-4">
               {data?.ingredients.map((item, i) => (
-                <>
+                <div className="mb-6">
                   <div className="flex flex-col gap-y-1">
                     <h3 className="text-[16px] leading-[19.36px] tracking-[0.15px] text-black">
                       {item.ingredient.name}
@@ -144,7 +144,7 @@ const FormulaDetail = () => {
                   {i < _data.length - 1 && (
                     <div className="h-[1px] w-full bg-[#4E4B48] opacity-[0.05]" />
                   )}
-                </>
+                </div>
               ))}
             </div>
             <div className="mt-2 rounded-[8px] flex py-4 px-2 bg-off-white justify-between h-[114px]">
