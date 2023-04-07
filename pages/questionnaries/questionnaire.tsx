@@ -216,7 +216,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
               )}
             </div>
             <div className="flex items-center justify-center mt-[104px] mb-10">
-              <div className="w-[200px] text-center mr-[24px]">
+              <div className="xs:w-[150px] md:w-[200px]  text-center mr-[24px]">
                 <Button
                   onClick={handleBack}
                   backgroundColor="white"
@@ -225,7 +225,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                   Back
                 </Button>
               </div>
-              <div className="w-[200px] text-center">
+              <div className="xs:w-[150px] md:w-[200px] text-center">
                 <Button disable={checkDisableButton()} onClick={handleContinue}>
                   {state === 14 ? "Show my formula" : "Continue"}
                 </Button>
