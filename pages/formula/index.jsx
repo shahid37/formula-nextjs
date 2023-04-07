@@ -132,7 +132,7 @@ const FormulaDetail = () => {
           <div>
             <div className="max-w-[408px] flex flex-col justify-between bg-off-white rounded-[8px] p-4">
               {data?.ingredients.map((item, i) => (
-                <div className="mb-6">
+                <div className="mb-3" key={i}>
                   <div className="flex flex-col gap-y-1">
                     <h3 className="text-[16px] leading-[19.36px] tracking-[0.15px] text-black">
                       {item.ingredient.name}
