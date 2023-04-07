@@ -81,12 +81,11 @@ const FormulaDetail = () => {
   };
 
   useEffect(() => {
-    if (questionnaireData) {
+    if (questionnaireData && questionnaireData.length> 0) {
       createFormula();
     }
   }, [questionnaireData]);
 
-  console.log(data, "RESSSSSSSSSSs");
 
   const _data = [
     {

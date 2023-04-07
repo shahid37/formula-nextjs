@@ -64,7 +64,7 @@ const Navbar: FC<NavbarProps> = ({ showLink, linkAction }: NavbarProps) => {
             </div>
           </div>
           <div className="py-4 flex flex-col">
-            <Button type="link">Create my formula</Button>
+            <Button onClick={linkAction} type="link">Create my formula</Button>
           </div>
         </div>
       </div>
