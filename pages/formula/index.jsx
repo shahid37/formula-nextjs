@@ -11,8 +11,7 @@ import usePersistentState from "@/hooks/usePersistentState";
 import LeafsIcon from "../../public/assets/icons/leafs.svg";
 import ChemicalIcon from "../../public/assets/icons/chemical.svg";
 
-import { FORMULA_CREATA_API } from './constant';
-import { BASE_URL, MAPPING } from '../../utils/constants';
+import { BASE_URL, MAPPING,FORMULA_CREATA_API } from '../../utils/constants';
 import axios from "axios";
 
 const FormulaDetail = () => {

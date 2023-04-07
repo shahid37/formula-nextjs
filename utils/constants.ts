@@ -6,6 +6,8 @@ export const QUESTION_TYPES = {
   INPUT: "input",
 };
 
+export const FORMULA_CREATA_API = "public/formulas";
+
 
 export  interface Question {
   id:number;
