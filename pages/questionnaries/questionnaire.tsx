@@ -69,7 +69,6 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     setTimeout(handleSetInterval, 1000);
     }else{
       setIsCreateQuestion(true);
-      router.push('/formula');
     }
   };
 
