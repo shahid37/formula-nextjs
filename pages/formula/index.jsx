@@ -18,25 +18,27 @@ import axios from "axios";
 
 const FormulaDetail = () => {
   const router = useRouter();
-   const [questionnaireData, setQuestionnaireData] = usePersistentState(
-     "questionnaireData",
-     []
-   );
-    const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
-        "isCreateQuestion",
-        -1
-      );
-      const [currentQuestion, setCurrentQuestion] = usePersistentState(
-     "currentQuestion",0);
-   const[data, setData] = useState(null);
-   const[loading, setLoading] = useState(false);
+  const [questionnaireData, setQuestionnaireData] = usePersistentState(
+    "questionnaireData",
+    []
+  );
+  const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+    "isCreateQuestion",
+    -1
+  );
+  const [currentQuestion, setCurrentQuestion] = usePersistentState(
+    "currentQuestion",
+    0
+  );
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
- const onClick = () => {
-  setIsCreateQuestion(false);
-  setQuestionnaireData([]);
-  setCurrentQuestion(0);
-   router.push("/questionnaries");
- };  
+  const onClick = () => {
+    setIsCreateQuestion(false);
+    setQuestionnaireData([]);
+    setCurrentQuestion(0);
+    router.push("/questionnaries");
+  };
 
   const commonClassNames = "py-4 xs:px-2 md:px-[120px]";
 
@@ -116,7 +118,7 @@ const FormulaDetail = () => {
         ) : (
           <>
             <section className={`${commonClassNames}`}>
-              <div className="mt-16">
+              <div className="xs:px-6 md:px-28 mt-16">
                 <h2 className="text-black text-[24px] leading-[29px] font-normal">
                   Hey, Edward
                 </h2>
@@ -124,7 +126,7 @@ const FormulaDetail = () => {
                   Here’s your customized pain formula
                 </p>
               </div>
-              <div className="mt-6 flex justify-between gap-x-6">
+              <div className="xs:px-2 md:px-28 mt-6 flex xs:flex-col-reverse lg:flex-row justify-between gap-x-6">
                 <div className="flex-1">
                   <DetailCardProps
                     formulaName="Edward’s Muscle Formula"
@@ -152,7 +154,7 @@ const FormulaDetail = () => {
                   </div>
                 </div>
                 <div>
-                  <div className="max-w-[408px] flex flex-col justify-between bg-off-white rounded-[8px] p-4">
+                  <div className="xs:max-w-[100%] lg:max-w-[408px] flex flex-col justify-between bg-off-white rounded-[8px] p-4">
                     {data?.ingredients.map((item, i) => (
                       <div className="mb-3" key={i}>
                         <div className="flex flex-col gap-y-1">
