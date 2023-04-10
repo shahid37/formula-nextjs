@@ -83,11 +83,10 @@ const FormulaDetail = () => {
   };
 
   useEffect(() => {
-    if (questionnaireData && questionnaireData.length> 0) {
+    if (questionnaireData && questionnaireData.length > 0) {
       createFormula();
     }
   }, [questionnaireData]);
-
 
   const _data = [
     {
@@ -125,18 +124,20 @@ const FormulaDetail = () => {
                   Here’s your customized pain formula
                 </p>
               </div>
-              <div className="xs:px-2 md:px-28 mt-6 flex xs:flex-col-reverse lg:flex-row justify-between gap-x-6">
+              <div className="xs:pt-[120px] xs:px-3 md:px-28 mt-6 flex xs:flex-col-reverse lg:flex-row justify-between gap-x-6 relative">
                 <div className="flex-1">
-                  <DetailCardProps
-                    formulaName="Edward’s Muscle Formula"
-                    text="Our Muscle Cream 1 targets your muscles to create a relaxing effect with potent muscle relaxers."
-                    reviews={0}
-                    rating={5}
-                  />
+                  <div className="xs:px-3 md:px-0 xs:absolute top-0 left-0 right-0 md:static">
+                    <DetailCardProps
+                      formulaName="Edward’s Muscle Formula"
+                      text="Our Muscle Cream 1 targets your muscles to create a relaxing effect with potent muscle relaxers."
+                      reviews={0}
+                      rating={5}
+                    />
+                  </div>
                   <p className="mt-6 text-[14px] leading-[17px] font-medium text-black opacity-60 tracking-[0.1px]">
                     Read the proper instructions
                   </p>
-                  <p className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
+                  <p className="mt-4 xs:text-[14px] md:text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
                     {"Edward Mike -" +
                       data?.ingredients.map((item, i) =>
                         i === data?.ingredients.length - 1
@@ -148,7 +149,7 @@ const FormulaDetail = () => {
                   <li className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
                     Instructions Apply to the affected area 2 to 3 times daily
                   </li>
-                  <div className="mt-10 max-w-[358px]">
+                  <div className="mt-10 xs:w-[100%] md:max-w-[358px]">
                     <Button>Continue</Button>
                   </div>
                 </div>

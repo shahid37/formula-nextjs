@@ -172,28 +172,28 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                 totalQuestions={15}
               />
             </div>
-            <h1 className="text-center text-black mt-[120px] font-normal text-base">
+            <h1 className="mx-4 xs:text-left md:text-center text-black xs:mt-[28px] md:mt-[120px] font-normal text-base">
               Question no. {state + 1}
             </h1>
-            <div className="w-full text-center flex items-center justify-center ">
+            <div className="mx-4 w-full xs:text-left md:text-center flex items-center justify-center ">
               <div className="w-[500px]">
-                <h1 className="text-center text-black mt-[45px] font-normal text-3xl">
+                <h1 className="mt-[28px] first-letter:xs:text-left md:text-center text-black md:mt-[45px] font-normal xs:text-[32px] xs:leading-[28px] md:text-3xl">
                   {data[state]?.question}
                 </h1>
                 {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
-                  <h1 className="text-center text-black mt-2 font-normal text-base">
+                  <h1 className="xs:text-left md:text-center text-black mt-2 font-normal text-base">
                     (May choose more than one)
                   </h1>
                 )}
                 {data[state]?.type === QUESTION_TYPES.RANGE && (
-                  <h1 className="text-center text-black mt-2 font-normal text-base">
+                  <h1 className="xs:text-left md:text-center text-black mt-2 font-normal text-base">
                     (On a scale of 0 to 5 with zero being no pain and 5 being
                     the worst pain ever)
                   </h1>
                 )}
               </div>
             </div>
-            <div className="mx-32 mt-[40px]">
+            <div className="justify-center flex flex-row xs:mx-8 md:mx-32 mt-[40px]">
               {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
                 <Selector
                   type="multi"
@@ -219,7 +219,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                 />
               )}
             </div>
-            <div className="xs:px-6 md:px-28 gap-y-3 flex items-center xs:flex-col md:flex-row justify-center mt-[104px] mb-10">
+            <div className="xs:px-6 md:px-28 gap-y-3 flex items-center xs:flex-row md:flex-row justify-center mt-[104px] mb-10 gap-x-4">
               <div className="xs:w-[100%] md:w-[200px] text-center md:mr-[24px]">
                 <Button
                   onClick={handleBack}
