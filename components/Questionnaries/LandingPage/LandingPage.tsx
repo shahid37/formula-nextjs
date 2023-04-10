@@ -17,7 +17,7 @@ const LandingPage: FC<LandingPageProps> = ({ text }: LandingPageProps) => {
   return (
     <div className="flex relative">
       <Image
-        className="w-screen xs:h-screen md:h-full object-cover"
+        className="w-screen xs:object-left xs:h-screen md:h-full object-cover"
         src={backgroundImg}
         alt="side image"
       />
