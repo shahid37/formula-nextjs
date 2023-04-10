@@ -62,7 +62,7 @@ const Main = () => {
           <p className="text-sm font font-normal text-gray">
             Pick a category to begin creating your formula
           </p>
-          <div className="grid grid-cols-4 gap-4 mt-4">
+          <div className="flex flex-row justify-between flex-wrap gap-4 mt-4">
             {[
               {
                 name: "Muscle Pain",
@@ -82,7 +82,10 @@ const Main = () => {
               },
             ].map((item) => (
               <div
-                className={classNames(commonClassNames, "items-center")}
+                className={classNames(
+                  commonClassNames,
+                  "items-center xs:basis-[46%] md:basis-[23%]"
+                )}
                 key={item.name}
               >
                 <PainCategory
@@ -98,7 +101,7 @@ const Main = () => {
         <div className="mt-10">
           <Footer />
         </div>
-        <div className="mx-auto my-10 xs:w-80 md:w-96">
+        <div className="mx-auto my-10 xs:w-[100%] md:w-96">
           <Button
             onClick={() => router.push("/questionnaries/home")}
             type="default"

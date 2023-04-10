@@ -21,7 +21,7 @@ const DetailCard: FC<DetailCardProps> = ({
     <div className="w-full bg-off-white rounded-lg p-4">
       <div className="flex">
         <Icon />
-        <div className="flex flex-col ml-4">
+        <div className="w-fit flex flex-col ml-4">
           {/* <p className="text-2xl text-black font-normal">{formulaName}</p> */}
           <p className="text-sm font-normal text-gray mt-1 w-3/4">{text}</p>
           {/* <div className="flex items-center mt-4">

@@ -86,10 +86,10 @@ const Selector: FC<SelectorProps> = ({
   }, [data, value, id]);
 
   return (
-    <div>
+    <>
       {type === "range" && (
         <div className="justify-center flex">
-          <div className="flex flex-col xs:min-w-[280px] md:min-w-[500px]">
+          <div className="mx-auto flex flex-col xs:min-w-[280px] md:min-w-[500px]">
             <Slider
               trackStyle={styles.track}
               railStyle={styles.rail}
@@ -109,7 +109,7 @@ const Selector: FC<SelectorProps> = ({
           </div>
         </div>
       )}
-      {type === "input" ? (
+      {type === "input" && (
         <>
           {inputValuesCount.map((item, index) => {
             return (
@@ -139,8 +139,9 @@ const Selector: FC<SelectorProps> = ({
             );
           })}
         </>
-      ) : (
-        <div className="xs:w-[100%] md:w-auto flex-wrap gap-4 justify-center flex items-center">
+      )}
+      {(type === "multi" || type === "single") && (
+        <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center flex items-center">
           {options?.map((item) => (
             <button
               onClick={() => {
@@ -153,7 +154,7 @@ const Selector: FC<SelectorProps> = ({
                 singleValue === item || multiValue.includes(item)
                   ? "bg-teal"
                   : "bg-white",
-                "xs:w-[100%] md:w-48	 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
+                "xs:w-[47%] md:w-48 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
               )}
             >
               {capitalizeFirstLetter(item)}
@@ -161,7 +162,7 @@ const Selector: FC<SelectorProps> = ({
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

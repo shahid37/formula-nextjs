@@ -11,9 +11,9 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = (props: FooterProps) => {
   return (
-    <div className="p-6 rounded-lg border border-light-gray ">
+    <div className="xs:p-4 md:p-6 rounded-lg border border-light-gray ">
       <h4>{props.headingText}</h4>
-      <div className="grid xs:grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+      <div className="grid xs:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
         {[
           {
             text: "Provides high levels of active ingredient directly to the site of injury minimizing loss in the blood stream",

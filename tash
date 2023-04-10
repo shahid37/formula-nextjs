@@ -1,0 +1,257 @@
+[33mcommit 43f40304bcdc80c282783987dfcf4e8391d6f707[m[33m ([m[1;36mHEAD -> [m[1;32mnew-changes[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: f559cb4 322de09
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Sat Apr 8 00:59:26 2023 +0500
+
+    Merge pull request #12 from shahid37/fixing-minor-issues
+    
+    hamburger menu button click add
+
+[33mcommit 322de09d2147268f8fce4548f37f630945179810[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Sat Apr 8 00:58:03 2023 +0500
+
+    hamburgur menu button click add
+
+[33mcommit f559cb49736f1359ab4ef7b44ae6c2fb20caa761[m
+Merge: 6b72938 fbbc3af
+Author: Hasnaat Iftikhar <89920616+mHasnaat-Iftikhar@users.noreply.github.com>
+Date:   Sat Apr 8 00:34:17 2023 +0500
+
+    Merge pull request #11 from shahid37/farmula-page-changes
+    
+    Worked on formula page
+
+[33mcommit fbbc3af72389d45418650757c833fb0921f3c6b2[m[33m ([m[1;31morigin/farmula-page-changes[m[33m, [m[1;32mfarmula-page-changes[m[33m)[m
+Author: Hasnaat-Iftikhar <hasnaatfreelancing@gmail.com>
+Date:   Sat Apr 8 00:32:56 2023 +0500
+
+    Worked on formula page
+
+[33mcommit 6b72938dc9c04d26ae45968fe51b937ccec0f495[m[33m ([m[1;32mmain[m[33m)[m
+Merge: 123f168 98b5915
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Sat Apr 8 00:22:47 2023 +0500
+
+    Merge pull request #10 from shahid37/fixing-minor-issues
+    
+    button style issue fixed
+
+[33mcommit 98b5915d386941524fef61768a4da4746426521b[m[33m ([m[1;31morigin/fixing-minor-issues[m[33m)[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Sat Apr 8 00:21:32 2023 +0500
+
+    button style issue fixed
+
+[33mcommit 123f1687e28ed88bd60779e02d19f986e963c720[m
+Merge: 17a7a61 222a103
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Sat Apr 8 00:13:46 2023 +0500
+
+    Merge pull request #9 from shahid37/fixing-minor-issues
+    
+    bug fixing
+
+[33mcommit 222a103a717d57bc175ebc22ce3e91ac951bc8e7[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Sat Apr 8 00:13:02 2023 +0500
+
+    bug fixing
+
+[33mcommit 17a7a6158c3878b9aa38e5c7e522fa4e1b411db8[m
+Merge: 245a38e 141f21b
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 23:48:24 2023 +0500
+
+    Merge pull request #8 from shahid37/changes-01
+    
+    Did some changes according to client
+
+[33mcommit 141f21bf2a4d444086b97c76dec5a2d2bddff376[m[33m ([m[1;31morigin/changes-01[m[33m, [m[1;32mchanges-01[m[33m)[m
+Author: Hasnaat-Iftikhar <hasnaatfreelancing@gmail.com>
+Date:   Fri Apr 7 23:47:04 2023 +0500
+
+    Did some changes according to client
+
+[33mcommit 245a38e2b2a99670b5c3daab61f838fa0192955f[m
+Merge: 814eede e2ae5cb
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 20:20:21 2023 +0500
+
+    Merge pull request #7 from shahid37/build/issue
+    
+    Build/issue
+
+[33mcommit e2ae5cb7a8b94d02f2dfd01708ef862367ac8fbf[m[33m ([m[1;31morigin/build/issue[m[33m)[m
+Merge: 47e54cc 814eede
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 20:20:08 2023 +0500
+
+    Merge branch 'main' into build/issue
+
+[33mcommit 47e54ccb4e90ed351c0ed7532e241a4ce4f392f3[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 20:16:30 2023 +0500
+
+    add key
+
+[33mcommit aecc932c5e1fe72296f3a669ffe8e89295e65738[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 20:15:58 2023 +0500
+
+    add key
+
+[33mcommit 814eede9be44d1b0f139f9751fa0f610b15e1262[m
+Merge: 16c7a91 d963270
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 20:09:49 2023 +0500
+
+    Merge pull request #6 from shahid37/build/issue
+    
+    style fix
+
+[33mcommit d963270bde5848dd322856d55b8151d48c361f3a[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 20:08:36 2023 +0500
+
+    style fix
+
+[33mcommit 16c7a91ef074aaace246694628a08bd324e57d38[m
+Merge: 5143be7 a154abd
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 19:50:42 2023 +0500
+
+    Merge pull request #5 from shahid37/build/issue
+    
+    route fix
+
+[33mcommit a154abde824264b0ad40c99e9ca6daba9585e497[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 19:46:51 2023 +0500
+
+    route fix
+
+[33mcommit 5143be7f2e820b7e5136cad8036f8e87d0add204[m
+Merge: d0a167a 994ae88
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 19:39:19 2023 +0500
+
+    Merge pull request #4 from shahid37/build/issue
+    
+    remove unused imports
+
+[33mcommit 994ae8875bfaa5a30f0b6cd0a9820c151d89a460[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 19:33:00 2023 +0500
+
+    remove unused imports
+
+[33mcommit d0a167a48ecc7a6cb388862c8084879eb3289d35[m
+Merge: 6e11d8e 5514c8b
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 19:26:31 2023 +0500
+
+    Merge pull request #3 from shahid37/build/issue
+    
+    delete extra file
+
+[33mcommit 5514c8b15ae77f9020f1ef011a27305a5f240ff4[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 19:25:20 2023 +0500
+
+    delete extra file
+
+[33mcommit 6e11d8e0f39d7bbd0c5b9675f156ab0b400e70d8[m
+Merge: bf6c0d9 2947faa
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 19:17:45 2023 +0500
+
+    Merge pull request #2 from shahid37/build/issue
+    
+    build issue fixed
+
+[33mcommit 2947faaeec6c62c4d73de1afdbf7b4bb73c3af12[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 19:16:20 2023 +0500
+
+    build issue fixed
+
+[33mcommit bf6c0d962657b7fa2626afe3d84c435e646cbd96[m
+Merge: 3fb1e64 f84a76b
+Author: shahid37 <50133865+shahid37@users.noreply.github.com>
+Date:   Fri Apr 7 19:05:22 2023 +0500
+
+    Merge pull request #1 from shahid37/build/issue
+    
+    build issue fixed
+
+[33mcommit f84a76b830543bf269ae0785cda4e6309273e8c4[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 19:03:48 2023 +0500
+
+    build issue fixed
+
+[33mcommit 3fb1e649955534b3574f5fae3b898eb322c3ddf8[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 18:48:48 2023 +0500
+
+    formula creation api integrate
+
+[33mcommit ba31fb6046e2b8500c5487d4e48648dc499e0c6b[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Fri Apr 7 00:02:47 2023 +0500
+
+    fix routing
+
+[33mcommit ea10b56c8e43691084c7f2552d01b23e39881683[m
+Merge: ee1e23e f512e32
+Author: shahid-hameed-visiata <125253458+shahid-hameed-visiata@users.noreply.github.com>
+Date:   Thu Apr 6 15:26:15 2023 +0500
+
+    Merge pull request #12 from xs2tariqrasheed/d-28-screen-development
+    
+    Worked on it's desktop view development
+
+[33mcommit ee1e23e2b4b3e2fe0543cb6a4b04c1662852a686[m
+Merge: 7f15bcc b0bc74b
+Author: shahid-hameed-visiata <125253458+shahid-hameed-visiata@users.noreply.github.com>
+Date:   Thu Apr 6 12:35:46 2023 +0500
+
+    Merge pull request #14 from xs2tariqrasheed/feature/signup-api
+    
+    added signup flow
+
+[33mcommit 7f15bcc12241c95e62ffaf54d615ff88c952340b[m
+Author: shahid-hameed-visiata <shahid.hameed@visiata.com>
+Date:   Thu Apr 6 12:33:23 2023 +0500
+
+    formula creation api integration
+
+[33mcommit b0bc74b1f9094fd55608b67fdb57015a897705e2[m
+Author: Tariq Rasheed <xs2tariqrasheed@gmail.com>
+Date:   Wed Apr 5 18:59:25 2023 +0500
+
+    added signup flow
+
+[33mcommit 1bbd1b3560a6c001c1252d8b7089b3bc45ce0e55[m
+Merge: efa18d4 cec10a1
+Author: shahid-hameed-visiata <125253458+shahid-hameed-visiata@users.noreply.github.com>
+Date:   Wed Apr 5 15:44:22 2023 +0500
+
+    Merge pull request #13 from xs2tariqrasheed/feature/authentication
+    
+    Feature/authentication
+
+[33mcommit f512e32306f1f98ccc8a77be768cb4fbc915c802[m
+Author: Hasnaat-Iftikhar <hasnaatfreelancing@gmail.com>
+Date:   Mon Apr 3 22:21:35 2023 +0500
+
+    UI issue fixed
+
+[33mcommit 22884fade25a5b7e253d2d53874ab401beb68aed[m
+Author: Hasnaat-Iftikhar <hasnaatfreelancing@gmail.com>
+Date:   Mon Apr 3 22:16:28 2023 +0500
+
+    Worked on it's desktop view development
+
+[33mcommit cec10a10434e596e33b1c4
