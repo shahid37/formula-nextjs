@@ -165,7 +165,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     );
   }
 
-  // if (data[state]?.loading && data[state].loadingTextTitle) {
+  if (data[state]?.loading && data[state].loadingTextTitle) {
   return (
     <section className="bg-[#FDF9F4]">
       <Container>
@@ -178,7 +178,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
       </Container>
     </section>
   );
-  // }
+  }
 
   return (
     <div className="xs:pt-[74px] md:pt-[64px] bg-[#FDF9F4]">
