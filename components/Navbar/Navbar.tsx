@@ -33,7 +33,7 @@ const Navbar: FC<NavbarProps> = ({ showLink, linkAction }: NavbarProps) => {
       <Container className="w-full h-[100%] flex flex-row justify-between items-center">
         <Image
           onClick={handleClick}
-          src="/assets/icons/formul-icon.svg"
+          src="/assets/icons/formul-icon.png"
           alt="logo"
           height={36}
           width={136}
