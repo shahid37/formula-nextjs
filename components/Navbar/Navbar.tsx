@@ -1,39 +1,55 @@
 import classNames from "classnames";
 import React, { FC } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-
+import { usePathname, useRouter } from "next/navigation";
 
 import Button from "../Button";
-
+import Link from "next/link";
 
 interface NavbarProps {
   showLink?: boolean;
   linkAction?: () => {} | void;
 }
 
+const Container = ({ children, className }: any) => (
+  <div
+    className={`max-w-[1512px] xs:w-[91%] md:w-[84%] mx-auto ${
+      className ?? ""
+    }`}
+  >
+    {children}
+  </div>
+);
+
 const Navbar: FC<NavbarProps> = ({ showLink, linkAction }: NavbarProps) => {
   const router = useRouter();
-  const commonClassNames =
-    "flex justify-between items-center bg-off-white py-4 xs:px-4 md:px-[120px]";
+  const pathname = usePathname();
 
-    const handleClick = ()=>{
-      router.push('/');
-    }
+  const handleClick = () => {
+    router.push("/");
+  };
   return (
-    <div className="w-full">
-      <nav className={classNames(commonClassNames)}>
+    <nav className="w-full h-[60px] flex justify-between items-center">
+      <Container className="w-full h-[100%] flex flex-row justify-between items-center">
+        <Image
+          onClick={handleClick}
+          src="/assets/icons/formul-icon.svg"
+          alt="logo"
+          height={36}
+          width={136}
+          className="cursor-pointer"
+        />
 
-        <Image onClick={handleClick} src="/assets/icons/formul-icon.svg" alt="logo" height={36} width={136} />
-        <div className="flex">
-          {showLink && (
-            <Button onClick={linkAction} type="link">
-              Create my formula
-            </Button>
-          )}
-        </div>
-      </nav>
-    </div>
+        {pathname === "/" && (
+          <Link
+            href="/questionnaries/home"
+            className="text-[#4E4B48] text-[14px] leading-[16.94px] uppercase tracking-[0.25px]"
+          >
+            Create my formula
+          </Link>
+        )}
+      </Container>
+    </nav>
   );
 };
 
