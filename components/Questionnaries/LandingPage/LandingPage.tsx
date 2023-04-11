@@ -31,7 +31,7 @@ const LandingPage = () => {
 
   const onClick = () => {
     setIsCreateQuestion(false);
-    localStorage.setItem("questionData",'');
+    localStorage.clear();
     setCurrentQuestion(0);
     router.push("/questionnaries");
   };
