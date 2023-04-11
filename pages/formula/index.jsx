@@ -46,26 +46,29 @@ const FormulaDetail = () => {
   const commonClassNames = "py-4";
 
   const createFormula = async () => {
+      var localStorageData = localStorage.getItem("questionData");
+    if(localStorageData){
+      const localDataArray = JSON.parse(localStorageData);
     setLoading(true);
     let url = BASE_URL + FORMULA_CREATA_API;
     const _data = {
       user_id: -1,
       answers: {
-        pain_types: questionnaireData[0]?.answers,
-        pain_locations: questionnaireData[1]?.answers,
-        pain_radiation: false,
+        pain_types: localDataArray[0]?.answers,
+        pain_locations: localDataArray[1]?.answers,
+        pain_radiation: MAPPING[localDataArray[2]?.answers],
 
-        pain_factors: [questionnaireData[3]?.answers],
-        pain_relievers: [questionnaireData[4]?.answers],
-        pain_current_severity: MAPPING[questionnaireData[5]?.answers],
-        pain_worst_severity: MAPPING[questionnaireData[6]?.answers],
-        pain_least_severity: MAPPING[questionnaireData[7]?.answers],
-        pain_consistency: MAPPING[questionnaireData[8]?.answers],
-        pain_duration: MAPPING[questionnaireData[9]?.answers],
-        pain_medications: [questionnaireData[10]?.answers],
-        allergies: [questionnaireData[11]?.answers],
-        surgeries: MAPPING[questionnaireData[12]?.answers],
-        general_medications: [questionnaireData[13]?.answers],
+        pain_factors: [localDataArray[3]?.answers],
+        pain_relievers: [localDataArray[4]?.answers],
+        pain_current_severity: MAPPING[localDataArray[5]?.answers],
+        pain_worst_severity: MAPPING[localDataArray[6]?.answers],
+        pain_least_severity: MAPPING[localDataArray[7]?.answers],
+        pain_consistency: MAPPING[localDataArray[8]?.answers],
+        pain_duration: MAPPING[localDataArray[9]?.answers],
+        pain_medications: [localDataArray[10]?.answers],
+        allergies: [localDataArray[11]?.answers],
+        surgeries: MAPPING[localDataArray[12]?.answers],
+        general_medications: [localDataArray[13]?.answers],
       },
       type: "pain",
       formula_id: -1,
@@ -83,13 +86,19 @@ const FormulaDetail = () => {
         console.log("error", error);
         toast.error(`${error?.response?.data}`);
       });
+    }
   };
 
   useEffect(() => {
-    if (questionnaireData && questionnaireData.length > 0) {
+      var localStorageData = localStorage.getItem("questionData");
+    if(localStorageData){
+      const localDataArray = JSON.parse(localStorageData);
+    console.log(localDataArray,"localStorageData")
+    if (localDataArray && Array.isArray(localDataArray) && localDataArray.length > 0) {
       createFormula();
     }
-  }, [questionnaireData]);
+  }
+  }, []);
 
   const _data = [
     {
@@ -159,13 +168,14 @@ const FormulaDetail = () => {
                   </div>
                 </div>
                 <div>
+                  {_data.length > 0 &&
                   <div
                     className={classNames(
                       _data.length > 5 && "h-[420px] overflow-scroll",
                       "xs:max-w-[100%] lg:max-w-[408px] flex flex-col  justify-between bg-off-white rounded-[8px] p-4"
                     )}
                   >
-                    {data?.ingredients.map((item, i) => (
+                    {data?.ingredients?.map((item, i) => (
                       <div className="mb-3" key={i}>
                         <div className="flex flex-col gap-y-1">
                           <h3 className="text-[16px] leading-[19.36px] tracking-[0.15px] text-black">
@@ -180,7 +190,7 @@ const FormulaDetail = () => {
                         )}
                       </div>
                     ))}
-                  </div>
+                  </div>}
                   <div className="mt-2 rounded-[8px] flex py-4 px-2 bg-off-white justify-between h-[114px]">
                     <div className="flex flex-col gap-y-4 justify-center items-center h-[82px]">
                       <Image
