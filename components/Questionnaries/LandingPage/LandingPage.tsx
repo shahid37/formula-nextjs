@@ -46,7 +46,7 @@ import React from "react";
 // Components
 import Button from "@/components/Button";
 
-const Container = ({ children, className }) => (
+const Container = ({ children, className }: any) => (
   <div
     className={`max-w-[1512px] xs:w-[91%] md:w-[84%] mx-auto ${
       className ?? ""
