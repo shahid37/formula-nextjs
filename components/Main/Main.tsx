@@ -28,7 +28,7 @@ const Main = () => {
       <div className="flex items-center justify-center">
         <div className="xs:hidden md:inline relative w-full h-[308px] mt-[60px] max-w-[1512px] ">
           <AppMainLayout className={"flex items-end h-full pb-12"}>
-            <h1 className="text-white text-[40px] max-w-[524px] leading-[48px]">
+            <h1 className="font-inter text-white text-[40px] max-w-[524px] leading-[48px]">
               Customized prescription medicine for your pain
             </h1>
           </AppMainLayout>
