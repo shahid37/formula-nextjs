@@ -24,21 +24,23 @@ const Main = () => {
 
   return (
     <div className={classNames(commonClassNames, "w-full")}>
-      <Image className="md:hidden" src={MobileViewHero} alt="hero"></Image>
-      <div className="xs:hidden md:inline mt-[60px] relative w-full md:h-64">
-        <AppMainLayout className={"flex items-end h-full pb-12"}>
-          <h1 className="text-white text-[40px] max-w-[524px] leading-[48px]">
-            Customized prescription medicine for your pain
-          </h1>
-        </AppMainLayout>
-        <Image
-          src={Hero}
-          className="relative z-[-100] xs:object-fit md:object-cover h-[100%]"
-          alt="Hero image"
-          fill
-        />
-      </div>
-      <AppMainLayout className={""}>
+      <Image className="md:hidden" src={MobileViewHero} alt="hero" />
+      <AppMainLayout className="w-full md:h-64 mt-[60px] ">
+        <div className="xs:hidden md:inline relative w-full md:h-64">
+          <AppMainLayout className={"flex items-end h-full pb-12"}>
+            <h1 className="text-white text-[40px] max-w-[524px] leading-[48px]">
+              Customized prescription medicine for your pain
+            </h1>
+          </AppMainLayout>
+          <Image
+            src={Hero}
+            className="relative z-[-100] xs:object-fit md:object-cover h-[100%]"
+            alt="Hero image"
+            fill
+          />
+        </div>
+      </AppMainLayout>
+      <AppMainLayout>
         <>
           <div className={classNames(commonClassNames, "xs:pt-6 md:pt-10")}>
             <div className="grid xs:grid-cols-1 md:grid-cols-3 xs:gap-4 md:gap-6">
