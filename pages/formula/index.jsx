@@ -25,7 +25,7 @@ const FormulaDetail = () => {
   const [loading, setLoading] = useState(false);
   const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
     "isCreateQuestion",
-    false,
+    false
   );
   const [currentQuestion, setCurrentQuestion] = usePersistentState(
     "currentQuestion",
@@ -34,7 +34,7 @@ const FormulaDetail = () => {
 
   const onClick = () => {
     setIsCreateQuestion(false);
-    localStorage.setItem("questionData",null);
+    localStorage.setItem("questionData", null);
     setCurrentQuestion(0);
     router.push("/questionnaries");
   };
@@ -89,10 +89,15 @@ const FormulaDetail = () => {
     var localStorageData = localStorage.getItem("questionData");
     if (localStorageData) {
       const localDataArray = JSON.parse(localStorageData);
-    if (localDataArray && Array.isArray(localDataArray) && localDataArray.length > 0) {
-      createFormula();
+      if (
+        localDataArray &&
+        Array.isArray(localDataArray) &&
+        localDataArray.length > 0
+      ) {
+        createFormula();
+      }
     }
-  }},[]);
+  }, []);
 
   const _data = [
     {
@@ -156,8 +161,8 @@ const FormulaDetail = () => {
                     <li className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
                       Instructions Apply to the affected area 2 to 3 times daily
                     </li>
-                    <div className="mt-10 xs:w-[100%] lg:max-w-[358px] lg:absolute bottom-0">
-                      <Button>Select the formula</Button>
+                    <div className="mt-10 xs:w-[100%] lg:max-w-[358px] sm:absolute md:static bottom-0">
+                      <Button>Continue</Button>
                     </div>
                   </div>
                 </div>
