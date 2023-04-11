@@ -213,7 +213,6 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
               options={data[state]?.options}
               getValues={getValues}
               value={state}
-              data={data}
               id={data[state].id}
             />
           )}

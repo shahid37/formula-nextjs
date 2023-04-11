@@ -14,7 +14,7 @@ interface SelectorProps {
   type: "single" | "multi" | "input" | "range";
   options?: string[];
   getValues?: (values: string | string[] | null | undefined) => void;
-  value?: number;
+  value: number;
   id?: number;
 }
 
@@ -86,7 +86,7 @@ const Selector: FC<SelectorProps> = ({
        setSliderValue(answers);
       } 
        if(localDataArray[value].type === QUESTION_TYPES.RANGE && localDataArray[value].answers === null){
-       setSliderValue(0);
+       setSliderValue("0");
       } 
     }
     }
