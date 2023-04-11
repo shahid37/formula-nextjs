@@ -33,8 +33,6 @@ const PainCategory: FC<PainCategoryProps> = ({
         className="rounded-md border border-light-gray cursor-pointer"
         src={img}
         alt={name}
-        height={300}
-        width={300}
       />
       <h5 className="mt-1">{name}</h5>
     </div>
