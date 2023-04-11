@@ -25,8 +25,8 @@ const Main = () => {
   return (
     <div className={classNames(commonClassNames, "w-full")}>
       <Image className="md:hidden" src={MobileViewHero} alt="hero" />
-      <AppMainLayout className="w-full md:h-64 mt-[60px] ">
-        <div className="xs:hidden md:inline relative w-full md:h-64">
+      <div className="flex items-center justify-center">
+        <div className="xs:hidden md:inline relative w-full h-[308px] mt-[60px] max-w-[1512px] ">
           <AppMainLayout className={"flex items-end h-full pb-12"}>
             <h1 className="text-white text-[40px] max-w-[524px] leading-[48px]">
               Customized prescription medicine for your pain
@@ -39,7 +39,7 @@ const Main = () => {
             fill
           />
         </div>
-      </AppMainLayout>
+      </div>
       <AppMainLayout>
         <>
           <div className={classNames(commonClassNames, "xs:pt-6 md:pt-10")}>
