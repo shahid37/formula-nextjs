@@ -14,9 +14,9 @@ interface InputProps {
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const commonClassNames =
-    "base-medium block w-full border-2 px-4 py-3 focus:border-teal focus:outline-none	";
+    "base-medium block w-full border border-[#635F66] px-4 py-3 focus:border-teal focus:outline-none	";
   const inputClassNames =
-    "bg-white border border-input-border border-solid rounded-lg";
+    "bg-[transparent] text-[16px] leading-[19px] text-[#4E4B48] font-normal border border-input-border border-solid rounded-lg";
 
   const [inputType, setInputType] = useState(props.type);
   const [showPassword, setShowPassword] = useState(false);
