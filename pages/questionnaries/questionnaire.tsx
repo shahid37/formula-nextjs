@@ -39,19 +39,13 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   text,
 }: QuestionnairePageProps) => {
   const router = useRouter();
-  const [showChild, setShowChild] = useState(false);
-  const [questionnaireData, setQuestionnaireData] = usePersistentState(
-    "questionnaireData",
-    { initialValue: {} }
-  );
-  const [currentQuestion, setCurrentQuestion] = usePersistentState(
-    "currentQuestion",
-    0
-  );
-  const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
-    "isCreateQuestion",
-    false
-  );
+    const [showChild, setShowChild] = useState(false);
+   const [currentQuestion, setCurrentQuestion] = usePersistentState(
+     "currentQuestion",0);
+      const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+        "isCreateQuestion",
+        false
+      );
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Array<Question>>(questions);
   const [createQuestionLoadingIndex, setCreateQuestionLoadingIndex] =
@@ -67,7 +61,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   const handleSetInterval = () => {
     const _data = data;
     var localStorageData = localStorage.getItem("questionData");
-    if (localStorageData) {
+    if(localStorageData && Array.isArray(JSON.parse(localStorageData))){
       const localDataArray = JSON.parse(localStorageData);
       localDataArray[state].answers = _data[state].answers;
       localStorage.setItem("questionData", JSON.stringify(localDataArray));
