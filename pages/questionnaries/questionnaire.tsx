@@ -39,13 +39,15 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   text,
 }: QuestionnairePageProps) => {
   const router = useRouter();
-    const [showChild, setShowChild] = useState(false);
-   const [currentQuestion, setCurrentQuestion] = usePersistentState(
-     "currentQuestion",0);
-      const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
-        "isCreateQuestion",
-        false
-      );
+  const [showChild, setShowChild] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = usePersistentState(
+    "currentQuestion",
+    0
+  );
+  const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+    "isCreateQuestion",
+    false
+  );
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Array<Question>>(questions);
   const [createQuestionLoadingIndex, setCreateQuestionLoadingIndex] =
@@ -61,7 +63,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   const handleSetInterval = () => {
     const _data = data;
     var localStorageData = localStorage.getItem("questionData");
-    if(localStorageData && Array.isArray(JSON.parse(localStorageData))){
+    if (localStorageData && Array.isArray(JSON.parse(localStorageData))) {
       const localDataArray = JSON.parse(localStorageData);
       localDataArray[state].answers = _data[state].answers;
       localStorage.setItem("questionData", JSON.stringify(localDataArray));
@@ -163,16 +165,20 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     );
   }
 
-  if (data[state]?.loading && data[state].loadingTextTitle) {
-    return (
-      <div className="flex flex-col text-whit">
-        <Loading
-          status={data[state].loadingTextTitle}
-          text={data[state].loadingText}
-        />
-      </div>
-    );
-  }
+  // if (data[state]?.loading && data[state].loadingTextTitle) {
+  return (
+    <section className="bg-[#FDF9F4]">
+      <Container>
+        <div className="flex flex-col text-whit">
+          <Loading
+            status={data[state].loadingTextTitle}
+            text={data[state].loadingText}
+          />
+        </div>
+      </Container>
+    </section>
+  );
+  // }
 
   return (
     <div className="xs:pt-[74px] md:pt-[64px] bg-[#FDF9F4]">
