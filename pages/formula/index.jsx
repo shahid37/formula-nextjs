@@ -53,7 +53,6 @@ const FormulaDetail = () => {
           pain_types: localDataArray[0]?.answers,
           pain_locations: localDataArray[1]?.answers,
           pain_radiation: MAPPING[localDataArray[2]?.answers],
-
           pain_factors: [localDataArray[3]?.answers],
           pain_relievers: [localDataArray[4]?.answers],
           pain_current_severity: MAPPING[localDataArray[5]?.answers],
@@ -63,7 +62,7 @@ const FormulaDetail = () => {
           pain_duration: MAPPING[localDataArray[9]?.answers],
           pain_medications: [localDataArray[10]?.answers],
           allergies: [localDataArray[11]?.answers],
-          surgeries: MAPPING[localDataArray[12]?.answers],
+          surgeries: [localDataArray[12]?.answers],
           general_medications: [localDataArray[13]?.answers],
         },
         type: "pain",

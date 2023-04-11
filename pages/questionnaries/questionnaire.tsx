@@ -49,7 +49,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     false
   );
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<Array<Question>>(questions);
+  const [data, setData] = useState<Array<Question>>([...questions]);
   const [createQuestionLoadingIndex, setCreateQuestionLoadingIndex] =
     useState(0);
   const [state, setState] = useState(0);
@@ -60,20 +60,30 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     }
   }, [currentQuestion]);
 
+  useEffect(()=>{
+    if(questions){
+      const _data = questions;
+      _data.forEach((element, index) => {
+         _data[index] = { ...element, answers: null };
+           });
+      setData(_data);
+    }
+  },[questions])
+
 
   const handleSetInterval = () => {
      var localStorageData = localStorage.getItem("questionData");
-    if (localStorageData && Array.isArray(JSON.parse(localStorageData))) {
-      const localDataArray = JSON.parse(localStorageData);
-      localDataArray[state].answers = data[state].answers;
-      localStorage.setItem("questionData", JSON.stringify(localDataArray));
-    } else {
-      localStorage.setItem("questionData", JSON.stringify([...data]));
-    }
-    data[state].loading = false;
-    setData([...data]);
-    setState(state + 1);
-    setCurrentQuestion(state + 1);
+     if (localStorageData && Array.isArray(JSON.parse(localStorageData))) {
+       const localDataArray = JSON.parse(localStorageData);
+       localDataArray[state].answers = data[state].answers;
+       localStorage.setItem("questionData", JSON.stringify(localDataArray));
+     } else {
+       localStorage.setItem("questionData", JSON.stringify([...data]));
+     }
+     data[state].loading = false;
+     setData([...data]);
+     setState(state + 1);
+     setCurrentQuestion(state + 1);
   };
 
   const handleContinue = async () => {
@@ -97,8 +107,10 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
 
   const getValues = useCallback(
     (values: any) => {
+      if(data?.length > 0){
       data[state].answers = values;
       setData([...data]);
+      }
     },
     [state]
   );
@@ -146,10 +158,25 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     setData([]);}, [] );
     
 
-  console.log(questions,"DATAAAAAAAAAA");
+  console.log(data,"DATAAAAAAAAAA",data?.length);
 
   if (!showChild) {
     return null;
+  }
+
+ if (data?.length === 0) {
+  return (
+    <section className="bg-[#FDF9F4]">
+      <Container>
+        <div className="flex flex-col text-whit">
+          <Loading
+            status={"Please Wait"}
+            text={""}
+          />
+        </div>
+      </Container>
+    </section>
+  );
   }
 
   if (isCreateQuestion) {
