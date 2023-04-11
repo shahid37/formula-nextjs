@@ -24,7 +24,7 @@ const Navbar: FC<NavbarProps> = ({ showLink, linkAction }: NavbarProps) => {
     <div className="w-full">
       <nav className={classNames(commonClassNames)}>
 
-        <Image onClick={handleClick} src="/assets/icons/formul-icon.svg" alt="logo" height={36} width={136} />
+        <Image className="cursor-pointer" onClick={handleClick} src="/assets/icons/formul-icon.svg" alt="logo" height={36} width={136} />
         <div className="flex">
           {showLink && (
             <Button onClick={linkAction} type="link">

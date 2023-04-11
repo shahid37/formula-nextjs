@@ -1,13 +1,27 @@
+import React from "react";
+import { useRouter } from "next/router";
+
 import AppLayout from "@/components/AppLayout/AppLayout";
 import LandingPage from "@/components/Questionnaries/LandingPage";
-import { useRouter } from "next/router";
-import React from "react";
+import usePersistentState from "@/hooks/usePersistentState";
 
 const HomePage = () => {
  const router = useRouter();
- const onClick = () => {
-   router.push("/questionnaries");
- };  
+  const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
+    "isCreateQuestion",
+    false,
+  );
+  const [currentQuestion, setCurrentQuestion] = usePersistentState(
+    "currentQuestion",
+    0
+  );
+
+  const onClick = () => {
+    setIsCreateQuestion(false);
+    localStorage.setItem("questionData",null);
+    setCurrentQuestion(0);
+    router.push("/questionnaries");
+  };
   return (
     <AppLayout navLinkAction={onClick}>
       <LandingPage />
