@@ -81,7 +81,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
       const _data = data;
       _data[state].loading = true;
       setData([..._data]);
-      setTimeout(handleSetInterval, 1000);
+      setTimeout(handleSetInterval, 5000);
     } else {
       setIsCreateQuestion(true);
     }
