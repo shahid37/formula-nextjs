@@ -24,7 +24,7 @@ const Main = () => {
 
   return (
     <div className={classNames(commonClassNames, "w-full")}>
-      <Image className="md:hidden" src={MobileViewHero} alt="hero" />
+      <Image className="md:hidden w-full" src={MobileViewHero} alt="hero" />
       <div className="flex items-center justify-center">
         <div className="xs:hidden md:inline relative w-full h-[308px] mt-[60px] max-w-[1512px] ">
           <AppMainLayout className={"flex items-end h-full pb-12"}>
