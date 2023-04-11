@@ -52,31 +52,27 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     useState(0);
   const [state, setState] = useState(0);
 
-
-  useEffect(()=>{
-    if(currentQuestion > 0){
-      setState(currentQuestion)
+  useEffect(() => {
+    if (currentQuestion > 0) {
+      setState(currentQuestion);
     }
-  },[currentQuestion])
-
+  }, [currentQuestion]);
 
   const handleSetInterval = () => {
-    const  _data = data;
+    const _data = data;
     var localStorageData = localStorage.getItem("questionData");
     if(localStorageData && Array.isArray(JSON.parse(localStorageData))){
       const localDataArray = JSON.parse(localStorageData);
       localDataArray[state].answers = _data[state].answers;
-    localStorage.setItem("questionData",JSON.stringify(localDataArray));
-    }else{
-    localStorage.setItem("questionData",JSON.stringify([..._data]));
+      localStorage.setItem("questionData", JSON.stringify(localDataArray));
+    } else {
+      localStorage.setItem("questionData", JSON.stringify([..._data]));
     }
     _data[state].loading = false;
     setData([..._data]);
     setState(state + 1);
     setCurrentQuestion(state + 1);
   };
-
-
 
   const handleContinue = async () => {
     if (state < 14) {
@@ -104,7 +100,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   );
 
   const checkDisableButton = () => {
-    console.log(data[state]?.answers,"data[state]?.answers")
+    console.log(data[state]?.answers, "data[state]?.answers");
     if (data[state]?.answers && Array.isArray(data[state]?.answers)) {
       if (data[state]?.answers.length === 0) {
         return true;
@@ -112,13 +108,12 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
         return false;
       }
     }
-    if (data[state]?.answers === "" || !data[state]?.answers) {  
+    if (data[state]?.answers === "" || !data[state]?.answers) {
       return true;
     } else {
       return false;
     }
   };
-
 
   useEffect(() => {
     setShowChild(true);
@@ -184,7 +179,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
       <FormulaProcessBar
         currentQuestionNumber={state + 1}
         totalQuestions={15}
-        className="fixed w-full top-0 left-0 right-0 pt-[64px] mt-[10px]"
+        className="fixed w-full top-0 left-0 right-0 pt-[51px] mt-[10px]"
       />
       <Container className="xs:pt-[47px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
         <div className="xs:max-w-[358px] xs:mr-auto xs:ml-0 md:ml-auto md:max-w-[400px] lg:max-w-[500px] mx-auto flex flex-col xs:justify-start md:justify-center xs:items-start md:items-center">
