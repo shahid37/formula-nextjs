@@ -18,7 +18,7 @@ const HomePage = () => {
 
   const onClick = () => {
     setIsCreateQuestion(false);
-    localStorage.setItem("questionData",null);
+    localStorage.setItem("questionData",'');
     setCurrentQuestion(0);
     router.push("/questionnaries");
   };

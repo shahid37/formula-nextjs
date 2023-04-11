@@ -92,7 +92,7 @@ const FormulaDetail = () => {
     if (localDataArray && Array.isArray(localDataArray) && localDataArray.length > 0) {
       createFormula();
     }
-  }, []);
+  }},[]);
 
   const _data = [
     {
