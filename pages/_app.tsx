@@ -2,7 +2,7 @@ import { SWRConfig } from "swr";
 import React, { useEffect } from "react";
 
 import "@/styles/globals.css";
-import "../styles/globals.css";
+import '../styles/fonts.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import type { AppProps } from "next/app";
@@ -11,6 +11,11 @@ import UserContext from "@/context/UserContext";
 import usePersistentState from "@/hooks/usePersistentState";
 import { fetcher } from "@/utils/fetcher";
 import initAxiosGlobalConfigs from "@/config/axiosConfig";
+
+import localFont from '@next/font/local'
+
+const myFont = localFont({ src: "../public/fonts/Inter-Regular.ttf" });
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const [auth, setAuth] = usePersistentState("auth", {
@@ -38,7 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <UserContext.Provider value={{ auth, setAuth }}>
-        <main>
+        <main className={myFont.className}>
           <Component {...pageProps} />
           <ToastContainer
             position="top-center"
