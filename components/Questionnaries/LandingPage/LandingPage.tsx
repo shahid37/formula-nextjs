@@ -47,7 +47,11 @@ import React from "react";
 import Button from "@/components/Button";
 
 const Container = ({ children, className }) => (
-  <div className={`max-w-[1512px] w-[84%] mx-auto ${className ?? ""}`}>
+  <div
+    className={`max-w-[1512px] xs:w-[91%] md:w-[84%] mx-auto ${
+      className ?? ""
+    }`}
+  >
     {children}
   </div>
 );
