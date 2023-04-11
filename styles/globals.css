@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Inter";
-  src: url("/public/fonts/Inter-Regular.ttf") format("truetype");
-}
-
 
 @layer base {
   h1 {
@@ -64,20 +59,24 @@
   margin: 0;
 }
 
+
+body,
 html {
+  font-family: "Inter", sans-serif;
+}
+
+
+ html {
   scroll-behavior: smooth;
 }
 
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: "Inter", sans-serif !important;
+  font-family: "Inter", sans-serif;
   font-weight: 300;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-}
 
 
 /* Formula Loader classes */
