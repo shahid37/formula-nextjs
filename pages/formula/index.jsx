@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import AppLayout from "../../components/AppLayout/AppLayout";
+import { AppMainLayout } from "../../components/MainLayout/AppMainLayout";
+
 import DetailCardProps from "../../components/DetailCard";
 import Button from "../../components/Button";
 import Loader from "../../components/Loader";
@@ -15,6 +17,7 @@ import ChemicalIcon from "../../public/assets/icons/chemical.svg";
 
 import { BASE_URL, MAPPING, FORMULA_CREATA_API } from "../../utils/constants";
 import axios from "axios";
+import classNames from "classnames";
 
 const FormulaDetail = () => {
   const router = useRouter();
@@ -40,7 +43,7 @@ const FormulaDetail = () => {
     router.push("/questionnaries");
   };
 
-  const commonClassNames = "py-4 xs:px-2 md:px-[120px]";
+  const commonClassNames = "py-4";
 
   const createFormula = async () => {
     setLoading(true);
@@ -107,16 +110,16 @@ const FormulaDetail = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <AppLayout navLinkAction={onClick}>
         {loading ? (
           <div className="absolute w-full h-screen z-10 bg-off-white bg-opacity-50">
             <Loader />
           </div>
         ) : (
-          <>
-            <section className={`${commonClassNames}`}>
-              <div className="xs:px-6 md:px-28 mt-16">
+          <AppMainLayout>
+            <section className={`${commonClassNames} pt-[78px]`}>
+              <div>
                 <h2 className="text-black text-[24px] leading-[29px] font-normal">
                   Hey, Edward
                 </h2>
@@ -124,9 +127,9 @@ const FormulaDetail = () => {
                   Here’s your customized pain formula
                 </p>
               </div>
-              <div className="xs:pt-[120px] xs:px-3 md:px-28 mt-6 flex xs:flex-col-reverse lg:flex-row justify-between gap-x-6 relative">
-                <div className="flex-1">
-                  <div className="xs:px-3 md:px-0 xs:absolute top-0 left-0 right-0 md:static">
+              <div className="xs:pt-[120px] md:pt-0 mt-6 flex xs:flex-col lg:flex-row justify-between gap-x-6 relative">
+                <div className="flex-1 xs:pb-4 md:pb-0">
+                  <div className="xs:absolute top-0 left-0 right-0 md:static">
                     <DetailCardProps
                       formulaName="Edward’s Muscle Formula"
                       text="Our Muscle Cream 1 targets your muscles to create a relaxing effect with potent muscle relaxers."
@@ -146,15 +149,22 @@ const FormulaDetail = () => {
                       ) +
                       "A provider will review your responses and information and determine if this formula is best suited for you."}
                   </p>
-                  <li className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
-                    Instructions Apply to the affected area 2 to 3 times daily
-                  </li>
-                  <div className="mt-10 xs:w-[100%] md:max-w-[358px]">
-                    <Button>Continue</Button>
+                  <div className="hidden md:inline">
+                    <li className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
+                      Instructions Apply to the affected area 2 to 3 times daily
+                    </li>
+                    <div className="mt-10 xs:w-[100%] md:max-w-[358px]">
+                      <Button>Continue</Button>
+                    </div>
                   </div>
                 </div>
                 <div>
-                  <div className="xs:max-w-[100%] lg:max-w-[408px] flex flex-col justify-between bg-off-white rounded-[8px] p-4">
+                  <div
+                    className={classNames(
+                      _data.length > 5 && "h-[420px] overflow-scroll",
+                      "xs:max-w-[100%] lg:max-w-[408px] flex flex-col  justify-between bg-off-white rounded-[8px] p-4"
+                    )}
+                  >
                     {data?.ingredients.map((item, i) => (
                       <div className="mb-3" key={i}>
                         <div className="flex flex-col gap-y-1">
@@ -165,8 +175,8 @@ const FormulaDetail = () => {
                             {item.ingredient.description}
                           </p>
                         </div>
-                        {i < _data.length - 1 && (
-                          <div className="h-[1px] w-full bg-[#4E4B48] opacity-[0.05]" />
+                        {i < data?.ingredients?.length - 1 && (
+                          <div className="h-[1px] mt-4 w-full bg-[#4E4B48] opacity-[0.05]" />
                         )}
                       </div>
                     ))}
@@ -210,8 +220,24 @@ const FormulaDetail = () => {
                   </div>
                 </div>
               </div>
+              <div className="md:hidden">
+                {[
+                  "Instructions Apply to the affected area 2 to 3 times daily",
+                ].map((text) => (
+                  <div className="flex items-center" key={text}>
+                    <div className="bg-black h-1.5 w-1.5 mr-2 rounded-full" />
+                    <p className="mt-4 text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
+                      {text}
+                    </p>
+                  </div>
+                ))}
+
+                <div className="mt-[210px] mb-[20px] xs:w-[100%] md:max-w-[358px]">
+                  <Button>Continue</Button>
+                </div>
+              </div>
             </section>
-          </>
+          </AppMainLayout>
         )}
       </AppLayout>
     </div>
