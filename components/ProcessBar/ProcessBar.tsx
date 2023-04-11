@@ -5,11 +5,13 @@ import ProcessBarImage from "./images/ProcessBar";
 interface ProcessBarProps {
   totalQuestions: number;
   currentQuestionNumber: number;
+  className: string;
 }
 
 const ProcessBar: FC<ProcessBarProps> = ({
   totalQuestions,
   currentQuestionNumber,
+  className,
 }: ProcessBarProps) => {
   let barSize = 100 / totalQuestions;
 
@@ -22,7 +24,9 @@ const ProcessBar: FC<ProcessBarProps> = ({
   const barLevel = hash.get(currentQuestionNumber);
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div
+      className={`w-full flex items-center justify-center ${className ?? ""}`}
+    >
       <ProcessBarImage level={barLevel} />
     </div>
   );

@@ -28,7 +28,7 @@ export const styles = {
   },
   activeDot: {
     ...commonStyle,
-    background: grayColor,
+    background: "white",
     border: `2px solid ${grayColor}`,
   },
 };

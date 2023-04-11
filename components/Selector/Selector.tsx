@@ -88,8 +88,8 @@ const Selector: FC<SelectorProps> = ({
   return (
     <>
       {type === "range" && (
-        <div className="justify-center flex">
-          <div className="mx-auto flex flex-col xs:min-w-[280px] md:min-w-[500px]">
+        <div className="justify-center flex xs:max-w-[358px] w-full xs:mr-auto xs:ml-0 md:ml-auto md:min-w-[400px] lg:min-w-[500px]">
+          <div className="mx-auto flex flex-col w-full">
             <Slider
               trackStyle={styles.track}
               railStyle={styles.rail}
@@ -103,8 +103,10 @@ const Selector: FC<SelectorProps> = ({
               onChange={(e) => setSliderValue(e.toString())}
             />
             <div className="flex mt-4 w-full items-center justify-between">
-              <p className="text-sm font-normal text-black -ml-4">Mild</p>
-              <p className="text-sm font-normal text-black -mr-4">Extreme</p>
+              <p className="text-sm font-normal text-black ml-[-10px]">Mild</p>
+              <p className="text-sm font-normal text-black mr-[-10px]">
+                Extreme
+              </p>
             </div>
           </div>
         </div>
@@ -153,7 +155,7 @@ const Selector: FC<SelectorProps> = ({
               className={classNames(
                 singleValue === item || multiValue.includes(item)
                   ? "bg-teal"
-                  : "bg-white",
+                  : "bg-null",
                 "xs:w-[47%] md:w-48 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
               )}
             >

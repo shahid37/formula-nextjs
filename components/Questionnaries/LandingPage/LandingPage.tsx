@@ -45,6 +45,7 @@ import React from "react";
 
 // Components
 import Button from "@/components/Button";
+import { useRouter } from "next/router";
 
 const Container = ({ children, className }: any) => (
   <div
@@ -57,6 +58,11 @@ const Container = ({ children, className }: any) => (
 );
 
 const LandingPage = () => {
+    const router = useRouter();
+  const onClick = () => {
+    router.push("/questionnaries");
+  };
+
   return (
     <section className="xs:h-[100%] lg:h-[100%] 2xl:h-screen overflow-hidden relative">
       <div
@@ -76,7 +82,7 @@ const LandingPage = () => {
             Answer the following questions as best as you can.
           </p>
           <div className="xs:mt-[40px] lg:mt-16 2xl:mt-20 max-w-[358px] w-[100%]">
-            <Button onClick={() => {}}>CREATE MY FORMULA</Button>
+            <Button onClick={() => onClick()}>CREATE MY FORMULA</Button>
           </div>
         </div>
       </Container>

@@ -45,10 +45,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }, [props.onClick, props.disable]);
 
     const commonClassNames =
-      "flex cursor-pointer items-center text-center font-medium leading-4 uppercase";
+      "xs:text-[14px] md:text-[16px] flex cursor-pointer items-center text-center font-medium leading-4 uppercase";
     const disabledClassNames =
       props.disable || props.loading ? "cursor-not-allowed opacity-50" : "";
-    const linkButtonClassNames = "text-sm";
+    const linkButtonClassNames = "";
     const commonButtonClassNames =
       "w-full rounded-lg h-12 flex-grow justify-center py-4 whitespace-nowrap text-black";
     return (
@@ -58,7 +58,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={props.htmlType}
         onClick={clickCB}
         style={{
-          fontSize: props.fontSize ? props.fontSize : 14,
+          // fontSize: props.fontSize ? props.fontSize : 14,
           color: props.textColor ? props.textColor : "#111111",
           backgroundColor: props.backgroundColor ? props.backgroundColor : "",
         }}

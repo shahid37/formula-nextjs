@@ -19,10 +19,21 @@ import Selector from "@/components/Selector";
 import usePersistentState from "@/hooks/usePersistentState";
 import QuestionnaireContext from "@/context/QuestionnaireContext";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface QuestionnairePageProps {
   text?: string;
 }
+
+const Container = ({ children, className }: any) => (
+  <div
+    className={`max-w-[1512px] xs:w-[91%] md:w-[84%] mx-auto ${
+      className ?? ""
+    }`}
+  >
+    {children}
+  </div>
+);
 
 const QuestionnairePage: FC<QuestionnairePageProps> = ({
   text,
@@ -156,88 +167,92 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     );
   }
 
-  return (
-    <div>
+  if (data[state]?.loading && data[state].loadingTextTitle) {
+    return (
       <div className="flex flex-col text-whit">
-        {data[state]?.loading && data[state].loadingTextTitle ? (
-          <Loading
-            status={data[state].loadingTextTitle}
-            text={data[state].loadingText}
-          />
-        ) : (
-          <>
-            <div className="mt-[64px]">
-              <FormulaProcessBar
-                currentQuestionNumber={state + 1}
-                totalQuestions={15}
-              />
-            </div>
-            <h1 className="mx-4 xs:text-left md:text-center text-black xs:mt-[28px] md:mt-[120px] font-normal text-base">
-              Question no. {state + 1}
-            </h1>
-            <div className="mx-4 w-full xs:text-left md:text-center flex items-center justify-center ">
-              <div className="w-[500px]">
-                <h1 className="mt-[28px] first-letter:xs:text-left md:text-center text-black md:mt-[45px] font-normal xs:text-[32px] xs:leading-[28px] md:text-3xl">
-                  {data[state]?.question}
-                </h1>
-                {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
-                  <h1 className="xs:text-left md:text-center text-black mt-2 font-normal text-base">
-                    (May choose more than one)
-                  </h1>
-                )}
-                {data[state]?.type === QUESTION_TYPES.RANGE && (
-                  <h1 className="xs:text-left md:text-center text-black mt-2 font-normal text-base">
-                    (On a scale of 0 to 5 with zero being no pain and 5 being
-                    the worst pain ever)
-                  </h1>
-                )}
-              </div>
-            </div>
-            <div className="justify-center flex flex-row xs:mx-8 md:mx-32 mt-[40px]">
-              {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
-                <Selector
-                  type="multi"
-                  options={data[state]?.options}
-                  getValues={getValues}
-                  value={state}
-                  data={data}
-                  id={data[state].id}
-                />
-              )}
-              {data[state]?.type === QUESTION_TYPES.RANGE && (
-                <Selector type="range" getValues={getValues} value={state} />
-              )}
-              {data[state]?.type === QUESTION_TYPES.INPUT && (
-                <Selector type="input" getValues={getValues} value={state} />
-              )}
-              {data[state]?.type === QUESTION_TYPES.SINGLE_CHOICE && (
-                <Selector
-                  type="single"
-                  options={data[state]?.options}
-                  getValues={getValues}
-                  value={state}
-                />
-              )}
-            </div>
-            <div className="xs:px-6 md:px-28 gap-y-3 flex items-center xs:flex-row md:flex-row justify-center mt-[104px] mb-10 gap-x-4">
-              <div className="xs:w-[100%] md:w-[200px] text-center md:mr-[24px]">
-                <Button
-                  onClick={handleBack}
-                  backgroundColor="white"
-                  type="secondary"
-                >
-                  Back
-                </Button>
-              </div>
-              <div className="xs:w-[100%] md:w-[200px] text-center">
-                <Button disable={checkDisableButton()} onClick={handleContinue}>
-                  {state === 14 ? "Show my formula" : "Continue"}
-                </Button>
-              </div>
-            </div>
-          </>
-        )}
+        <Loading
+          status={data[state].loadingTextTitle}
+          text={data[state].loadingText}
+        />
       </div>
+    );
+  }
+
+  return (
+    <div className="xs:pt-[74px] md:pt-[64px] bg-[#FDF9F4]">
+      <FormulaProcessBar
+        currentQuestionNumber={state + 1}
+        totalQuestions={15}
+        className="fixed w-full top-0 left-0 right-0 pt-[64px]"
+      />
+      <Container className="xs:pt-[47px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
+        <div className="xs:max-w-[358px] xs:mr-auto xs:ml-0 md:ml-auto md:max-w-[400px] lg:max-w-[500px] mx-auto flex flex-col xs:justify-start md:justify-center xs:items-start md:items-center">
+          <div className="flex flex-row justify-center items-center gap-x-2">
+            <Image
+              src="/assets/icons/shield.svg"
+              width={24}
+              height={24}
+              alt="Shield icon"
+            />
+            <p className="text-center text-[16px] leading-[19px] tracking-[0.15px]">
+              Question no. {state + 1}
+            </p>
+          </div>
+          <h3 className="xs:text-left md:text-center xs:mt-[26px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111]">
+            {data[state]?.question}
+          </h3>
+          <p className="max-w-[358px] xs:text-[14px] lg:text-[16px] xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
+            {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
+              ? "(May choose more than one)"
+              : data[state]?.type === QUESTION_TYPES.RANGE
+              ? "On a scale of 0 to 5 with zero being no pain and 5 being the worst pain ever"
+              : null}
+          </p>
+        </div>
+
+        <div className="max-w-[1272px] mx-auto justify-center flex flex-row mt-[40px]">
+          {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
+            <Selector
+              type="multi"
+              options={data[state]?.options}
+              getValues={getValues}
+              value={state}
+              data={data}
+              id={data[state].id}
+            />
+          )}
+          {data[state]?.type === QUESTION_TYPES.RANGE && (
+            <Selector type="range" getValues={getValues} value={state} />
+          )}
+          {data[state]?.type === QUESTION_TYPES.INPUT && (
+            <Selector type="input" getValues={getValues} value={state} />
+          )}
+          {data[state]?.type === QUESTION_TYPES.SINGLE_CHOICE && (
+            <Selector
+              type="single"
+              options={data[state]?.options}
+              getValues={getValues}
+              value={state}
+            />
+          )}
+        </div>
+        <div className="xs:mt-auto md:mt-[60px] lg:mt-[104px] flex flex-row xs:gap-x-[16px] md:gap-x-[24px] justify-center items-center">
+          <div className="xs:mt-[115px] md:mt-0 xs:w-[100%] md:w-[200px] text-center">
+            <Button
+              onClick={handleBack}
+              backgroundColor="transparent"
+              type="secondary"
+            >
+              Back
+            </Button>
+          </div>
+          <div className="xs:mt-[115px] md:mt-0 xs:w-[100%] md:w-[200px] text-center">
+            <Button disable={checkDisableButton()} onClick={handleContinue}>
+              {state === 14 ? "Show my formula" : "Continue"}
+            </Button>
+          </div>
+        </div>
+      </Container>
     </div>
   );
 };
