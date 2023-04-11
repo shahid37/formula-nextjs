@@ -37,6 +37,7 @@ const QuestionsLayout: FC<QuestionsLayoutProps> = ({
       <FormulaProcessBar
         totalQuestions={totalQuestions}
         currentQuestionNumber={questionNumber}
+        className={""}
       />
       <div className={classNames(commonClassNames, "flex-col px-28 pt-32")}>
         <div className={classNames(commonClassNames)}>
