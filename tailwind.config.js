@@ -15,7 +15,7 @@ module.exports = {
       "2xl": "1440px",
     },
     fontFamily: {
-      sans: ["Open Sans", "sans-serif"],
+      inter: ["Inter", "sans-serif"],
       display: ["Open Sans", "sans-serif"],
     },
     extend: {
@@ -34,5 +34,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

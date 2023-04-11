@@ -1,8 +1,8 @@
 import { SWRConfig } from "swr";
 import React, { useEffect } from "react";
-import { Inter } from "@next/font/google";
 
 import "@/styles/globals.css";
+import "../styles/globals.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import type { AppProps } from "next/app";
@@ -11,12 +11,6 @@ import UserContext from "@/context/UserContext";
 import usePersistentState from "@/hooks/usePersistentState";
 import { fetcher } from "@/utils/fetcher";
 import initAxiosGlobalConfigs from "@/config/axiosConfig";
-
-const inter = Inter({
-  weight: ["400", "500"],
-  style: ["normal"],
-  subsets: ["latin"],
-});
 
 export default function App({ Component, pageProps }: AppProps) {
   const [auth, setAuth] = usePersistentState("auth", {
@@ -44,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <UserContext.Provider value={{ auth, setAuth }}>
-        <main className={inter.className}>
+        <main>
           <Component {...pageProps} />
           <ToastContainer
             position="top-center"
