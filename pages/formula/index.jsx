@@ -21,24 +21,20 @@ import classNames from "classnames";
 
 const FormulaDetail = () => {
   const router = useRouter();
-  const [questionnaireData, setQuestionnaireData] = usePersistentState(
-    "questionnaireData",
-    []
-  );
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [isCreateQuestion, setIsCreateQuestion] = usePersistentState(
     "isCreateQuestion",
-    -1
+    false,
   );
   const [currentQuestion, setCurrentQuestion] = usePersistentState(
     "currentQuestion",
     0
   );
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const onClick = () => {
     setIsCreateQuestion(false);
-    setQuestionnaireData([]);
+    localStorage.setItem("questionData",null);
     setCurrentQuestion(0);
     router.push("/questionnaries");
   };
@@ -93,7 +89,6 @@ const FormulaDetail = () => {
       var localStorageData = localStorage.getItem("questionData");
     if(localStorageData){
       const localDataArray = JSON.parse(localStorageData);
-    console.log(localDataArray,"localStorageData")
     if (localDataArray && Array.isArray(localDataArray) && localDataArray.length > 0) {
       createFormula();
     }

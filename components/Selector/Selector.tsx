@@ -71,7 +71,7 @@ const Selector: FC<SelectorProps> = ({
     var localStorageData = localStorage.getItem("questionData");
     if(localStorageData){
       const localDataArray = JSON.parse(localStorageData);
-      if(value !== null && null !== undefined){
+      if(value !== null && null !== undefined && Array.isArray(localDataArray)){
       const answers = localDataArray[value].answers;
       if(localDataArray[value].type === QUESTION_TYPES.MULTIPLE_CHOICE && localDataArray[value].answers !== null){
        setMultiValue(answers);
