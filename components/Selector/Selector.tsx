@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from "react";
 import Button from "@/components/Button";
 
 import { capitalizeFirstLetter } from "../../utils/utills";
-import { Question } from "@/utils/constants";
+import { Question, QUESTION_TYPES } from "@/utils/constants";
 import classNames from "classnames";
 import "rc-slider/assets/index.css";
 import { styles } from "./selectionStyle";
@@ -15,7 +15,6 @@ interface SelectorProps {
   options?: string[];
   getValues?: (values: string | string[] | null | undefined) => void;
   value?: number;
-  data?: Array<Question>;
   id?: number;
 }
 
@@ -24,7 +23,6 @@ const Selector: FC<SelectorProps> = ({
   options,
   getValues,
   value,
-  data,
   id,
 }: SelectorProps) => {
   // This holds the selected values
@@ -41,7 +39,7 @@ const Selector: FC<SelectorProps> = ({
 
   // Handle the multi Selection case
   const multiSelectionHandler = (value: string) => {
-    if (multiValue.includes(value)) {
+    if (multiValue?.includes(value)) {
       setMultiValue(multiValue.filter((item) => item !== value));
     } else {
       setMultiValue((prev) => [...prev, value]);
@@ -70,20 +68,29 @@ const Selector: FC<SelectorProps> = ({
   };
 
   useEffect(() => {
-    // if(data && data?.length > 0 && id){
-    // const _data = data?.find((item)=>item?.id === id);
-    // console.log(data,id,"answersanswersanswersanswers",_data);
-
-    // }
-
-    // if (answers && answers?.length > 0) {
-    // setMultiValue([...answers]);
-    // }
-    if (value) {
-      setInputValue("");
-      setSliderValue("0");
+    var localStorageData = localStorage.getItem("questionData");
+    if(localStorageData){
+      const localDataArray = JSON.parse(localStorageData);
+      if(value !== null && null !== undefined){
+      const answers = localDataArray[value].answers;
+      if(localDataArray[value].type === QUESTION_TYPES.MULTIPLE_CHOICE && localDataArray[value].answers !== null){
+       setMultiValue(answers);
+      }
+      if(localDataArray[value].type === QUESTION_TYPES.SINGLE_CHOICE && localDataArray[value].answers !== null){
+       setSingleValue(answers);
+      }
+       if(localDataArray[value].type === QUESTION_TYPES.INPUT){
+       setInputValue(answers);
+      } 
+        if(localDataArray[value].type === QUESTION_TYPES.RANGE &&  localDataArray[value].answers !== null){
+       setSliderValue(answers);
+      } 
+       if(localDataArray[value].type === QUESTION_TYPES.RANGE && localDataArray[value].answers === null){
+       setSliderValue(0);
+      } 
     }
-  }, [data, value, id]);
+    }
+  }, [ value, id]);
 
   return (
     <>
@@ -153,7 +160,7 @@ const Selector: FC<SelectorProps> = ({
               }}
               key={item}
               className={classNames(
-                singleValue === item || multiValue.includes(item)
+                singleValue === item || multiValue?.includes(item)
                   ? "bg-teal"
                   : "bg-null",
                 "xs:w-[47%] md:w-48 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
