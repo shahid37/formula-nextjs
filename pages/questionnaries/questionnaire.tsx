@@ -60,28 +60,31 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     }
   }, [currentQuestion]);
 
+
   const handleSetInterval = () => {
-    const _data = data;
-    var localStorageData = localStorage.getItem("questionData");
+     var localStorageData = localStorage.getItem("questionData");
     if (localStorageData && Array.isArray(JSON.parse(localStorageData))) {
       const localDataArray = JSON.parse(localStorageData);
-      localDataArray[state].answers = _data[state].answers;
+      localDataArray[state].answers = data[state].answers;
       localStorage.setItem("questionData", JSON.stringify(localDataArray));
     } else {
-      localStorage.setItem("questionData", JSON.stringify([..._data]));
+      localStorage.setItem("questionData", JSON.stringify([...data]));
     }
-    _data[state].loading = false;
-    setData([..._data]);
+    data[state].loading = false;
+    setData([...data]);
     setState(state + 1);
     setCurrentQuestion(state + 1);
   };
 
   const handleContinue = async () => {
     if (state < 14) {
-      const _data = data;
-      _data[state].loading = true;
-      setData([..._data]);
-      setTimeout(handleSetInterval, 5000);
+      data[state].loading = true;
+      setData([...data]);
+      if (data[state].loadingText && data[state].loadingTextTitle) {
+        setTimeout(handleSetInterval, 5000);
+      } else {
+        setTimeout(handleSetInterval, 1000);
+      }
     } else {
       setIsCreateQuestion(true);
     }
@@ -94,15 +97,13 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
 
   const getValues = useCallback(
     (values: any) => {
-      const _data = data;
-      _data[state].answers = values;
-      setData([..._data]);
+      data[state].answers = values;
+      setData([...data]);
     },
     [state]
   );
 
   const checkDisableButton = () => {
-    console.log(data[state]?.answers, "data[state]?.answers");
     if (data[state]?.answers && Array.isArray(data[state]?.answers)) {
       if (data[state]?.answers.length === 0) {
         return true;
@@ -139,6 +140,13 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
       }
     }
   }, [isCreateQuestion, createQuestionLoadingIndex]);
+
+  useEffect( () => () => {
+    console.log("unmount");
+    setData([]);}, [] );
+    
+
+  console.log(questions,"DATAAAAAAAAAA");
 
   if (!showChild) {
     return null;
