@@ -34,7 +34,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   }, [props.type, showPassword]);
 
   return (
-    <div className="relative block">
+    <div className="relative block w-full">
       <input
         ref={ref}
         type={inputType}

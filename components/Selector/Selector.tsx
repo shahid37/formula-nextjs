@@ -69,33 +69,49 @@ const Selector: FC<SelectorProps> = ({
 
   useEffect(() => {
     var localStorageData = localStorage.getItem("questionData");
-    if(localStorageData){
+    if (localStorageData) {
       const localDataArray = JSON.parse(localStorageData);
-      if(value !== null && null !== undefined && Array.isArray(localDataArray)){
-      const answers = localDataArray[value].answers;
-      if(localDataArray[value].type === QUESTION_TYPES.MULTIPLE_CHOICE && localDataArray[value].answers !== null){
-       setMultiValue(answers);
+      if (
+        value !== null &&
+        null !== undefined &&
+        Array.isArray(localDataArray)
+      ) {
+        const answers = localDataArray[value].answers;
+        if (
+          localDataArray[value].type === QUESTION_TYPES.MULTIPLE_CHOICE &&
+          localDataArray[value].answers !== null
+        ) {
+          setMultiValue(answers);
+        }
+        if (
+          localDataArray[value].type === QUESTION_TYPES.SINGLE_CHOICE &&
+          localDataArray[value].answers !== null
+        ) {
+          setSingleValue(answers);
+        }
+        if (localDataArray[value].type === QUESTION_TYPES.INPUT) {
+          setInputValue(answers);
+        }
+        if (
+          localDataArray[value].type === QUESTION_TYPES.RANGE &&
+          localDataArray[value].answers !== null
+        ) {
+          setSliderValue(answers);
+        }
+        if (
+          localDataArray[value].type === QUESTION_TYPES.RANGE &&
+          localDataArray[value].answers === null
+        ) {
+          setSliderValue("0");
+        }
       }
-      if(localDataArray[value].type === QUESTION_TYPES.SINGLE_CHOICE && localDataArray[value].answers !== null){
-       setSingleValue(answers);
-      }
-       if(localDataArray[value].type === QUESTION_TYPES.INPUT){
-       setInputValue(answers);
-      } 
-        if(localDataArray[value].type === QUESTION_TYPES.RANGE &&  localDataArray[value].answers !== null){
-       setSliderValue(answers);
-      } 
-       if(localDataArray[value].type === QUESTION_TYPES.RANGE && localDataArray[value].answers === null){
-       setSliderValue("0");
-      } 
     }
-    }
-  }, [ value, id]);
+  }, [value, id]);
 
   return (
     <>
       {type === "range" && (
-        <div className="justify-center flex xs:max-w-[358px] w-full xs:mr-auto xs:ml-0 md:ml-auto md:min-w-[400px] lg:min-w-[500px]">
+        <div className="justify-center flex xs:pl-2 xs:max-w-[330px] w-full xs:mr-auto xs:ml-0 md:ml-auto md:min-w-[400px] lg:min-w-[500px]">
           <div className="mx-auto flex flex-col w-full">
             <Slider
               trackStyle={styles.track}
@@ -122,9 +138,9 @@ const Selector: FC<SelectorProps> = ({
         <>
           {inputValuesCount.map((item, index) => {
             return (
-              <div key={index} className="justify-center flex">
+              <div key={index} className="justify-center flex w-full">
                 <Input
-                  className="xs:w-[350px] md:w-[500px]"
+                  className="xs:w-[100%] md:w-[500px] mx-auto"
                   type="text"
                   placeholder="Write your answer here"
                   name="answer"
@@ -150,6 +166,33 @@ const Selector: FC<SelectorProps> = ({
         </>
       )}
       {(type === "multi" || type === "single") && (
+        <>
+        { options?.length < 4 ?   (  <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center items-center">
+          {options?.map((item, index) => (
+            <button
+              onClick={() => {
+                type === "single"
+                  ? singleSelectionHandler(item)
+                  : multiSelectionHandler(item);
+              }}
+              key={item}
+              className={classNames(
+                singleValue === item || multiValue?.includes(item)
+                  ? "bg-teal"
+                  : "bg-null",
+                type === "single" &&
+                  (options?.length === 2 || options?.length === 3)
+                  ? " h-[56px]"
+                  : " h-[51px]",
+                (index > 0 || index < options.length -1) && "mt-[16px]", 
+                options?.length >= 3 && "h-[51px]",
+                "font-normal xs:w-[100%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
+              )}
+            >
+              {capitalizeFirstLetter(item)}
+            </button>
+          ))}
+        </div> ):(
         <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center flex items-center">
           {options?.map((item) => (
             <button
@@ -163,15 +206,19 @@ const Selector: FC<SelectorProps> = ({
                 singleValue === item || multiValue?.includes(item)
                   ? "bg-teal"
                   : "bg-null",
-                type === "single" && ( options?.length === 2 || options?.length === 3 ) ? "md:w-[242px] h-[56px]" : "md:w-48 h-[51px]",
-                options?.length >= 3 &&  "md:w-48 h-[51px]",
-                "font-normal xs:w-[47%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center p-4 border border-light-gray text-sm text-base",
+                type === "single" &&
+                  (options?.length === 2 || options?.length === 3)
+                  ? "md:w-[242px] h-[56px]"
+                  : "md:w-48 h-[51px]",
+                options?.length >= 3 && "md:w-48 h-[51px]",
+                "font-normal xs:w-[47%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
               )}
             >
               {capitalizeFirstLetter(item)}
             </button>
           ))}
-        </div>
+        </div> )}
+        </>
       )}
     </>
   );

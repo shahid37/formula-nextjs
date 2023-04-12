@@ -6,9 +6,10 @@ import Loader from "../Loader";
 interface LoadingProps {
   status?: string;
   text?: string;
+  notShowAnimation?: boolean;
 }
 
-const Loading: FC<LoadingProps> = ({ text, status }: LoadingProps) => {
+const Loading: FC<LoadingProps> = ({ text, status,notShowAnimation }: LoadingProps) => {
   const [dotSizes, setDotSizes] = useState([5, 5, 5, 5, 5]);
   const [greenIndex, setGreenIndex] = useState(0);
 
@@ -35,6 +36,7 @@ const Loading: FC<LoadingProps> = ({ text, status }: LoadingProps) => {
         <div className="flex flex-col items-center justify-center text-center md:max-w-[450px] lg:max-w-[470px] xl:max-w-[572px]">
           <div className="ml-[6px] relative">
             {/* <Loader /> */}
+            {!notShowAnimation &&
             <div className="loading-container">
               {dotSizes.map((size, index) => (
                 <span
@@ -43,7 +45,7 @@ const Loading: FC<LoadingProps> = ({ text, status }: LoadingProps) => {
                   style={{ width: `${size}px`, height: `${size}px` }}
                 ></span>
               ))}
-            </div>
+            </div>}
           </div>
           <h6 className="text-gray mt-7 text-[16px] leading-[19px] font-normal">
             {status}

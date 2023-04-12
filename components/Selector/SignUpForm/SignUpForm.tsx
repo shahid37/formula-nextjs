@@ -6,9 +6,9 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-import Button from "../Button";
-import Input, { InputTypes } from "../Input";
-import CheckBox from "../CheckBox";
+import Button from "../../Button";
+import Input, { InputTypes } from "../../Input";
+import CheckBox from "../../CheckBox";
 import { convertDateToUtc } from "@/utils/helpers";
 import { BASE_URL } from "@/utils/constants";
 import { SIGN_UP_API } from "./constant";
