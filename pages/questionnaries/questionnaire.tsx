@@ -221,7 +221,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
         className="fixed w-full top-0 left-0 right-0 pt-[51px] mt-[10px]"
       />
       <Container className="xs:pt-[47px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
-        <div className="xs:max-w-[358px] xs:mr-auto xs:ml-0 md:ml-auto md:max-w-[400px] lg:max-w-[500px] mx-auto flex flex-col xs:justify-start md:justify-center xs:items-start md:items-center">
+        <div className="xs:max-w-[400px] xs:mr-auto xs:ml-0 md:ml-auto md:max-w-[400px] lg:max-w-[500px] mx-auto flex flex-col xs:justify-start md:justify-center xs:items-start md:items-center">
           <div className="flex flex-row justify-center items-center gap-x-2">
             <Image
               src="/assets/icons/shield.svg"
@@ -245,7 +245,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
           </p>
         </div>
 
-        <div className="max-w-[1272px] mx-auto justify-center flex flex-row xs:mt-[24px] md:mt-[40px]">
+        <div className="max-w-[1272px] mx-auto justify-center flex flex-row xs:mt-[24px] md:mt-[40px] xs:mb-[100px] md:mb-[0px]">
           {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
             <Selector
               type="multi"
@@ -270,6 +270,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
             />
           )}
         </div>
+         <div className="xs:fixed xs:bottom-[32px] xs:right-[0px] xs:left-[0px] xs:w-[91%] xs:mx-auto md:static md:bottom-[32px] md:right-[0px] xs:left-[0px] md:w-[91%] md:mx-auto">
         <div className="xs:mt-auto md:mt-[60px] lg:mt-[104px] flex flex-row xs:gap-x-[16px] md:gap-x-[24px] justify-center items-center">
           <div className="xs:mt-[115px] md:mt-0 xs:w-[100%] md:w-[200px] text-center">
             <Button
@@ -287,6 +288,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
             </Button>
           </div>
         </div>
+</div>
       </Container>
     </div>
   );

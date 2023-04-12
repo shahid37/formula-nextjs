@@ -122,9 +122,9 @@ const Selector: FC<SelectorProps> = ({
         <>
           {inputValuesCount.map((item, index) => {
             return (
-              <div key={index} className="justify-center flex">
+              <div key={index} className="justify-center flex w-full">
                 <Input
-                  className="xs:w-[350px] md:w-[500px]"
+                  className="xs:w-[100%] md:w-[500px] mx-auto"
                   type="text"
                   placeholder="Write your answer here"
                   name="answer"
