@@ -35,7 +35,7 @@ const PainCategory: FC<PainCategoryProps> = ({
         alt={name}
         // width={300}
       />
-      <h5 className="mt-1">{name}</h5>
+      <h5 className="mt-1 text-[20px] leading-[24px]">{name}</h5>
     </div>
   );
 };

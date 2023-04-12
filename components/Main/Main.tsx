@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import classNames from "classnames";
 
-import Hero from "../../public/assets/hero.svg";
+import Hero from "../../public/assets/hero.png";
 
 import { AppMainLayout } from "../MainLayout/AppMainLayout";
 
@@ -10,7 +10,7 @@ import ShiftIcon from "./images/ShiftIcon";
 import VideoIcon from "./images/VideoIcon";
 import MedicineIcon from "./images/MedicineIcon";
 
-import MobileViewHero from "./images/mobileViewHero.svg";
+import MobileViewHero from "./images/mobileViewHero.png";
 
 import Button from "../Button";
 import Footer from "../Footer";
@@ -24,17 +24,24 @@ const Main = () => {
 
   return (
     <div className={classNames(commonClassNames, "w-full")}>
-      <Image className="md:hidden w-full" src={MobileViewHero} alt="hero" />
       <div className="flex items-center justify-center">
-        <div className="xs:hidden md:inline relative w-full h-[308px] mt-[60px] max-w-[1512px] ">
-          <AppMainLayout className={"flex items-end h-full pb-12"}>
-            <h1 className="font-inter text-white text-[40px] max-w-[524px] leading-[48px]">
+        <div className="relative w-full xs:h-[304px] md:h-[308px] mt-[60px] max-w-[1512px] ">
+          <AppMainLayout
+            className={"flex items-end h-full xs:pb-[32px] md:pb-12"}
+          >
+            <h1 className="font-inter text-white xs:text-[32px] xs:leading-[38px] md:text-[40px] md:leading-[48px] max-w-[524px] leading-[48px]">
               Customized prescription medicine for your pain
             </h1>
           </AppMainLayout>
           <Image
+            src={MobileViewHero}
+            className="xs:block md:hidden relative z-[-100] xs:object-fit md:object-cover h-[304px]"
+            alt="Hero image"
+            fill
+          />
+          <Image
             src={Hero}
-            className="relative z-[-100] xs:object-fit md:object-cover h-[100%]"
+            className="xs:hidden md:block relative z-[-100] xs:object-fit md:object-cover h-[100%]"
             alt="Hero image"
             fill
           />
@@ -63,7 +70,7 @@ const Main = () => {
                   <h6
                     className={classNames(
                       i === 0 && "max-w-[306px]",
-                      "text-gray text-base ml-4 leading-5	"
+                      "text-[#111111] opacity-80 text-[16px] leading-[19px] ml-4"
                     )}
                   >
                     {item.text}
@@ -75,8 +82,10 @@ const Main = () => {
               <Divider type="horizontal" />
             </div>
             <div className="xs:pt-0 md:pt-10">
-              <h5 className="text-black">Find your perfect PAIN formula</h5>
-              <p className="text-sm font font-normal text-gray">
+              <h5 className="xs:text-[16px] leading-[19px] md:text-[20px] md:leading-[24px] text-black">
+                Find your perfect PAIN formula
+              </h5>
+              <p className="mt-1 xs:text-[12px] xs:leading-[15px] md:text-[14px] md:leading-[17px] font-normal text-[#4E4B48]">
                 Pick a category to begin creating your formula
               </p>
               <div className="flex flex-row xs:flex-wrap md:flex-nowrap xs:gap-4 md:gap-6 mt-4">
