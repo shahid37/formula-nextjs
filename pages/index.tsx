@@ -8,7 +8,7 @@ export default function Home() {
     router.push("/questionnaries/home");
   };
   return (
-    <AppLayout navLinkAction={onClick}>
+    <AppLayout navLinkAction={onClick} notApplyBackgroundColor={true}>
       <Main />
     </AppLayout>
   );

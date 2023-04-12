@@ -30,7 +30,7 @@ const AppLayout: FC<AppLayoutProps> = ({
   }, []);
 
   return (
-    <div className={classNames(notApplyBackgroundColor ? "" :  "w-full h-screen")}>
+    <div className={classNames(notApplyBackgroundColor ? "" :  "bg-[#FDF9F4]","w-full h-screen")}>
       <div
         className={classNames(
           bottomBorder
