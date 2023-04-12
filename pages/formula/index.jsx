@@ -134,7 +134,7 @@ const FormulaDetail = () => {
                   Here’s your customized pain formula
                 </p>
               </div>
-              <div className="xs:pt-[120px] md:pt-0 mt-6 flex xs:flex-col gap-y-6 lg:flex-row justify-between gap-x-6 relative">
+              <div className="xs:pt-[120px] md:pt-0 mt-6 flex xs:flex-col xs:gap-y-[16px] md:gap-y-6 lg:flex-row justify-between gap-x-6 relative">
                 <div className="flex-1 xs:pb-4 md:pb-0">
                   <div className="xs:absolute top-0 left-0 right-0 md:static">
                     <DetailCardProps
@@ -177,7 +177,8 @@ const FormulaDetail = () => {
                         <div className="mb-3" key={index}>
                           <div className="flex flex-col gap-y-1">
                             <h3 className="text-[16px] leading-[19.36px] tracking-[0.15px] text-black">
-                              {item.ingredient.name}{index}
+                              {item.ingredient.name}
+                              {index}
                             </h3>
                             <p className="text-[14px] leading-[16.94px] tracking-[0.25px] opacity-75 text-black">
                               {item.ingredient.description}
@@ -229,7 +230,7 @@ const FormulaDetail = () => {
                   </div>
                 </div>
               </div>
-              <div className="md:hidden mt-10">
+              <div className="md:hidden xs:mt-[16px] md:mt-10">
                 {[
                   "Instructions Apply to the affected area 2 to 3 times daily",
                 ].map((text) => (
