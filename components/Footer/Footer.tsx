@@ -12,7 +12,8 @@ interface FooterProps {
 const Footer: FC<FooterProps> = (props: FooterProps) => {
   return (
     <div className="xs:p-4 md:p-6 rounded-lg border border-light-gray ">
-      <h4>{props.headingText}</h4>
+      <h4 className="hidden sm:block leading-[29px]">{props.headingText}</h4>
+      <h4 className="block sm:hidden leading-[24px] ">{props.headingText}</h4>
       <div className="grid xs:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
         {[
           {
@@ -34,7 +35,9 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
         ].map((item) => (
           <div className="flex flex-col" key={item.text}>
             {item.icon}
-            <h6 className="mt-1 text-gray">{item.text}</h6>
+
+            <h6 className="hidden sm:block mt-1 text-gray leading-5">{item.text}</h6>
+            <h6 className="block sm:hidden mt-1 text-gray leading-[17px] text-sm">{item.text}</h6>
           </div>
         ))}
       </div>

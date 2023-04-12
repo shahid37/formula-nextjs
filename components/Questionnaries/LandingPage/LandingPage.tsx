@@ -39,9 +39,17 @@ const LandingPage = () => {
   return (
     <section className="xs:h-[100%] lg:h-[100%] 2xl:h-screen overflow-hidden relative">
       <div
-        className="xs:h-auto lg:h-[100%] 2xl:h-screen absolute top-0 right-0 bottom-0 left-0 z-[-1] xs:bg-inherit lg:bg-center"
+        className="hidden sm:block xs:h-auto lg:h-[100%] 2xl:h-screen absolute top-0 right-0 bottom-0 left-0 z-[-1] xs:bg-inherit lg:bg-center"
         style={{
           backgroundImage: `linear-gradient(192.53deg, rgba(0, 0, 0, 0) 16.68%, rgba(0, 0, 0, 0.523123) 63.94%, rgba(0, 0, 0, 0.6) 99.49%), url('/assets/questionnaire.png')`,
+          backgroundSize: "cover",
+          width: "100%",
+        }}
+      />
+      <div
+        className="block sm:hidden xs:h-auto lg:h-[100%] 2xl:h-screen absolute top-0 right-0 bottom-0 left-0 z-[-1] xs:bg-inherit lg:bg-center"
+        style={{
+          backgroundImage: `linear-gradient(192.53deg, rgba(0, 0, 0, 0) 16.68%, rgba(0, 0, 0, 0.523123) 63.94%, rgba(0, 0, 0, 0.6) 99.49%), url('/assets/question-home.svg')`,
           backgroundSize: "cover",
           width: "100%",
         }}

@@ -238,7 +238,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
           <h3 className="xs:text-left md:text-center xs:mt-[26px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111]">
             {data[state]?.question}
           </h3>
-          <p className="max-w-[358px] xs:text-[14px] lg:text-[16px] xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
+          <p className="max-w-[358px] text-[14px] xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
             {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
               ? "(May choose more than one)"
               : data[state]?.type === QUESTION_TYPES.RANGE
