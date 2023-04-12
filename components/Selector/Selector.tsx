@@ -167,7 +167,7 @@ const Selector: FC<SelectorProps> = ({
       )}
       {(type === "multi" || type === "single") && (
         <>
-        { options?.length < 4 ?   (  <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center items-center">
+        {options &&  options?.length < 4 ?   (  <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center items-center">
           {options?.map((item, index) => (
             <button
               onClick={() => {
