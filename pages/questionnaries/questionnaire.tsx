@@ -1,5 +1,3 @@
-import axios from "axios";
-import { toast } from "react-toastify";
 import React, { FC, useCallback, useState, useEffect } from "react";
 
 import Button from "@/components/Button";
@@ -9,15 +7,12 @@ import FormulaProcessBar from "@/components/ProcessBar";
 import {
   questions,
   QUESTION_TYPES,
-  BASE_URL,
-  MAPPING,
   Question,
   createQuestionLoadingData,
 } from "@/utils/constants";
 import Selector from "@/components/Selector";
 
 import usePersistentState from "@/hooks/usePersistentState";
-import QuestionnaireContext from "@/context/QuestionnaireContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -179,7 +174,8 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
 
   if (isCreateQuestion) {
     return (
-      <div className="flex flex-col text-whit">
+      <>
+      <div className="flex flex-col text-whit pr-4 pl-4">
         {isCreateQuestion &&
           createQuestionLoadingData[createQuestionLoadingIndex]
             .loadingTextTitle && (
@@ -188,6 +184,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                 createQuestionLoadingData[createQuestionLoadingIndex]
                   .loadingTextTitle
               }
+              notShowAnimation={true}
               text={
                 createQuestionLoadingData[createQuestionLoadingIndex]
                   .loadingText
@@ -195,6 +192,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
             />
           )}
       </div>
+      </>
     );
   }
 

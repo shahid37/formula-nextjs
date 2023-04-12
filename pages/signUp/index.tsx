@@ -2,7 +2,7 @@ import React from "react";
 
 import AppLayout from "@/components/AppLayout/AppLayout";
 import Layout from "@/components/LoginLayout/layout";
-import SignUpForm from "@/components/SignUpForm";
+import SignUpForm from "@/components/Selector/SignUpForm";
 
 const SignUpPage = () => {
   return (
