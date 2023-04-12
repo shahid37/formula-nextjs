@@ -163,7 +163,9 @@ const Selector: FC<SelectorProps> = ({
                 singleValue === item || multiValue?.includes(item)
                   ? "bg-teal"
                   : "bg-null",
-                "xs:w-[47%] md:w-48 cursor-pointer text-black rounded-lg flex items-center justify-center p-4 border border-light-gray text-sm font-medium"
+                type === "single" && ( options?.length === 2 || options?.length === 3 ) ? "md:w-[242px] h-[56px]" : "md:w-48 h-[51px]",
+                options?.length >= 3 &&  "md:w-48 h-[51px]",
+                "font-normal xs:w-[47%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center p-4 border border-light-gray text-sm text-base",
               )}
             >
               {capitalizeFirstLetter(item)}

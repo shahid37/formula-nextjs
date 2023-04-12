@@ -118,7 +118,7 @@ const FormulaDetail = () => {
 
   return (
     <div className="relative ">
-      <AppLayout navLinkAction={onClick}>
+      <AppLayout navLinkAction={onClick} notApplyBackgroundColor={true}>
         {loading ? (
           <div className="absolute w-full h-screen z-10 bg-off-white bg-opacity-50">
             <Loader />
@@ -173,17 +173,17 @@ const FormulaDetail = () => {
                         "xs:max-w-[100%] lg:max-w-[408px] flex flex-col  justify-between bg-off-white rounded-[8px] p-4"
                       )}
                     >
-                      {data?.ingredients?.map((item, i) => (
-                        <div className="mb-3" key={i}>
+                      {data?.ingredients?.map((item, index) => (
+                        <div className="mb-3" key={index}>
                           <div className="flex flex-col gap-y-1">
                             <h3 className="text-[16px] leading-[19.36px] tracking-[0.15px] text-black">
-                              {item.ingredient.name}
+                              {item.ingredient.name}{index}
                             </h3>
                             <p className="text-[14px] leading-[16.94px] tracking-[0.25px] opacity-75 text-black">
                               {item.ingredient.description}
                             </p>
                           </div>
-                          {i < data?.ingredients?.length - 1 && (
+                          {index < data?.ingredients?.length - 1 && (
                             <div className="h-[1px] mt-4 w-full bg-[#4E4B48] opacity-[0.05]" />
                           )}
                         </div>
@@ -191,7 +191,7 @@ const FormulaDetail = () => {
                     </div>
                   )}
                   <div className="mt-2 rounded-[8px] flex py-4 px-2 bg-off-white justify-between h-[114px]">
-                    <div className="flex flex-col gap-y-4 justify-center items-center h-[82px]">
+                    <div className="flex flex-col gap-y-4 justify-start items-center h-[82px]">
                       <Image
                         src={DogIcon}
                         alt="Hypoallergenic"
@@ -203,7 +203,7 @@ const FormulaDetail = () => {
                       </p>
                     </div>
                     <div className="w-[1px] h-[100%] bg-[#4E4B48] opacity-[0.05]" />
-                    <div className="flex flex-col gap-y-4 justify-center items-center h-[82px]">
+                    <div className="flex flex-col gap-y-4 justify-start items-center h-[82px] ">
                       <Image
                         src={LeafsIcon}
                         alt="Hypoallergenic"
@@ -215,7 +215,7 @@ const FormulaDetail = () => {
                       </p>
                     </div>
                     <div className="w-[1px] h-[100%] bg-[#4E4B48] opacity-[0.05]" />
-                    <div className="flex flex-col gap-y-4 justify-center items-center h-[82px]">
+                    <div className="flex flex-col gap-y-4 justify-start items-center h-[82px]">
                       <Image
                         src={ChemicalIcon}
                         alt="Hypoallergenic"
