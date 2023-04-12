@@ -60,30 +60,29 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     }
   }, [currentQuestion]);
 
-  useEffect(()=>{
-    if(questions){
+  useEffect(() => {
+    if (questions) {
       const _data = questions;
       _data.forEach((element, index) => {
-         _data[index] = { ...element, answers: null };
-           });
+        _data[index] = { ...element, answers: null };
+      });
       setData(_data);
     }
-  },[questions])
-
+  }, [questions]);
 
   const handleSetInterval = () => {
-     var localStorageData = localStorage.getItem("questionData");
-     if (localStorageData && Array.isArray(JSON.parse(localStorageData))) {
-       const localDataArray = JSON.parse(localStorageData);
-       localDataArray[state].answers = data[state].answers;
-       localStorage.setItem("questionData", JSON.stringify(localDataArray));
-     } else {
-       localStorage.setItem("questionData", JSON.stringify([...data]));
-     }
-     data[state].loading = false;
-     setData([...data]);
-     setState(state + 1);
-     setCurrentQuestion(state + 1);
+    var localStorageData = localStorage.getItem("questionData");
+    if (localStorageData && Array.isArray(JSON.parse(localStorageData))) {
+      const localDataArray = JSON.parse(localStorageData);
+      localDataArray[state].answers = data[state].answers;
+      localStorage.setItem("questionData", JSON.stringify(localDataArray));
+    } else {
+      localStorage.setItem("questionData", JSON.stringify([...data]));
+    }
+    data[state].loading = false;
+    setData([...data]);
+    setState(state + 1);
+    setCurrentQuestion(state + 1);
   };
 
   const handleContinue = async () => {
@@ -101,17 +100,17 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   };
 
   const handleBack = () => {
-    if(state > 0){
-    setState(state - 1);
-    setCurrentQuestion(state - 1);
+    if (state > 0) {
+      setState(state - 1);
+      setCurrentQuestion(state - 1);
     }
   };
 
   const getValues = useCallback(
     (values: any) => {
-      if(data?.length > 0){
-      data[state].answers = values;
-      setData([...data]);
+      if (data?.length > 0) {
+        data[state].answers = values;
+        setData([...data]);
       }
     },
     [state]
@@ -155,27 +154,27 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     }
   }, [isCreateQuestion, createQuestionLoadingIndex]);
 
-  useEffect( () => () => {
-    setData([]);}, [] );
-    
+  useEffect(
+    () => () => {
+      setData([]);
+    },
+    []
+  );
 
   if (!showChild) {
     return null;
   }
 
- if (data?.length === 0) {
-  return (
-    <section className="bg-[#FDF9F4]">
-      <Container>
-        <div className="flex flex-col text-whit">
-          <Loading
-            status={"Please Wait"}
-            text={""}
-          />
-        </div>
-      </Container>
-    </section>
-  );
+  if (data?.length === 0) {
+    return (
+      <section className="bg-[#FDF9F4]">
+        <Container>
+          <div className="flex flex-col text-whit">
+            <Loading status={"Please Wait"} text={""} />
+          </div>
+        </Container>
+      </section>
+    );
   }
 
   if (isCreateQuestion) {
@@ -200,18 +199,18 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   }
 
   if (data[state]?.loading && data[state].loadingTextTitle) {
-  return (
-    <section className="bg-[#FDF9F4]">
-      <Container>
-        <div className="flex flex-col text-whit">
-          <Loading
-            status={data[state].loadingTextTitle}
-            text={data[state].loadingText}
-          />
-        </div>
-      </Container>
-    </section>
-  );
+    return (
+      <section className="bg-[#FDF9F4]">
+        <Container>
+          <div className="flex flex-col text-whit">
+            <Loading
+              status={data[state].loadingTextTitle}
+              text={data[state].loadingText}
+            />
+          </div>
+        </Container>
+      </section>
+    );
   }
 
   return (
@@ -246,7 +245,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
           </p>
         </div>
 
-        <div className="max-w-[1272px] mx-auto justify-center flex flex-row mt-[40px]">
+        <div className="max-w-[1272px] mx-auto justify-center flex flex-row xs:mt-[24px] md:mt-[40px]">
           {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
             <Selector
               type="multi"

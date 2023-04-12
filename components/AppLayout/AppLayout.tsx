@@ -30,11 +30,16 @@ const AppLayout: FC<AppLayoutProps> = ({
   }, []);
 
   return (
-    <div className={classNames(notApplyBackgroundColor ? "" :  "bg-[#FDF9F4]","w-full h-screen")}>
+    <div
+      className={classNames(
+        notApplyBackgroundColor ? "" : "bg-[#FDF9F4]",
+        "w-full h-screen"
+      )}
+    >
       <div
         className={classNames(
           bottomBorder
-            ? "fixed border-b border-black z-[100] w-full flex justify-between items-center bg-off-white"
+            ? "fixed  z-[100] w-full flex justify-between items-center bg-off-white"
             : "fixed z-[100] w-full flex justify-between items-center bg-off-white"
         )}
       >
