@@ -101,8 +101,10 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   };
 
   const handleBack = () => {
+    if(state > 0){
     setState(state - 1);
     setCurrentQuestion(state - 1);
+    }
   };
 
   const getValues = useCallback(
@@ -154,11 +156,8 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   }, [isCreateQuestion, createQuestionLoadingIndex]);
 
   useEffect( () => () => {
-    console.log("unmount");
     setData([]);}, [] );
     
-
-  console.log(data,"DATAAAAAAAAAA",data?.length);
 
   if (!showChild) {
     return null;
@@ -227,18 +226,18 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
           <div className="flex flex-row justify-center items-center gap-x-2">
             <Image
               src="/assets/icons/shield.svg"
-              width={24}
-              height={24}
+              width={18}
+              height={20}
               alt="Shield icon"
             />
-            <p className="text-center text-[16px] leading-[19px] tracking-[0.15px]">
+            <p className="text-center font-normal	 text-[16px] leading-[19px] tracking-[0.15px] font-inter">
               Question no. {state + 1}
             </p>
           </div>
           <h3 className="xs:text-left md:text-center xs:mt-[26px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111]">
             {data[state]?.question}
           </h3>
-          <p className="max-w-[358px] text-[14px] xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
+          <p className="max-w-[358px] text-[14px] font-normal leading-[17px] font-inter xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
             {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
               ? "(May choose more than one)"
               : data[state]?.type === QUESTION_TYPES.RANGE
@@ -278,6 +277,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
               onClick={handleBack}
               backgroundColor="transparent"
               type="secondary"
+              disable={state === 0}
             >
               Back
             </Button>

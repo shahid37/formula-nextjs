@@ -5,12 +5,14 @@ import Navbar from "../Navbar";
 
 interface AppLayoutProps {
   showNaveLink?: boolean;
+  notApplyBackgroundColor?: boolean;
   navLinkAction?: () => {} | void;
   children: ReactNode;
 }
 
 const AppLayout: FC<AppLayoutProps> = ({
   showNaveLink,
+  notApplyBackgroundColor,
   navLinkAction,
   children,
 }: AppLayoutProps) => {
@@ -28,7 +30,7 @@ const AppLayout: FC<AppLayoutProps> = ({
   }, []);
 
   return (
-    <div className="w-full h-screen">
+    <div className={classNames(notApplyBackgroundColor ? "" :  "w-full h-screen")}>
       <div
         className={classNames(
           bottomBorder
