@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import classNames from "classnames";
 
-import Hero from "../../public/assets/hero.png";
+import Hero from "../../public/assets/hero.svg";
 
 import { AppMainLayout } from "../MainLayout/AppMainLayout";
 
@@ -63,7 +63,7 @@ const Main = () => {
                   <h6
                     className={classNames(
                       i === 0 && "max-w-[306px]",
-                      "text-gray text-base ml-4"
+                      "text-gray text-base ml-4 leading-5	"
                     )}
                   >
                     {item.text}
