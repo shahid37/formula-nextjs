@@ -23,7 +23,7 @@ const HomePage = () => {
     router.push("/questionnaries");
   };
   return (
-    <AppLayout navLinkAction={onClick}>
+    <AppLayout navLinkAction={onClick} notApplyBackgroundColor={true}>
       <LandingPage />
     </AppLayout>
   );
