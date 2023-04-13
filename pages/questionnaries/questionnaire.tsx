@@ -218,7 +218,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
         totalQuestions={15}
         className="fixed w-full top-0 left-0 right-0 pt-[48px] mt-[10px]"
       />
-      <Container className="xs:pt-[47px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
+      <Container className="bg-brown xs:pt-[47px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
         <div className="xs:max-w-[358px] xs:mr-auto xs:ml-0 md:ml-auto md:max-w-[400px] lg:max-w-[500px] mx-auto flex flex-col xs:justify-start md:justify-center xs:items-start md:items-center">
           <div className="flex flex-row justify-center items-center gap-x-2">
             <Image
@@ -231,16 +231,17 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
               Question no. {state + 1}
             </p>
           </div>
-          <h3 className="xs:text-left md:text-center xs:mt-[26px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111]">
+          <h3 className="xs:text-left md:text-center xs:mt-[27px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111]">
             {data[state]?.question}
           </h3>
+          {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE &&
           <p className="max-w-[358px] text-[14px] font-normal leading-[17px] font-inter xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
             {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
               ? "(May choose more than one)"
               : data[state]?.type === QUESTION_TYPES.RANGE
               ? "On a scale of 0 to 5 with zero being no pain and 5 being the worst pain ever"
               : null}
-          </p>
+          </p>}
         </div>
 
         <div className="max-w-[1272px] mx-auto justify-center flex flex-row xs:mt-[24px] md:mt-[40px]">
