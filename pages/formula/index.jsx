@@ -125,7 +125,7 @@ const FormulaDetail = () => {
           </div>
         ) : (
           <AppMainLayout>
-            <section className={`${commonClassNames} pt-[78px] `}>
+            <section className={`${commonClassNames} pt-[84px] `}>
               <div>
                 <h2 className="text-black text-[24px] leading-[29px] font-normal">
                   Hey, Edward

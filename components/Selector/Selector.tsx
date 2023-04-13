@@ -126,8 +126,10 @@ const Selector: FC<SelectorProps> = ({
               onChange={(e) => setSliderValue(e.toString())}
             />
             <div className="flex mt-4 w-full items-center justify-between">
-              <p className="text-sm font-normal text-black ml-[-10px]">Mild</p>
-              <p className="text-sm font-normal text-black mr-[-10px]">
+              <p className="md:text-sm xs:text-xs font-normal text-black ml-[-10px]">
+                Mild
+              </p>
+              <p className="md:text-sm xs:text-xs text-black mr-[-10px]">
                 Extreme
               </p>
             </div>
@@ -168,7 +170,7 @@ const Selector: FC<SelectorProps> = ({
       {(type === "multi" || type === "single") && (
         <>
           {options && options?.length < 4 ? (
-            <div className="font-normal mx-auto flex xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center items-center">
+            <div className="mx-auto flex xs:w-[100%] md:w-[100%] flex-wrap xs:gap-x-4 md:gap-x-6 justify-center items-center">
               {options?.map((item, index) => (
                 <button
                   onClick={() => {
@@ -185,9 +187,9 @@ const Selector: FC<SelectorProps> = ({
                       (options?.length === 2 || options?.length === 3)
                       ? "md:w-[242px] h-[56px]"
                       : "md:w-48 h-[51px]",
-                    (index > 0 || index < options.length - 1) && "mt-[16px]",
+                    (index > 0 || index < options.length - 1) && "mt-[0px]",
                     options?.length >= 3 && "h-[51px]",
-                    "font-normal xs:w-[100%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
+                    "mb-[16px] font-normal xs:w-[100%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
                   )}
                 >
                   {capitalizeFirstLetter(item)}
@@ -195,7 +197,7 @@ const Selector: FC<SelectorProps> = ({
               ))}
             </div>
           ) : (
-            <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center flex items-center">
+            <div className="mx-auto xs:w-[100%] md:w-[100%]  xs:gap-x-4 md:gap-x-6	flex-wrap justify-center flex items-center">
               {options?.map((item) => (
                 <button
                   onClick={() => {
@@ -213,7 +215,7 @@ const Selector: FC<SelectorProps> = ({
                       ? "md:w-[242px] h-[56px]"
                       : "md:w-48 h-[51px]",
                     options?.length >= 3 && "md:w-48 h-[51px]",
-                    "font-normal xs:w-[47%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
+                    "mb-[16px] font-normal xs:w-[47%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
                   )}
                 >
                   {capitalizeFirstLetter(item)}
