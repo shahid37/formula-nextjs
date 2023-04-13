@@ -191,7 +191,7 @@ const FormulaDetail = () => {
                       ))}
                     </div>
                   )}
-                  <div className="mt-2 rounded-[8px] flex py-4 px-2 bg-off-white justify-between xs:h-[102px] md:h-[114px]">
+                  <div className="mt-2 rounded-[8px] flex py-[18px] px-2 bg-off-white justify-between sm:h-[102px] xs:h-[102px] md:h-[114px] ">
                     <div className="flex flex-col gap-y-4 justify-start items-center xs:h-[70px] md:h-[82px]">
                       <Image
                         src={DogIcon}
