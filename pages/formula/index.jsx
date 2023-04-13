@@ -144,7 +144,7 @@ const FormulaDetail = () => {
                       rating={5}
                     />
                   </div>
-                  <p className="mt-6 text-[14px] leading-[17px] font-normal text-[#111111] opacity-60 tracking-[0.1px]">
+                  <p className="mt-6 text-[14px] leading-[17px] font-medium text-[#111111] opacity-60 tracking-[0.1px]">
                     Read the proper instructions
                   </p>
                   <p className="mt-4 xs:text-[14px] md:text-[16px] leading-[19px] font-medium text-black tracking-[0.5px]">
