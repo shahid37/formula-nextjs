@@ -191,39 +191,42 @@ const FormulaDetail = () => {
                       ))}
                     </div>
                   )}
-                  <div className="mt-2 rounded-[8px] flex py-4 px-2 bg-off-white justify-between h-[114px]">
-                    <div className="flex flex-col gap-y-4 justify-start items-center h-[82px]">
+                  <div className="mt-2 rounded-[8px] flex py-4 px-2 bg-off-white justify-between xs:h-[102px] md:h-[114px]">
+                    <div className="flex flex-col gap-y-4 justify-start items-center xs:h-[70px] md:h-[82px]">
                       <Image
                         src={DogIcon}
                         alt="Hypoallergenic"
                         width={32}
                         height={32}
+                        className="xs:w-[24px] xs:h-[24px] md;w-[32px] md:h-[32px]"
                       />
-                      <p className="w-[114px] text-center text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
+                      <p className="w-[114px] text-center xs:text-[12px] xs:leading-[14.52px] md:text-[14px] md:leading-[16.94px] tracking-[0.25px] font-normal">
                         Hypoallergenic
                       </p>
                     </div>
                     <div className="w-[1px] h-[100%] bg-[#4E4B48] opacity-[0.05]" />
-                    <div className="flex flex-col gap-y-4 justify-start items-center h-[82px] ">
+                    <div className="flex flex-col gap-y-4 justify-start items-center xs:h-[70px] md:h-[82px] ">
                       <Image
                         src={LeafsIcon}
                         alt="Hypoallergenic"
                         width={32}
                         height={32}
+                        className="xs:w-[24px] xs:h-[24px] md;w-[32px] md:h-[32px]"
                       />
-                      <p className="w-[114px] text-center text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
+                      <p className="w-[114px] text-center xs:text-[12px] xs:leading-[14.52px] md:text-[14px] md:leading-[16.94px] tracking-[0.25px] font-normal">
                         Paraben
                       </p>
                     </div>
                     <div className="w-[1px] h-[100%] bg-[#4E4B48] opacity-[0.05]" />
-                    <div className="flex flex-col gap-y-4 justify-start items-center h-[82px]">
+                    <div className="flex flex-col gap-y-4 justify-start items-center xs:h-[70px] md:h-[82px]">
                       <Image
                         src={ChemicalIcon}
                         alt="Hypoallergenic"
                         width={32}
                         height={32}
+                        className="xs:w-[24px] xs:h-[24px] md;w-[32px] md:h-[32px]"
                       />
-                      <p className="w-[114px] text-center text-[14px] leading-[16.94px] tracking-[0.25px] font-normal">
+                      <p className="w-[114px] text-center xs:text-[12px] xs:leading-[14.52px] md:text-[14px] md:leading-[16.94px] tracking-[0.25px] font-normal">
                         Custom Compounded
                       </p>
                     </div>
