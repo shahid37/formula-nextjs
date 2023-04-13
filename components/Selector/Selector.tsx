@@ -167,57 +167,60 @@ const Selector: FC<SelectorProps> = ({
       )}
       {(type === "multi" || type === "single") && (
         <>
-        {options &&  options?.length < 4 ?   (  <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center items-center">
-          {options?.map((item, index) => (
-            <button
-              onClick={() => {
-                type === "single"
-                  ? singleSelectionHandler(item)
-                  : multiSelectionHandler(item);
-              }}
-              key={item}
-              className={classNames(
-                singleValue === item || multiValue?.includes(item)
-                  ? "bg-teal"
-                  : "bg-null",
-                type === "single" &&
-                  (options?.length === 2 || options?.length === 3)
-                  ? " h-[56px]"
-                  : " h-[51px]",
-                (index > 0 || index < options.length -1) && "mt-[16px]", 
-                options?.length >= 3 && "h-[51px]",
-                "font-normal xs:w-[100%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
-              )}
-            >
-              {capitalizeFirstLetter(item)}
-            </button>
-          ))}
-        </div> ):(
-        <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center flex items-center">
-          {options?.map((item) => (
-            <button
-              onClick={() => {
-                type === "single"
-                  ? singleSelectionHandler(item)
-                  : multiSelectionHandler(item);
-              }}
-              key={item}
-              className={classNames(
-                singleValue === item || multiValue?.includes(item)
-                  ? "bg-teal"
-                  : "bg-null",
-                type === "single" &&
-                  (options?.length === 2 || options?.length === 3)
-                  ? "md:w-[242px] h-[56px]"
-                  : "md:w-48 h-[51px]",
-                options?.length >= 3 && "md:w-48 h-[51px]",
-                "font-normal xs:w-[47%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
-              )}
-            >
-              {capitalizeFirstLetter(item)}
-            </button>
-          ))}
-        </div> )}
+          {options && options?.length < 4 ? (
+            <div className="mx-auto flex xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center items-center">
+              {options?.map((item, index) => (
+                <button
+                  onClick={() => {
+                    type === "single"
+                      ? singleSelectionHandler(item)
+                      : multiSelectionHandler(item);
+                  }}
+                  key={item}
+                  className={classNames(
+                    singleValue === item || multiValue?.includes(item)
+                      ? "bg-teal"
+                      : "bg-null",
+                    type === "single" &&
+                      (options?.length === 2 || options?.length === 3)
+                      ? "md:w-[242px] h-[56px]"
+                      : "md:w-48 h-[51px]",
+                    (index > 0 || index < options.length - 1) && "mt-[16px]",
+                    options?.length >= 3 && "h-[51px]",
+                    "font-normal xs:w-[100%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
+                  )}
+                >
+                  {capitalizeFirstLetter(item)}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="mx-auto xs:w-[100%] md:w-[100%] flex-wrap gap-4 justify-center flex items-center">
+              {options?.map((item) => (
+                <button
+                  onClick={() => {
+                    type === "single"
+                      ? singleSelectionHandler(item)
+                      : multiSelectionHandler(item);
+                  }}
+                  key={item}
+                  className={classNames(
+                    singleValue === item || multiValue?.includes(item)
+                      ? "bg-teal"
+                      : "bg-null",
+                    type === "single" &&
+                      (options?.length === 2 || options?.length === 3)
+                      ? "md:w-[242px] h-[56px]"
+                      : "md:w-48 h-[51px]",
+                    options?.length >= 3 && "md:w-48 h-[51px]",
+                    "font-normal xs:w-[47%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
+                  )}
+                >
+                  {capitalizeFirstLetter(item)}
+                </button>
+              ))}
+            </div>
+          )}
         </>
       )}
     </>
