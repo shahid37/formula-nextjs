@@ -175,23 +175,23 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
   if (isCreateQuestion) {
     return (
       <>
-      <div className="flex flex-col text-whit pr-4 pl-4">
-        {isCreateQuestion &&
-          createQuestionLoadingData[createQuestionLoadingIndex]
-            .loadingTextTitle && (
-            <Loading
-              status={
-                createQuestionLoadingData[createQuestionLoadingIndex]
-                  .loadingTextTitle
-              }
-              notShowAnimation={true}
-              text={
-                createQuestionLoadingData[createQuestionLoadingIndex]
-                  .loadingText
-              }
-            />
-          )}
-      </div>
+        <div className="flex flex-col text-whit pr-4 pl-4">
+          {isCreateQuestion &&
+            createQuestionLoadingData[createQuestionLoadingIndex]
+              .loadingTextTitle && (
+              <Loading
+                status={
+                  createQuestionLoadingData[createQuestionLoadingIndex]
+                    .loadingTextTitle
+                }
+                notShowAnimation={true}
+                text={
+                  createQuestionLoadingData[createQuestionLoadingIndex]
+                    .loadingText
+                }
+              />
+            )}
+        </div>
       </>
     );
   }
@@ -227,7 +227,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
               height={20}
               alt="Shield icon"
             />
-            <p className="text-center font-normal	 text-[16px] leading-[19px] tracking-[0.15px] font-inter">
+            <p className="text-center font-normal	text-[#4E4B48] text-[16px] leading-[19px] tracking-[0.15px] font-inter">
               Question no. {state + 1}
             </p>
           </div>
