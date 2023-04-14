@@ -5,13 +5,27 @@ import Teeth from "./images/Teeth";
 import Injection from "./images/Injection";
 import Leafs from "./images/Leafs";
 
+import { useInView } from "react-intersection-observer";
+
 interface FooterProps {
   headingText?: string;
 }
 
 const Footer: FC<FooterProps> = (props: FooterProps) => {
+  const { ref: compundedFormula, inView: isCompoundedFormulaInView } =
+    useInView({
+      triggerOnce: true,
+    });
+
   return (
-    <div className="xs:p-4 md:p-6 rounded-lg border border-light-gray ">
+    <div
+      ref={compundedFormula}
+      className={`xs:p-4 md:p-6 rounded-lg border border-light-gray ${
+        isCompoundedFormulaInView === true
+          ? "opacity-100 addFadeUpAnimation"
+          : "opacity-0"
+      }`}
+    >
       <h4 className="xs:text-[20px] xs:leading-[24px] md:text-[24px] md:leading-[29px]">
         {props.headingText}
       </h4>
