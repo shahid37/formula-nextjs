@@ -16,6 +16,8 @@ import usePersistentState from "@/hooks/usePersistentState";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
+import { useInView } from "react-intersection-observer";
+
 interface QuestionnairePageProps {
   text?: string;
 }
@@ -126,6 +128,27 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     }
   };
 
+  const { ref: questionTxtToAnimate, inView: isQuestionTxtIsInView } =
+    useInView({
+      triggerOnce: true,
+    });
+
+  const { ref: headingTxtToAnimate, inView: isHeadingTxtIsInView } = useInView({
+    triggerOnce: true,
+  });
+
+  const { ref: taglineToAnimate, inView: isTagLineIsInView } = useInView({
+    triggerOnce: true,
+  });
+
+  const { ref: columnsToAnimate, inView: isColumnIsInView } = useInView({
+    triggerOnce: true,
+  });
+
+  const { ref: buttonsToAnimate, inView: isButtonsIsInView } = useInView({
+    triggerOnce: true,
+  });
+
   useEffect(() => {
     setShowChild(true);
   }, []);
@@ -220,7 +243,14 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
       />
       <Container className="bg-brown xs:pt-[47px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
         <div className="xs:max-w-[358px] xs:mr-auto xs:ml-0 md:ml-auto md:max-w-[400px] lg:max-w-[500px] mx-auto flex flex-col xs:justify-start md:justify-center xs:items-start md:items-center">
-          <div className="flex flex-row justify-center items-center gap-x-2">
+          <div
+            ref={questionTxtToAnimate}
+            className={`flex flex-row justify-center items-center gap-x-2 ${
+              isQuestionTxtIsInView === true
+                ? "opacity-100 addFadeUpAnimation"
+                : "opacity-0"
+            }`}
+          >
             <Image
               src="/assets/icons/shield.svg"
               width={18}
@@ -231,61 +261,97 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
               Question no. {state + 1}
             </p>
           </div>
-          <h3 className="xs:text-left md:text-center xs:mt-[27px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111]">
-            {data[state]?.question}
-          </h3>
-          {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE &&
-          <p className="max-w-[358px] text-[14px] font-normal leading-[17px] font-inter xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
-            {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
-              ? "(May choose more than one)"
-              : data[state]?.type === QUESTION_TYPES.RANGE
-              ? "On a scale of 0 to 5 with zero being no pain and 5 being the worst pain ever"
-              : null}
-          </p>}
+          {isQuestionTxtIsInView && (
+            <h3
+              ref={headingTxtToAnimate}
+              className={`xs:text-left md:text-center xs:mt-[27px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111] ${
+                isHeadingTxtIsInView === true
+                  ? "opacity-100 addFadeUpAnimation"
+                  : "opacity-0"
+              }`}
+            >
+              {data[state]?.question}
+            </h3>
+          )}
+          {isHeadingTxtIsInView &&
+            data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
+              <p
+                ref={taglineToAnimate}
+                className={`max-w-[358px] text-[14px] font-normal leading-[17px] font-inter xs:text-left md:text-center mt-2 opacity-60 text-[#111111] ${
+                  isTagLineIsInView === true
+                    ? "opacity-100 addFadeUpAnimation"
+                    : "opacity-0"
+                }`}
+              >
+                {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
+                  ? "(May choose more than one)"
+                  : data[state]?.type === QUESTION_TYPES.RANGE
+                  ? "On a scale of 0 to 5 with zero being no pain and 5 being the worst pain ever"
+                  : null}
+              </p>
+            )}
         </div>
 
-        <div className="max-w-[1272px] mx-auto justify-center flex flex-row xs:mt-[24px] md:mt-[40px]">
-          {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
-            <Selector
-              type="multi"
-              options={data[state]?.options}
-              getValues={getValues}
-              value={state}
-              id={data[state].id}
-            />
-          )}
-          {data[state]?.type === QUESTION_TYPES.RANGE && (
-            <Selector type="range" getValues={getValues} value={state} />
-          )}
-          {data[state]?.type === QUESTION_TYPES.INPUT && (
-            <Selector type="input" getValues={getValues} value={state} />
-          )}
-          {data[state]?.type === QUESTION_TYPES.SINGLE_CHOICE && (
-            <Selector
-              type="single"
-              options={data[state]?.options}
-              getValues={getValues}
-              value={state}
-            />
-          )}
-        </div>
-        <div className="xs:mt-auto md:mt-[60px] lg:mt-[104px] flex flex-row xs:gap-x-[16px] md:gap-x-[24px] justify-center items-center">
-          <div className="xs:mt-[115px] md:mt-0 xs:w-[100%] md:w-[200px] text-center">
-            <Button
-              onClick={handleBack}
-              backgroundColor="transparent"
-              type="secondary"
-              disable={state === 0}
-            >
-              Back
-            </Button>
+        {isTagLineIsInView && (
+          <div
+            ref={columnsToAnimate}
+            className={`max-w-[1272px] mx-auto justify-center flex flex-row xs:mt-[24px] md:mt-[40px] ${
+              isColumnIsInView === true
+                ? "opacity-100 addFadeUpAnimation"
+                : "opacity-0"
+            }`}
+          >
+            {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
+              <Selector
+                type="multi"
+                options={data[state]?.options}
+                getValues={getValues}
+                value={state}
+                id={data[state].id}
+              />
+            )}
+            {data[state]?.type === QUESTION_TYPES.RANGE && (
+              <Selector type="range" getValues={getValues} value={state} />
+            )}
+            {data[state]?.type === QUESTION_TYPES.INPUT && (
+              <Selector type="input" getValues={getValues} value={state} />
+            )}
+            {data[state]?.type === QUESTION_TYPES.SINGLE_CHOICE && (
+              <Selector
+                type="single"
+                options={data[state]?.options}
+                getValues={getValues}
+                value={state}
+              />
+            )}
           </div>
-          <div className="xs:mt-[115px] md:mt-0 xs:w-[100%] md:w-[200px] text-center">
-            <Button disable={checkDisableButton()} onClick={handleContinue}>
-              {state === 14 ? "Show my formula" : "Continue"}
-            </Button>
+        )}
+        {isColumnIsInView && (
+          <div
+            ref={buttonsToAnimate}
+            className={`xs:mt-auto md:mt-[60px] lg:mt-[104px] flex flex-row xs:gap-x-[16px] md:gap-x-[24px] justify-center items-center ${
+              isButtonsIsInView === true
+                ? "opacity-100 addFadeUpAnimation"
+                : "opacity-0"
+            }`}
+          >
+            <div className="xs:mt-[115px] md:mt-0 xs:w-[100%] md:w-[200px] text-center">
+              <Button
+                onClick={handleBack}
+                backgroundColor="transparent"
+                type="secondary"
+                disable={state === 0}
+              >
+                Back
+              </Button>
+            </div>
+            <div className="xs:mt-[115px] md:mt-0 xs:w-[100%] md:w-[200px] text-center">
+              <Button disable={checkDisableButton()} onClick={handleContinue}>
+                {state === 14 ? "Show my formula" : "Continue"}
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
       </Container>
     </div>
   );
