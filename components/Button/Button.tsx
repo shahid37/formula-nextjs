@@ -45,7 +45,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }, [props.onClick, props.disable]);
 
     const commonClassNames =
-      "xs:text-[14px] md:text-[16px] flex cursor-pointer items-center text-center font-medium leading-4 uppercase";
+      "xs:text-[14px] md:text-[16px] flex cursor-pointer items-center text-center font-medium leading-4 uppercase hover:bg-[#C2E0E8] transition duration-500";
     const disabledClassNames =
       props.disable || props.loading ? "cursor-not-allowed opacity-50" : "";
     const linkButtonClassNames = "";

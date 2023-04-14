@@ -24,6 +24,10 @@ const Main = () => {
   const router = useRouter();
   const commonClassNames = "flex flex-col";
 
+  const { ref: mainHeadingText, inView: isMainHeadingTextInView } = useInView({
+    triggerOnce: true,
+  });
+
   const { ref: heroRibbon, inView: isHeroRibbonInView } = useInView({
     triggerOnce: true,
   });
@@ -39,7 +43,14 @@ const Main = () => {
           <AppMainLayout
             className={"flex items-end h-full xs:pb-[32px] md:pb-12"}
           >
-            <h1 className="font-inter text-white xs:text-[32px] xs:leading-[38px] md:text-[40px] md:leading-[48px] max-w-[524px] leading-[48px]">
+            <h1
+              ref={mainHeadingText}
+              className={`font-inter text-white xs:text-[32px] xs:leading-[38px] md:text-[40px] md:leading-[48px] max-w-[524px] leading-[48px] ${
+                isMainHeadingTextInView === true
+                  ? "opacity-100 addFadeUpAnimation"
+                  : "opacity-0"
+              }`}
+            >
               Customized prescription medicine for your pain
             </h1>
           </AppMainLayout>
