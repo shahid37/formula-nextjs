@@ -29,12 +29,14 @@ const PainCategory: FC<PainCategoryProps> = ({
 
   return (
     <div className="flex flex-col items-center">
-      <Image
-        className="rounded-md border border-light-gray cursor-pointer"
-        src={img}
-        alt={name}
-        // width={300}
-      />
+      <div className="relative overflow-hidden rounded-[8px]">
+        <Image
+          className="rounded-md border border-light-gray cursor-pointer hover:transform hover:scale-110 transition duration-500"
+          src={img}
+          alt={name}
+          // width={300}
+        />
+      </div>
       <h5 className="mt-1 text-[20px] leading-[24px]">{name}</h5>
     </div>
   );
