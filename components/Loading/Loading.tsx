@@ -41,7 +41,7 @@ const Loading: FC<LoadingProps> = ({
               ))}
             </div>
           </div>
-          <h6 className="text-gray mt-7 text-[16px] leading-[19px] font-normal">
+          <h6 className="elementToFadeInAndOut text-gray mt-7 text-[16px] leading-[19px] font-normal">
             {status}
           </h6>
           <h4 className="text-black mt-6 xs:text-[20px] xs:leading-[24px] lg:text-[20px] xl:text-[24px] leading-[29px]">
