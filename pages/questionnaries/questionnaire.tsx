@@ -196,20 +196,20 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     );
   }
 
-  if (data[state]?.loading && data[state].loadingTextTitle) {
-    return (
-      <section className="bg-[#FDF9F4]">
-        <Container>
-          <div className="flex flex-col text-whit">
-            <Loading
-              status={data[state].loadingTextTitle}
-              text={data[state].loadingText}
-            />
-          </div>
-        </Container>
-      </section>
-    );
-  }
+  // if (data[state]?.loading && data[state].loadingTextTitle) {
+  return (
+    <section className="bg-[#FDF9F4]">
+      <Container>
+        <div className="flex flex-col text-whit">
+          <Loading
+            status={data[state].loadingTextTitle}
+            text={data[state].loadingText}
+          />
+        </div>
+      </Container>
+    </section>
+  );
+  // }
 
   return (
     <div className="xs:pt-[74px] md:pt-[64px] bg-[#FDF9F4]">
@@ -234,14 +234,15 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
           <h3 className="xs:text-left md:text-center xs:mt-[27px] md:mt-[30px] lg:mt-[40px] xs:text-[32px] xs:leading-[39px] md:text-[28px] lg:text-[32px] leading-[38px] font-normal text-[#111111]">
             {data[state]?.question}
           </h3>
-          {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE &&
-          <p className="max-w-[358px] text-[14px] font-normal leading-[17px] font-inter xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
-            {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
-              ? "(May choose more than one)"
-              : data[state]?.type === QUESTION_TYPES.RANGE
-              ? "On a scale of 0 to 5 with zero being no pain and 5 being the worst pain ever"
-              : null}
-          </p>}
+          {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE && (
+            <p className="max-w-[358px] text-[14px] font-normal leading-[17px] font-inter xs:text-left md:text-center mt-2 opacity-60 text-[#111111]">
+              {data[state]?.type === QUESTION_TYPES.MULTIPLE_CHOICE
+                ? "(May choose more than one)"
+                : data[state]?.type === QUESTION_TYPES.RANGE
+                ? "On a scale of 0 to 5 with zero being no pain and 5 being the worst pain ever"
+                : null}
+            </p>
+          )}
         </div>
 
         <div className="max-w-[1272px] mx-auto justify-center flex flex-row xs:mt-[24px] md:mt-[40px]">

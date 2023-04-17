@@ -9,7 +9,11 @@ interface LoadingProps {
   notShowAnimation?: boolean;
 }
 
-const Loading: FC<LoadingProps> = ({ text, status,notShowAnimation }: LoadingProps) => {
+const Loading: FC<LoadingProps> = ({
+  text,
+  status,
+  notShowAnimation,
+}: LoadingProps) => {
   const [dotSizes, setDotSizes] = useState([5, 5, 5, 5, 5]);
   const [greenIndex, setGreenIndex] = useState(0);
 
@@ -36,18 +40,19 @@ const Loading: FC<LoadingProps> = ({ text, status,notShowAnimation }: LoadingPro
         <div className="flex flex-col items-center justify-center text-center md:max-w-[450px] lg:max-w-[470px] xl:max-w-[572px]">
           <div className="ml-[6px] relative">
             {/* <Loader /> */}
-            {!notShowAnimation &&
-            <div className="loading-container">
-              {dotSizes.map((size, index) => (
-                <span
-                  key={index}
-                  className={`dot ${index === greenIndex ? "green" : ""}`}
-                  style={{ width: `${size}px`, height: `${size}px` }}
-                ></span>
-              ))}
-            </div>}
+            {!notShowAnimation && (
+              <div className="loading-container">
+                {dotSizes.map((size, index) => (
+                  <span
+                    key={index}
+                    className={`dot ${index === greenIndex ? "green" : ""}`}
+                    style={{ width: `${size}px`, height: `${size}px` }}
+                  ></span>
+                ))}
+              </div>
+            )}
           </div>
-          <h6 className="text-gray mt-7 text-[16px] leading-[19px] font-normal">
+          <h6 className="elementToFadeInAndOut text-gray mt-7 text-[16px] leading-[19px] font-normal">
             {status}
           </h6>
           <h4 className="text-black mt-6 xs:text-[20px] xs:leading-[24px] lg:text-[20px] xl:text-[24px] leading-[29px]">
