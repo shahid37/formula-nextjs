@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 
 import AppLayout from "../AppLayout/AppLayout";
+import { useInView } from "react-intersection-observer";
 
 interface LoadingProps {
   status?: string;
@@ -25,6 +26,18 @@ const Loading: FC<LoadingProps> = ({
     return () => clearInterval(intervalId);
   }, []); // run the effect only once, when the component mounts
 
+  const { ref: fadeInUpHeadingAnimation, inView: isAnimationIsInView } =
+    useInView({
+      triggerOnce: true,
+    });
+
+  const {
+    ref: fadeInUpSubHeadingAnimation,
+    inView: isSubHeadingAnimationIsInView,
+  } = useInView({
+    triggerOnce: true,
+  });
+
   return (
     <AppLayout showNaveLink={false}>
       <div className="flex items-center justify-center w-auto h-screen bg-off-white">
@@ -41,12 +54,28 @@ const Loading: FC<LoadingProps> = ({
               ))}
             </div>
           </div>
-          <h6 className="elementToFadeInAndOut text-gray mt-7 text-[16px] leading-[19px] font-normal">
+          <h6
+            ref={fadeInUpHeadingAnimation}
+            className={`text-gray mt-7 text-[16px] leading-[19px] font-normal ${
+              isAnimationIsInView === true
+                ? "opacity-100 addFadeUpAnimation"
+                : "opacity-0"
+            }`}
+          >
             {status}
           </h6>
-          <h4 className="text-black mt-6 xs:text-[20px] xs:leading-[24px] lg:text-[20px] xl:text-[24px] leading-[29px]">
-            {text}
-          </h4>
+          {isAnimationIsInView && (
+            <h4
+              ref={fadeInUpSubHeadingAnimation}
+              className={`text-black mt-6 xs:text-[20px] xs:leading-[24px] lg:text-[20px] xl:text-[24px] leading-[29px] ${
+                isSubHeadingAnimationIsInView === true
+                  ? "opacity-100 addFadeUpAnimation"
+                  : "opacity-0"
+              }`}
+            >
+              {text}
+            </h4>
+          )}
         </div>
       </div>
     </AppLayout>

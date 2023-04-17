@@ -171,19 +171,3 @@ span:nth-child(5) {
     transform: translateY(0);
   }
 }
-
-.elementToFadeInAndOut {
-  opacity: 1;
-  animation: fade 2s infinite;
-}
-@keyframes fade {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
