@@ -190,7 +190,7 @@ const Selector: FC<SelectorProps> = ({
                     (index > 0 || index < options.length - 1) && "mt-[0px]",
                     options?.length >= 3 && "h-[51px]",
                     "mb-[16px] font-normal xs:w-[100%] cursor-pointer text-black rounded-lg flex items-center tracking-[0.5px] justify-center py-4 border border-light-gray text-sm text-base"
-                  )}`}
+                  )} hover:bg-[#C2E0E8]`}
                 >
                   {capitalizeFirstLetter(item)}
                 </button>
