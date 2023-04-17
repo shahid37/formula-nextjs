@@ -219,20 +219,20 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
     );
   }
 
-  // if (data[state]?.loading && data[state].loadingTextTitle) {
-  return (
-    <section className="bg-[#FDF9F4]">
-      <Container>
-        <div className="flex flex-col text-whit">
-          <Loading
-            status={data[state].loadingTextTitle}
-            text={data[state].loadingText}
-          />
-        </div>
-      </Container>
-    </section>
-  );
-  // }
+  if (data[state]?.loading && data[state].loadingTextTitle) {
+    return (
+      <section className="bg-[#FDF9F4]">
+        <Container>
+          <div className="flex flex-col text-whit">
+            <Loading
+              status={data[state].loadingTextTitle}
+              text={data[state].loadingText}
+            />
+          </div>
+        </Container>
+      </section>
+    );
+  }
 
   return (
     <div className="xs:pt-[74px] md:pt-[64px] bg-[#FDF9F4]">
