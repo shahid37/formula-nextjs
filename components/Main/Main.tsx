@@ -18,9 +18,23 @@ import PainCategory, { PainTypes } from "../PainCategory";
 import { useRouter } from "next/router";
 import Divider from "../Divider";
 
+import { useInView } from "react-intersection-observer";
+
 const Main = () => {
   const router = useRouter();
   const commonClassNames = "flex flex-col";
+
+  const { ref: mainHeadingText, inView: isMainHeadingTextInView } = useInView({
+    triggerOnce: true,
+  });
+
+  const { ref: heroRibbon, inView: isHeroRibbonInView } = useInView({
+    triggerOnce: true,
+  });
+
+  const { ref: painFormula, inView: isPainFormulaInView } = useInView({
+    triggerOnce: true,
+  });
 
   return (
     <div className={classNames(commonClassNames, "w-full")}>
@@ -29,7 +43,14 @@ const Main = () => {
           <AppMainLayout
             className={"flex items-end h-full xs:pb-[32px] md:pb-12"}
           >
-            <h1 className="font-inter text-white xs:text-[32px] xs:leading-[38px] md:text-[40px] md:leading-[48px] max-w-[524px] leading-[48px]">
+            <h1
+              ref={mainHeadingText}
+              className={`font-inter text-white xs:text-[32px] xs:leading-[38px] md:text-[40px] md:leading-[48px] max-w-[524px] leading-[48px] ${
+                isMainHeadingTextInView === true
+                  ? "opacity-100 addFadeUpAnimation"
+                  : "opacity-0"
+              }`}
+            >
               Customized prescription medicine for your pain
             </h1>
           </AppMainLayout>
@@ -49,7 +70,14 @@ const Main = () => {
       </div>
       <AppMainLayout>
         <div className={classNames(commonClassNames, "xs:pt-6 md:pt-10")}>
-          <div className="grid xs:grid-cols-1 md:grid-cols-3 xs:gap-4 md:gap-6">
+          <div
+            ref={heroRibbon}
+            className={`grid xs:grid-cols-1 md:grid-cols-3 xs:gap-4 md:gap-6 ${
+              isHeroRibbonInView === true
+                ? "opacity-100 addFadeUpAnimation"
+                : "opacity-0"
+            }`}
+          >
             {[
               {
                 text: "Complete 5 minute pain assessment questionnaire",
@@ -80,7 +108,14 @@ const Main = () => {
           <div className="md:hidden my-[32px]">
             <Divider type="horizontal" />
           </div>
-          <div className="xs:pt-0 md:pt-10">
+          <div
+            ref={painFormula}
+            className={`xs:pt-0 md:pt-10 ${
+              isPainFormulaInView === true
+                ? "opacity-100 addFadeUpAnimation"
+                : "opacity-0"
+            }`}
+          >
             <h5 className="xs:text-[16px] leading-[19px] md:text-[20px] md:leading-[24px] text-black">
               Find your perfect PAIN formula
             </h5>
@@ -108,7 +143,7 @@ const Main = () => {
               ].map((item) => (
                 <div
                   className={classNames(
-                    "items-center xs:w-[35%] md:w-[25%] grow"
+                    `items-center xs:w-[35%] md:w-[25%] grow`
                   )}
                   key={item.name}
                 >
@@ -122,7 +157,7 @@ const Main = () => {
           </div>
 
           {/*  Footer */}
-          <div className="xs:mt-[32px] md:mt-10">
+          <div className={`xs:mt-[32px] md:mt-10`}>
             <Footer />
           </div>
           <div className="xs:pb-[32px] md:pb-[58px] mx-auto  xs:mt-[60px] md:mt-10 xs:w-[100%] md:w-96">
