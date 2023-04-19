@@ -26,9 +26,9 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
           : "opacity-0"
       }`}
     >
-      <h4 className="xs:text-[20px] xs:leading-[24px] md:text-[24px] md:leading-[29px]">
+      <h5 className="xs:text-[20px] xs:leading-[24px] md:text-[24px] md:leading-[29px]">
         {props.headingText}
-      </h4>
+      </h5>
       <div className="grid xs:grid-cols-2 md:grid-cols-4 gap-6 xs:mt-[24px] md:mt-[34px]">
         {[
           {

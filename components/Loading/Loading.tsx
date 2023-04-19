@@ -67,7 +67,7 @@ const Loading: FC<LoadingProps> = ({
           {isAnimationIsInView && (
             <h4
               ref={fadeInUpSubHeadingAnimation}
-              className={`text-black mt-6 xs:text-[20px] xs:leading-[24px] lg:text-[20px] xl:text-[24px] leading-[29px] ${
+              className={`text-black mt-6 xs:text-[20px] xs:leading-[24px] lg:text-[20px] xl:text-[24px] leading-[29px] xs:font-medium md:font-normal ${
                 isSubHeadingAnimationIsInView === true
                   ? "opacity-100 addFadeUpAnimation"
                   : "opacity-0"

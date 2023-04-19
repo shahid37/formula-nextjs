@@ -24,7 +24,7 @@ interface QuestionnairePageProps {
 
 const Container = ({ children, className }: any) => (
   <div
-    className={`max-w-[1512px] xs:w-[91%] md:w-[84%] mx-auto ${
+    className={`max-w-[1512px] xs:w-[91%] md:w-[84%] xl:w-[85%] mx-auto ${
       className ?? ""
     }`}
   >
@@ -241,7 +241,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
         totalQuestions={15}
         className="fixed w-full top-0 left-0 right-0 pt-[48px] mt-[10px]"
       />
-      <Container className="bg-brown xs:pt-[47px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
+      <Container className="bg-brown xs:pt-[24px] md:pt-[100px] xl:pt-[122px] xs:pb-[32px] md:pb-[100px] xl:pb-[140px] 2xl:pb-[198px]">
         <div className="xs:max-w-[358px] xs:mr-auto xs:ml-0 md:ml-auto md:max-w-[400px] lg:max-w-[500px] mx-auto flex flex-col xs:justify-start md:justify-center xs:items-start md:items-center">
           <div
             ref={questionTxtToAnimate}
@@ -279,7 +279,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({
                 ref={taglineToAnimate}
                 className={`max-w-[358px] text-[14px] font-normal leading-[17px] font-inter xs:text-left md:text-center mt-2 opacity-60 text-[#111111] ${
                   isTagLineIsInView === true
-                    ? "opacity-100 addFadeUpAnimation"
+                    ? "opacity-60 addFadeUpAnimation"
                     : "opacity-0"
                 }`}
               >
